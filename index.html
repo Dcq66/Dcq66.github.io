@@ -57,39 +57,6 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
-        <a href="/2020/11/09/YourFileName/">YourFileName</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-09
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
         <a href="/2020/11/08/JavaScript/tools/">No-title</a>
       </h1>
     
@@ -102,7 +69,7 @@
     
 
     <!-- Content -->
-    <p>title: tools<br>自定义的函数</p>
+    <p>自定义的函数</p>
 <pre><code>* 定义一个函数用来判断一个元素中是否有指定的class属性值
     有则返回 true 反之返回 false
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">参数：</span><br><span class="line">    obj 要添加 class 属性的元素</span><br><span class="line">    cn 要添加的 class 属性值 </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">function hasClass(obj,cn)&#123;</span><br><span class="line">&#x2F;&#x2F; 创建一个正则表达式</span><br><span class="line">var reg&#x3D;new RegExp(&quot;\\b&quot;+cn+&quot;\\b&quot;);</span><br><span class="line">return reg.test(obj.className);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -975,10 +942,80 @@
 </div>
 
 
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css15/">No-title</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>变形</p>
+<pre><code>* 变形就是指通过css来改变元素的形状或位置
+    - 变形不会影响到页面的布局
+    - transform用来设置元素的变形效果
+        - 平移：
+            - translateX() 沿着X轴方向平移
+            - translateY() 沿着Y轴方向平移
+            - translateZ() 沿着Z轴方向平移
+                - Z轴平移，调整元素在Z轴上的位置，由于其属于立体效果（近大远小），
+                    默认情况下网页是不支持透视的，如果想要看见效果，必须设置网页的视距
+                        即perspective属性，将其设置在html（根元素）的样式中
+            - 平移元素，百分比是相对于自身计算的
+        - 旋转：通过旋转可以使元素沿着x、y或z轴旋转指定的角度
+            - rotateX() 沿着X轴旋转
+            - rotateY() 沿着Y轴旋转
+            - rotateZ() 沿着Z轴旋转
+            - 旋转时还可以通过backface-visibility属性来设置是否显示元素的背面
+        - 3d变形效果
+            - 若想要看到所设置的立体动态效果，需通过transform-style属性来设置其3d效果
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br></pre></td></tr></table></figure>
+        - transform-origin（变形原点）
+            - 默认值为center
+            - 可自定设置原点
+        - 对元素进行缩放的函数（倍数缩放）
+            - scale() 双方向的缩放
+            - scaleX() 水平方向的缩放
+            - scaleY() 垂直方向的缩放</code></pre>
+<p>变量</p>
+<pre><code>* css也支持变量的设置
+    - 变量的设置规范
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--color:red;</span><br></pre></td></tr></table></figure>
+    - 引用变量时的语法规范
+     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color:var(--color);</span><br></pre></td></tr></table></figure>
+    - 设置变量可以帮助我们在做代码量较多的项目修改时更方便</code></pre>
+<p>less</p>
+<pre><code>* less是一门css的预处理语言
+    - less是一个css的增强版，通过该预处理语言我们可以编写更少的代码实现更强大的样式</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
 
 
 <div id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
 </div>
 
 
