@@ -1,0 +1,258 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/27/JavaScript/JavaScript08/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>正则表达式</p>
+<pre><code>* 正则表达式用于定义一些字符串的规则，计算机可以根据正则表达式来检查一个字符串是否符合规则
+    通过赋值给另一个变量可以将字符串中符合规则的内容提取出来
+* 创建正则表达式
+    - 使用构造函数创建，语法：var 变量=new RegExp(&quot;正则表达式&quot;,&quot;匹配模式&quot;);第二个参数可省略
+    - 匹配模式可选值：
+        - i 忽略大小写
+        - g 全局匹配模式
+    - 使用typeof检查正则表达式，会返回object
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg&#x3D;new RegExp(&quot;a&quot;);</span><br></pre></td></tr></table></figure>
+    - 使用字面量创建，语法：var 变量=/正则表达式/匹配模式
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg&#x3D;&#x2F;a&#x2F;;</span><br></pre></td></tr></table></figure></code></pre>
+<p>DOM</p>
+<pre><code>* DOM，文档对象模型
+    - 文档：表示的就是整个的HTML网页文档
+    - 对象：表示将网页中的每一个部分都转换为了一个对象
+    - 模型：使用模型来表示对象之间的关系
+* 节点（Node），是构成我们网页的最基本的组成结构，网页中的每一个部分都可以称为是一个节点
+    比如：HTML标签、属性、文本、注释、整个文档等都是一个节点
+* 常用节点分为四类：
+    - 文档节点：整个HTML文档
+        - nodeName：#document
+        - nodeType：9
+        - nodeValue：null
+    - 元素节点：HTML文档中的HTML标签
+        - nodeName：标签名
+        - nodeType：1
+        - nodeValue：null
+    - 属性节点：元素的属性
+        - nodeName：属性名
+        - nodeType：2
+        - nodeValue：属性值
+    - 文本节点：HTML标签中的文本内容
+        - nodeName：#text
+        - nodeType：3
+        - nodeValue：文本内容
+* 浏览器已经为我们提供了文档节点对象，这个对象就是window属性
+    可以在网页中直接使用，文档节点表示整个网页
+* 方法与属性：
+    - getElementById() 通过id属性获取一个元素节点对象
+    - getElementsByTagName() 通过标签名获取一组元素节点对象
+        这个方法会给我们返回一个类数组对象，所有查询到的元素都会封装到对象中，
+            即使查询到的元素只有一个，也会封装到数组中返回
+    - getElementsByName() 通过name属性获取一组元素节点对象
+    - getElementsByClassName() 通过class属性获取一组元素节点对象，但不支持IE8及以下的浏览器
+    - innerHTML 用于获取元素内部的HTML代码，可以将其和createElement()结合完成DOM的增删改的操作
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createElement(&quot;li&quot;);</span><br><span class="line">li.innerHTML&#x3D;&quot;广州&quot;;</span><br></pre></td></tr></table></figure>
+    - innerText 获取到元素内部的文本内容，和innerHTML不同的是它会自动将HTML标签除去
+    - parentNode 该属性会获取指定节点的父节点
+    - childNodes 该属性会获取包括文本节点在内的所有子节点，DOM标签与标签之间的空白也会被当成文本节点
+        注意：在IE8及以下的浏览器中不会将空白文本当成子节点
+    - children 该属性可以获取当前元素的所有子元素（即元素节点）
+    - firstChild 获取当前元素的第一个子节点，该属性不支持IE8及以下的浏览器
+    - firstElementChild 获取当前元素的第一个子元素
+    - previousSibling 获取当前节点的前一个兄弟节点
+    - previousElementSibling 获取当前节点的前一个元素节点
+    - appendChild()，向一个父节点添加一个新的子节点，语法：父节点.appendChild(子节点);
+    - insertBefore()，在指定的子节点之前插入新的子节点，语法：父节点.insertBefore(新节点，旧节点);
+    - replaceChild()，使用指定的子节点代替已有的子节点，语法：父节点.replaceChild(新节点，旧节点);
+    - removeChild()，删除一个子节点，语法：父节点.removeChild(子节点);
+    - 若需要读取元素节点属性，直接使用元素.属性，如：元素.id  元素.name
+        注意：class属性不能采用这种方式，读取class属性时需要使用元素.className
+    - 在document中有一个属性body，它保存的是body的引用
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var body&#x3D;document.body;</span><br></pre></td></tr></table></figure>
+    - document.documentElement保存的是html根标签
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var html&#x3D;document.documentElement;</span><br></pre></td></tr></table></figure>
+    - document.all代表页面中的所有元素
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var all&#x3D;document.all;</span><br><span class="line">&lt;!-- all&#x3D;document.getElementsByTagName(&quot;*&quot;); --&gt;</span><br></pre></td></tr></table></figure>
+    - document.querySelector()
+        - 需要一个选择器的字符串作为参数，可以根据一个css选择器来查询一个元素节点对象
+        - 虽然IE8中没有getElementsByClassName()但是可以使用querySelector()代替
+        - 使用该方法总会返回唯一的一个元素，如果满足条件的元素有多个，那么它只会返回第一个
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var div&#x3D;document.querySelector(&quot;.box1 div&quot;);</span><br><span class="line">&lt;!-- 查询到class属性值为box1的元素中的div --&gt;</span><br></pre></td></tr></table></figure>
+    - document.querySelectorAll()
+        - 该方法和querySelector()用法类似，不同的是它会将符合条件的元素封装到一个数组中返回
+            即使符合条件的只有一个元素，它也会返回数组
+    - document.createElement()
+        - 创建一个元素节点对象，需要一个标签名以字符串的形式作为参数，会根据该标签名创建元素节点对象并返回
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createElement(&quot;li&quot;);</span><br></pre></td></tr></table></figure>
+    - document.createTextNode()
+        - 创建一个文本节点对象，需要一个文本内容以字符串的形式作为参数，
+            会根据该文本内容创建文本节点对象并返回
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createTextNode(&quot;广州&quot;);</span><br></pre></td></tr></table></figure></code></pre>
+<p>事件</p>
+<pre><code>* 事件就是文档或是浏览器窗口发生的一些特定的交互瞬间，JavaScript与HTML之间交互是通过事件实现的
+    比如：点击某个元素、将鼠标移动到某个元素上方等等
+* 我们可以在事件对应的属性中设置一些js代码，当事件被触发时代码就会执行
+    这种行为我们称之为结构和行为耦合，不方便维护
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick&#x3D;&quot;alert(&quot;haha&quot;);&quot;&gt;按钮&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+* 可以为按钮的对应事件绑定处理函数的形式来响应事件，这样当事件被触发时，其对应的函数就会被调用
+* 浏览器在加载一个页面时，是按照自上向下的顺序加载的，读取一行就运行一行，
+    如果将script标签写在页面的上边，在代码执行时页面还没加载，
+        页面还没有加载DOM对象也没有加载，会导致DOM对象无法获取
+* 有时script代码的位置会导致执行出错，处理方式：
+    - onload事件会在整个页面加载完成之后再触发，因此为window绑定一个onload事件，
+        该事件对应的响应函数会在页面加载完成后执行，这样可以确保我们的代码执行时所有的DOM对象已经加载完毕
+            即script的入口函数
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.onload&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 将js代码编写到页面的下部，就是为了可以在页面加载完毕后在执行js代码
+    - confirm() 用于弹出一个带有确认和取消按钮的提示框
+        需要一个字符串作为参数，该字符串会作为提示文字显示出来
+            如果用户点击确认则返回true，点击取消则返回false
+    - onscroll 该事件会在元素的滚动条滚动时触发</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/
+https://dcq66.github.io/2020/10/27/JavaScript/JavaScript08/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

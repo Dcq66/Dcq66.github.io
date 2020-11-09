@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/20/Css/Css13/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-20
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>背景background</p>
+<pre><code>* background-color 设置背景颜色
+* background-image 设置背景图片
+    - 可以同时设置背景图片和颜色，这样背景颜色将会成为图片的背景色
+    - 如果背景图片小于元素，则背景图片会自动重复将元素铺满
+    - 如果背景图片大于元素，则背景图片的溢出部分将不会显示
+    - 如果背景图片和元素一样大，则背景图片正常显示
+* background-repeat 设置背景的重复方式
+    可选值：
+        - repeat 默认值，背景会沿着X和Y轴双方向重复
+        - repeat-x 沿着X轴方向重复
+        - repeat-y 沿着Y轴方向重复
+        - no-repeat 背景图片不重复
+* background-position 设置背景图片的位置
+    设置方式：
+        - 通过top left right bottom center来设置背景图片的位置
+            使用方位词时必须要同时指定两个值，如果只写一个则第二个默认就是center
+        - 通过偏移量来设置背景图片的位置，第一个值是水平方向偏移量，第二个值是垂直方向偏移量
+* background-size 设置背景图片的大小
+    - 第一个值表示宽度，第二个值表示高度
+    - 如果只写一个值，则第二个值默认是auto
+    - cover 图片比例不变，将元素铺满
+    - contain 图片比例不变，将图片在元素中完整显示
+* background-origin 设置背景图片偏移量计算的原点
+    - padding-box 默认值，背景图片的偏移量（background-position）从内边距开始计算
+    - content-box 默认值，背景图片的偏移量（background-position）从内容区开始计算
+    - border-box 默认值，背景图片的偏移量（background-position）从边框开始计算
+* background-clip 设置背景图片的范围
+    - padding-box 默认值，背景图片出现在内边距以内
+    - content-box 默认值，背景图片出现在内容区以内
+    - border-box 默认值，背景图片出现在边框以内
+* background-attachment 设置背景图片是否跟随元素移动
+    - scroll 默认值，背景图片会跟随元素移动
+    - fixed 背景会固定在页面中，不会跟随元素移动
+* background 背景相关的简写属性，所有与背景相关的样式都可以通过该属性来设置
+    注意：background-size必须写在background-position的后边，并且使用/隔开
+        background-clip必须写在background-origin的后边（最好不使用简写，可读性差）</code></pre>
+<p>雪碧图</p>
+<pre><code>* 图片属于网页中的外部资源，外部资源都需要浏览器单独发送请求加载
+    浏览器加载外部资源都是按需加载的，用则加载，不用则不加载
+     因此当我们给一个元素设置在不同情况下的不同背景图片时，使用多个图片切换会出现闪烁问题
+* 解决图片闪烁的问题：可以将多个小图片统一保存到一个大图片中，
+    然后通过调整background-position来显示想要的图片，这样图片会同时加载到网页中，
+        就可以有效地避免出现闪烁的问题，这个技术在网页中应用广泛，称为CSS-Sprite，也就是雪碧图
+* 雪碧图的使用：
+    - 首先确定要使用的图标
+    - 测量图标大小
+    - 根据测量结果创建一个元素
+    - 将雪碧图设置为元素的背景图片
+    - 设置偏移量来显示想要的图片
+* 雪碧图的特点：一次性将多个图片加载进网页，降低请求次数，加快访问速度，提高用户体验</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css13/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css13/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css13/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css13/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/20/Css/Css13/
+https://dcq66.github.io/2020/10/20/Css/Css13/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

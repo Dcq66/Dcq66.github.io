@@ -1,0 +1,252 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/26/JavaScript/JavaScript07/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-26
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Date对象</p>
+<pre><code>* 在JS中使用Date对象来表示一个时间
+* 创建一个Date对象，如果直接使用构造函数来创建一个Date对象则会封装为当前代码执行的时间
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date();</span><br></pre></td></tr></table></figure>
+* 创建一个指定的时间对象，需要在构造函数中传递参数
+    - 使用字符串作为参数传递时格式如下
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date(&quot;2001&#x2F;10&#x2F;19 5:10:3&quot;);</span><br><span class="line">&lt;!-- &quot;年&#x2F;月&#x2F;日 小时:分:秒&quot;   注意中间有空格 --&gt;</span><br></pre></td></tr></table></figure>
+    - 直接使用参数传递时格式如下
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date(2001,10,19,5,10,3);</span><br><span class="line">&lt;!-- 年,月,日,小时,分,秒 --&gt;</span><br></pre></td></tr></table></figure>
+* 方法：
+    - getDate() 获取当前时间对象是几日
+    - getDay() 获取当前时间对象是周几
+        - 会返回一个0-6的值
+            0表示周日
+            1表示周一
+            ....
+    - getMonth() 获取当前时间对象的月份
+        - 会返回一个0-11的值
+            0表示1月
+            1表示2月
+            ....
+    - getFullYear() 获取当前时间对象的年份
+    - getTime() 获取当前对象的时间戳
+        - 时间戳指的是从格林威治标准时间的1970年1月1日0时0分0秒到当前日期所花费的毫秒数（1秒=1000毫秒）
+        - 计算机底层在保存时间时使用的都是时间戳
+    - 获取当前的时间戳
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var time&#x3D;Date.now();</span><br></pre></td></tr></table></figure></code></pre>
+<p>Math对象</p>
+<pre><code>* Math和其它对象不一样，他不是一个构造函数，它属于一个工具类不用创建对象
+    它里边封装了数学运算相关的属性和方法，如Math.PI表示圆周率
+* 方法：
+    - abs() 计算一个数的绝对值
+    - Math.ceil() 对一个数进行向上取整，只要有小数位就进1，1向上取整还是1
+    - Math.floor() 对一个数进行向下取整，小数部分会被舍去
+    - Math.round() 对一个数进行四舍五入取整
+    - Math.random() 可以生成一个0-1之间的随机数
+        - 生成一个0-x之间的随机数：
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.round(Math.random()*x);</span><br></pre></td></tr></table></figure>
+    - max() 获取多个数中的最大值
+    - min() 获取多个数中的最小值
+    - Math.pow(x,y) 返回x的y次幂
+    - Math.sprt() 对一个数进行开方运算</code></pre>
+<p>包装类</p>
+<pre><code>* 三个包装类，可以将基本数据类型转换为对象
+    - String()
+        - 可以将基本数据类型转换为String对象
+    - Number()
+        - 可以将基本数据类型转换为Number对象
+    - Boolean()
+        - 可以将基本数据类型转换为Boolean对象
+* 当我们对一些基本数据类型的值去调用属性和方法时，浏览器会临时使用包装类将其转换为对象
+    然后再调用对象的属性和方法，调用完后再将其转换为基本数据类型</code></pre>
+<p>String对象</p>
+<pre><code>* 字符串对象，在底层字符串都是以数组的形式保存的
+* 方法：
+    - charAt()
+        - 返回字符串中指定位置的字符
+        - 根据索引获取指定的字符
+    - charCodeAt()
+        - 获取指定位置字符的字符编码（Unicode编码）
+    - String.formCharCode()
+        - 根据字符编码去获取字符
+    - concat()
+        - 连接两个或多个字符串
+    - indexOf()
+        - 检索一个字符串中是否含有指定的内容
+            若含有则会返回其第一次出现的索引，若没有找到则返回-1
+        - 可以添加第二个参数，指定开始查找的位置
+    - lastIndexOf()
+        - 该方法和indexOf()一样，不同的是indexOf是从前往后找
+            lastIndexOf()是从后往前找
+    - slice()
+        - 获取指定的字符串,不会影响到原字符串
+        - 参数：
+            第一个参数，表示开始位置的索引，包括开始索引       
+            第二个参数，表示结束位置的索引，不包括结束索引
+                第二个参数可以省略不写，此时会截取从开始索引往后的所有元素
+            - 索引可以传递一个负值，如果传递一个负值则从后往前计算
+                -1 倒数第一个
+                -2 倒数第二个....
+    - substring()
+        - 获取指定的字符串，用法规则和slice()类似，不同的是这个方法不接收负值作为参数
+            如果传递了一个负值则默认为0，而且它还可以自动调整参数的位置，
+                如果第二个参数小于第一个参数则自动交换
+    - substr()
+        - 获取指定的字符串
+        - 参数：
+            第一个参数，表示开始位置的索引，包括开始索引       
+            第二个参数，表示截取的长度
+    - split()
+        - 可以将一个字符串拆分为一个数组
+        - 参数：需要一个字符串作为参数，将会根据该字符串去拆分数组，
+                    如果传递一个空串作为参数，则会将每一个字符都拆分为数组中的一个元素
+    - toUpperCase()
+        - 将一个字符串转换为大写并返回
+    - toLowerCase()
+        - 将一个字符串转换为小写并返回</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/
+https://dcq66.github.io/2020/10/26/JavaScript/JavaScript07/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

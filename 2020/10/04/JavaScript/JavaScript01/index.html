@@ -1,0 +1,280 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/04/JavaScript/JavaScript01/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-04
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>语法规范：</p>
+<pre><code>* JS中严格区分大小写
+* JS中每一条语句以分号结尾
+    - 如果不写分号，浏览器会自动添加，但是会消耗一些系统资源
+        而且有些时候，浏览器会加错分号，所以在开发中分号必须写
+* JS中会忽略多个空格和换行，所以我们可以利用空格和换行对代码进行格式化
+* 在JS中可以使用&#123;&#125;来为语句进行分组
+    同一个&#123;&#125;中的语句我们称为是一组语句
+    它们要么都执行，要么都不执行
+        一个&#123;&#125;中的语句我们也称为一个代码块
+            在JS中的代码块只具有分组的作用
+                代码块的内容在外部都是完全可见的</code></pre>
+<p>编写位置</p>
+<pre><code>* 编写在标签内
+    - 可以将js代码编写到标签的onclick属性中，当我们点击按钮时，js代码才会执行
+    - 可以将js代码写在超链接的href属性中，这样当点击超链接时会执行js代码
+* 将js代码编写到script标签中
+* 引入外部js文件
+    - 将js代码编写到外部到外部js文件中，然后通过script标签引入
+        写到外部文件中可以在不同的页面中同时引用，
+            推荐的使用方法
+    - script标签一旦用于引入外部文件了，就不能在编写代码了，即使编写了浏览器也会忽略
+        如果需要则可以再创建一个新的script标签用于编写内部代码</code></pre>
+<p>字面量、变量和标识符</p>
+<pre><code>* 字面量：都是一些不可改变的值
+    - 如：1 2 3 4 5
+    - 字面量都是可以直接使用的，但我们一般都不会直接使用字面量
+* 变量：变量的值可以任意改变
+    - 变量可以用来保存字面量，更加方便我们使用，所以在开发中都是通过变量去保存一个字面量
+        而很少直接使用字面量
+    - 在js使用var关键字来声明一个变量
+* 标识符
+    - 在JS中所有的可以由我们自主命名的都可以称为是标识符
+    - 如：变量名、函数名、属性名都属于标识符
+    - 命名一个标识符时需要遵循如下的规则：
+        - 标识符中可以含有字母、数字、_、$
+        - 标识符不能以数字开头
+        - 标识符不能是JS中的关键字和保留字
+    - JS底层保存标识符时实际上使用的是Unicode编码
+        所以理论上讲，所有的utf-8中含有的内容都可以作为标识符</code></pre>
+<p>数据类型</p>
+<pre><code>* 可以使用一个运算符typeof来检查一个变量的类型
+    - 语法：typeof 变量
+    - 检查字符串时，会返回string
+    - 检查数值时，会返回number
+
+* 数据类型指的就是字面量的类型，在js中一共有六种数据类型：
+    - String 字符串
+        - 在JS中字符串需要使用引号引起来
+        - 使用双引号或单引号都可以，但不能混合使用
+        - 引号不能嵌套，双引号不能放双引号，单引号也是
+        - 在字符串中我们可以使用\作为转义字符
+            - \&quot; 表示 &quot;
+            - \&#39; 表示 &#39;
+            - \n 表示换行
+            - \t 表示制表符（Tab）
+            - \\ 表示 \
+    - Number 数值
+        - 包括整数和浮点数（小数）
+        - 可以表达的数字的最大值为Number.MAX_VALUE（1.7976931348623157e+308）
+        - 可以表达的大于零的数字的最小值为Number.MIN_VALUE（5e-324）
+        - 如果使用Number表示的数字超过了最大值，则会返回一个
+            Infinity 表示正无穷
+            -Infinity 表示负无穷
+            使用typeof检查Infinity也会返回number
+        - NaN是一个特殊的数字，表示Not A Number
+            使用typeof检查一个NaN也会返回number
+        - 在JS中整数的运算基本可以保证精确
+            但如果进行浮点运算可能会得到一个不精确的结果
+    - Boolean 布尔值
+        - 布尔值只有两个值，主要用于做逻辑判断
+        - 使用typeof检查一个布尔值时，会返回Boolean
+    - Null 空值
+        - Null只有一个值，就是null
+        - 这个值专门用来表示一个为空的对象
+        - 使用typeof检查一个null值时，会返回object
+    - Undefined 未定义
+        - Undefined只有一个值，就是undefined
+        - 当声明一个变量，但是并不给变量赋值时，它的值就是undefined
+        - 使用typeof检查一个undefined时也会返回undefined
+    - Object 对象
+    - 其中String Number Boolean Null Undefined属于基本数据类型
+        而Object属于引用数据类型</code></pre>
+<p>数据类型的转换</p>
+<pre><code>* 将其他的数据类型转换为String
+    - 方式一：
+        - 调用被转换数据类型的toString()方法
+        - 该方法不会影响到原变量，它会将转换的结果返回
+        - 但null和undefined两个值没有toString()方法
+            如果调用他们的方法会报错
+    - 方式二：
+        - 调用String()函数，并将被转换的数据作为参数传递给函数
+        - 使用String()函数做强制类型转换时
+            - 对于Number和Boolean实际上就是调用的toString()方法
+            - 对于null和undefined就不会调用toString()方法
+                它会将null直接转换成&quot;null&quot;
+                将undefined直接转换成&quot;undefined&quot;
+
+* 将其他的数据类型转换为Number
+    - 方式一：
+        - 使用Number()函数
+            - 字符串 --&gt; 数字
+                - 如果是纯数字的字符串，则直接将其转换成数字
+                - 如果字符串中有非数字的内容，则转换为NaN
+                - 如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
+            - 布尔 --&gt; 数字
+                - true 转成 1
+                - false 转成 0
+            - null --&gt; 数字 0
+            - undefined --&gt; 数字 NaN
+    - 方式二：
+        - 这种方式专门用来对付字符串
+        - parseInt() 把一个字符串转换成一个整数
+            像“070”这样的字符串，有些浏览器会当成8进制来解析，有些会当成10进制来解析
+            因此可在其中加入第二个参数来指定数字的进制
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="string">&quot;070&quot;</span>;</span><br><span class="line">a=<span class="built_in">parseInt</span>(a,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+        - parseFloat() 把一个字符串转换为一个浮点数
+* 将其他的数据类型转换为Boolean
+    - 使用Boolean()函数
+        - 数字--&gt;布尔
+            除了0和NaN，其余都是true
+        - 字符串--&gt;布尔
+            除了空串，其余都是true
+        - null和undefined都会转换为false
+        - 对象也会转换为true</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/
+https://dcq66.github.io/2020/10/04/JavaScript/JavaScript01/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

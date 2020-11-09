@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/12/JavaScript/JavaScript04/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-12
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>JavaScript函数（Function）</p>
+<pre><code>* 立即执行函数（自调用函数）
+    - 函数定义完立即被调用，这种函数叫做立即执行函数
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+* 函数也可以成为对象的属性
+    - 如果一个函数作为一个对象的属性保存
+        那么称这个函数是这个对象的方法
+            调用这个函数就说调用对象的方法（method）
+    - 调用函数和调用对象的方法本质上没有区别
+* 枚举对象中的属性
+    - 使用for...in语句
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var n in obj)&#123;</span><br><span class="line">    consloe.log(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - for...in语句，对象中有几个属性，循环体就会执行几次
+        每次执行时会将对象中的一个属性的名字赋值给变量n</code></pre>
+<p>声明提前</p>
+<pre><code>* 变量的声明提前
+    - 使用var关键字声明的变量会在所有的代码执行之前被声明（但不会被赋值）
+    - 不使用var关键字声明变量则不会提前
+* 函数的声明提前
+    - 使用函数声明形式创建的函数会在所有的代码执行之前被创建
+        所以可以在函数声明之前来调用函数
+    - 使用函数表达式创建的函数不会被声明提前，所以不能在声明之前调用</code></pre>
+<p>作用域</p>
+<pre><code>* 作用域指一个变量作用的范围，在JS中一共有两种作用域：
+    - 全局作用域
+        - 直接编写在script标签中的JS代码都是全局作用域
+        - 全局作用域在页面打开时创建，在页面关闭时销毁
+        - 在全局作用域中有一个全局对象window
+            它代表的是一个浏览器的窗口，有浏览器创建，我们可以直接使用
+        - 在全局作用域中：
+            - 创建的变量都会作为window对象的属性保存
+            - 创建的函数都会作为window对象的方法保存
+        - 全局作用域中的都是全局变量
+            在页面的任意的部分都可以访问的到
+    - 函数作用域
+        - 调用函数时创建函数作用域，函数执行完毕时摧毁
+        - 每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的
+        - 在函数作用域中可以访问到全局作用域的变量
+            反之却不行
+        - 当在函数作用域中操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用
+            如果没有则向上一级作用域中寻找，直到找到全局作用域
+                如果全局作用域中依然没有找到则会报错ReferenceError
+        - 在函数中要访问全局变量可以使用window对象</code></pre>
+<p>this参数</p>
+<pre><code>* 解析器在调用函数时每次都会向函数内部传递一个隐含的this参数
+    - this参数指向的值一个对象，这个对象称之为函数执行的上下文对象
+    - 根据函数的调用方式的不同，this会指向不同的对象
+        - 以函数的形式调用时，this永远都是window
+        - 以方法的形式调用时，this就是调用方法的那个对象
+        - 以构造函数的方式调用时，this就是新创建的那个对象
+        - 使用call()和apply()调用时，this就是指定的那个对象</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/
+https://dcq66.github.io/2020/10/12/JavaScript/JavaScript04/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

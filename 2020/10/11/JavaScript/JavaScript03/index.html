@@ -1,0 +1,222 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/11/JavaScript/JavaScript03/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-11
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>JavaScript对象(Object)</p>
+<pre><code>* 对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性
+* 对象的分类：
+    - 内建对象：
+        - 由ES标准中定义的对象，在任何的ES的实现中都可以使用
+        - 比如：Math String Number Boolean
+    - 宿主对象：
+        - 由JS的运行环境提供的对象，目前来讲主要是指由浏览器提供的对象
+        - 比如：BOM DOM
+    - 自定义对象：
+        - 由开发人员自己创建的对象
+* 使用对象字面量创建对象
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    name:<span class="number">1</span>,</span><br><span class="line">    age:<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 属性值
+    - JS对象的属性值可以是任意的数据类型
+        甚至也可以是一个对象
+* in 运算符
+    - 通过该运算符可以检查一个对象中是否含有指定的属性
+        有则返回true，反之返回false
+    - 语法：
+        &quot;属性名&quot; in 对象  例子如
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
+* 如果要使用特殊的属性名，不能采用.的方式来操作
+        需要使用另一种方式
+    - 语法：对象[&quot;属性名&quot;]=属性值
+        读取时也要采取这种方式
+    - 使用[]这种形式去操作属性，更加的灵活
+        在[]中可以去直接传递一个变量，这样变量值是多少就会读取那个属性
+* 堆内存和栈内存
+    - JS中的变量都是保存到栈内存中的
+        基本数据类型的值直接在栈内存中存储
+            值与值之间是相互独立的，修改一个变量不会影响到另一个变量
+    - 对象是保存到堆内存的，每创建一个新的对象就会在对内存中开辟出一个新的空间
+        而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是同一个对象引用
+            当一个变量修改属性时，另一个也会受到影响
+    - 当比较两个基本数据类型的值时，就是比较值
+        而比较两个引用数据类型时，它比较的是对象的内存地址
+            如果两个对象是一模一样的，但是地址不同，它也会返回false</code></pre>
+<p>JavaScript函数（Function）</p>
+<pre><code>* 函数Function
+    - 函数也是一个对象
+    - 函数可以封装一些功能（代码），在需要时可以执行这些功能（代码）
+    - 使用typeof检查一个函数对象时，返回function
+* 创建函数的方式
+    - 使用构造函数来创建一个函数对象（实际开发中很少用）
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="built_in">Function</span>();</span><br></pre></td></tr></table></figure>
+    - 使用函数声明来创建一个函数，可在括号中加入形参
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 使用函数表达式来创建一个函数
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="function"><span class="title">Function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 可以使用return来设置函数的返回值
+    - 语法：return 值
+        return后的值将会作为函数的执行结果返回
+            可以定义一个变量来接收
+    - 函数中启用return后的语句都不会继续执行
+    - 如果return语句后不跟任何值就相当于返回一个undefined
+        如果函数中不写return，则也会返回undefined
+* 形参和实参
+    - 可以在函数的()中来指定一个或多个形参（形式参数）
+        多个形参之间使用 ，隔开，声明形参就相当于在函数内部声明了对应的变量但不赋值
+    - 在调用函数时，可以在()中指定实参（实际参数可以是任意的数据类型）
+        实参会赋值给函数中对应的形参
+    - 调用函数时解析器不会检查实参的类型
+        所以要注意是否会接收到非法的参数，如果有可能则需要对参数进行类型的检查
+    - 调用函数时解析器也不会检查实参的数量
+        多余实参不会被赋值
+            如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/
+https://dcq66.github.io/2020/10/11/JavaScript/JavaScript03/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

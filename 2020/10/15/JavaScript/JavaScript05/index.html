@@ -1,0 +1,196 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/15/JavaScript/JavaScript05/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-15
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>JavaScript构造函数</p>
+<pre><code>* 构造函数就是一个普通的函数，创建方式和普通函数没什么区别，不同的是构造函数习惯首字母大写
+    还有就是调用方式的不同，普通函数是直接调用，而构造函数需要使用new关键字来调用
+* 构造函数的执行流程：
+    1.创建一个新的对象
+    2.将新的对象设置为函数中的this，在构造函数中可以使用this来引用新建的对象
+    3.逐行执行函数中的代码
+    4.将新建的对象作为返回值返回
+* 使用通过一个构造函数创建的对象称为一类对象，也将一个构造函数称为一个类
+    通过一个构造函数创建的对象则称为是该类的实例
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,gender)</span><br><span class="line">&#123;</span><br><span class="line">    this.name&#x3D;name;</span><br><span class="line">    this.age&#x3D;age;</span><br><span class="line">    this.gender&#x3D;gender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 使用instanceof可以检查一个对象是否是一个类的实例
+    如果是则返回true，否则返回false
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(per instanceof Person);</span><br></pre></td></tr></table></figure>
+* 若在构造函数中将一个属性值设置为一个函数方法，则构造函数每执行一次就会创建一个新的方法
+    这就会导致空间浪费，我们可以用以下两个方法解决
+        - 将函数在全局作用域中定义，再将其赋值给构造函数的属性值
+            但将函数定义在全局作用域会污染全局作用域的命名空间
+                且不太安全
+        - 将函数定义在构造函数的原型对象中</code></pre>
+<p>原型prototype</p>
+<pre><code>* 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype
+    这个属性对应着一个对象，这个对象就是原型对象，如果以普通函数来调用prototype没有任何作用
+            但当函数以构造函数的形式来调用时，它所创建的对象都会有一个隐含的属性指向该构造对象的原型对象
+                我们可以通过__proto__（注意前后分别是两个下划线）来访问该对象
+* 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
+    我们可以将对象中共有的内容统一设置到原型对象中
+* 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用
+    如果没有则会去原型对象中寻找，如果找到则直接使用
+* 原型对象也是对象，所以它也有原型
+    当使用一个对象的属性或方法时会在自身中寻找
+          如果没有则会去原型对象中寻找
+            如果还是没有则区原型的原型中寻找，直到找到Object对象的原型
+                Object对象的原型没有原型，若Object中还是没找到则返回undefined</code></pre>
+<p>toString()方法</p>
+<pre><code>* 当我们直接在页面中打印一个对象时，实际上输出的是对象的toString()方法的返回值
+    我们可以通过为对象添加一个toString()方法来改变输出的值</code></pre>
+<p>垃圾回收（GC）</p>
+<pre><code>* 程序运行过程中会产生垃圾，当一个对象没有任何的变量或属性对它进行引用时，此对象就是一个垃圾
+    在JS中拥有自动的垃圾回收机制，会自动地将这些垃圾对象从内存中销毁
+        我们只需要将不再使用的垃圾对象设置为null即可</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/
+https://dcq66.github.io/2020/10/15/JavaScript/JavaScript05/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
