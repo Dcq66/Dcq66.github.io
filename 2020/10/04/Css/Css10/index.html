@@ -1,0 +1,189 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/04/Css/Css10/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-04
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS中的高度塌陷问题</p>
+<pre><code>* 高度塌陷的问题：
+    - 在浮动布局中，父元素的高度默认是被子元素撑开的
+        当子元素浮动后，其完全脱离文档流，子元素从文档流后将无法撑起父元素的高度
+        导致父元素的高度丢失
+    - 父元素高度丢失后，其下的元素会自动上移，导致页面的布局混乱
+        所以这个问题必须处理</code></pre>
+<p>CSS高度塌陷的处理</p>
+<pre><code>* BFC（Block Formatting Context）块级格式化环境
+    - BFC是CSS中的一个隐含元素，可以为一个元素开启BFC
+        开启BFC该元素会变成一个独立的布局区域
+    - 元素开启BFC后的特点：
+        - 不会被浮动的父元素所覆盖
+        - 子元素和父元素外边距不会重叠
+        - 可以包含浮动的子元素
+    - 可以通过一些特殊的方式来开启元素的BFC：
+        - 设置元素的浮动（不推荐）
+        - 将元素设置为行内块元素（不推荐）
+        - 将元素的overflow属性设置为一个非visible（默认值）的值
+            常用的方式 为元素设置overflow:auto或overflow:hidden
+* 利用after伪元素
+    - 向其塌陷的父元素添加一个after伪元素，在其末尾设置一个空内容
+        并将其设置为块元素同时使用clear属性清除浮动元素的影响，以此来撑起父元素的高度</code></pre>
+<p>CSS中的clear属性</p>
+<pre><code>* 作用：清除浮动元素对当前元素所产生影响
+* 可选值：
+    - left 清除左侧浮动元素对当前元素的影响
+    - right 清除右侧浮动元素对当前元素的影响
+    - both 清除两侧中影响最大的那侧
+* 原理：设置清除浮动后，浏览器会自动为元素添加一个上外边距
+        以使其位置不受其他元素的影响</code></pre>
+<p>clearfix</p>
+<pre><code>* 设置clearfix类可以同时解决高度塌陷和外边距重叠的问题
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,.clearfix::after&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/04/Css/Css10/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/Css/Css10/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/Css/Css10/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/04/Css/Css10/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/04/Css/Css10/
+https://dcq66.github.io/2020/10/04/Css/Css10/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

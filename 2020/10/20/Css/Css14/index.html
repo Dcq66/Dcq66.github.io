@@ -1,0 +1,210 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/10/20/Css/Css14/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-20
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>过渡</p>
+<pre><code>* 过渡（transition）
+    - 通过过渡可以指定一个属性发生变化时的切换方式
+    - 通过过渡可以创建一些非常好的效果，提高用户的体验
+* 属性：
+    - transition-property：指定要执行过渡的属性，多个属性之间使用 ，隔开
+                            如果所有属性都需要过渡，则使用all关键字，大部分属性都支持过渡效果
+                                过渡时必须是从一个有效数值向另一个有效数值进行过渡（如auto就不行）
+    - transition-duration：指定过渡效果的持续时间
+    - transition-timing-function：过渡的时序函数，指定过渡的执行方式
+        可选值：
+            - ease 默认值，先加速，后减速
+            - linear 匀速运动
+            - ease-in 加速运动
+            - ease-out 减速运动
+            - ease-in-out 先加速后减速
+            - cubic-bezier()（贝塞尔函数）自定义指定时序函数（可用网站查询：https://cubic-bezier.com）
+            - step() 分布执行过渡效果
+                - 第一个值是分的步数
+                - 第二个值（可省略，省略则使用默认值）：
+                    - end 默认值，在时间结束时执行过渡
+                    - start 在时间开始时执行过渡
+    - transition-delay：过渡效果的延迟，等待一段时间后再执行
+    - transition：可以同时设置和过渡相关的所有属性，只有一个要求，如果要写延迟，
+                    则持续时间必须在延迟时间之前</code></pre>
+<p>动画</p>
+<pre><code>* 动画（animation）
+    - 动画和过渡相似，都是可以实现一些动态的效果，不同的是过渡需要在某个属性发生变化时才会触发
+        动画可以自动触发动态效果
+    - 设置动态效果，必须先要设置一个关键帧，关键帧设置了动画执行的每一个步骤
+* 属性：
+    - animation-name：对当前元素生效的关键帧的名字
+    - animation-duration：动画的执行时间
+    - animation-delay：动画的延迟时间
+    - animation-timing-function：动画的时序函数，指定动画的执行方式，规则和可选值与过渡一样
+    - animation-iteration-count：动画执行的次数
+        可选值：
+            - 次数
+            - infinite 无限执行
+    - animation-direction：指定动画运行的方向
+        可选值：
+            - normal 默认值 从 from 到 to 运行，每次都是这样
+            - reverse 默认值 从 to 到 from 运行，每次都是这样
+            - alternate 默认值 从 from 到 to 运行，重复执行动画时反向执行
+            - alternate-reverse 默认值 从 to 到 from 运行，重复执行动画时反向执行
+    - animation-play-state：设置动画的执行状态
+        可选值：
+            - running 默认值，动画执行
+            - paused 动画暂停
+    - animation-fill-mode：设置动画的填充模式
+        可选值：
+            - none 默认值，动画执行完毕元素回到原来位置
+            - forwards 动画执行完毕会停止在动画结束的位置
+            - backwards 动画延时等待时，元素就会处于开始位置
+            - both 结合了forwards和backwards</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css14/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css14/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css14/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/10/20/Css/Css14/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/10/20/Css/Css14/
+https://dcq66.github.io/2020/10/20/Css/Css14/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

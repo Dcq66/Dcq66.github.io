@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/09/22/Css/Css01/">
+            
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-22
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS简介：</p>
+<pre><code>* 层叠样式表，网页实际上是一个多层的结构，通过CSS可以分别为网页的每一层来设置样式
+        而我们最终看到的只是网页的最上边一层
+* 使用CSS来修改元素的样式：
+    - 第一种方式(内联样式，行内样式)：
+        - 在标签内通过style属性来设置元素的样式
+        - 问题：使用内联样式，只能对一个标签生效
+                如果希望影响到多个元素则必须在每一个元素中都复制一遍
+                并且当样式发生改变时，我们必须要一个一个修改，非常的不方便
+        - 注意：开发时尽量不要用内联样式，在练习时可用
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:red;font-size:60px;&quot;</span>&gt;</span>今天天气针不戳！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    - 第二种方式(内部样式表)：
+        - 将样式编写到head中的style标签里
+            然后通过CSS的选择器来选中元素并为其设置各种样式
+            可以同时为多个标签设置样式，并且修改时只需要修改一处即可全部应用
+            更加方便对样式进行复用
+            style标签内只能按照CSS的语法规范来编写
+        - 问题：内部样式表只能对一个网页起作用
+                    它里面的样式不能跨页面进行复用
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">	p</span><br><span class="line">	&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">font-size</span><span class="selector-pseudo">:50px</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    - 第三种方式(外部样式表，最佳实践)：
+        - 可以将CSS样式编写到一个外部的CSS文件中
+            然后通过link标签来引入外部的CSS文件
+        - 外部样式表需要通过link标签进行引入
+            意味着只要想使用这些样式的网页都可以对其引用
+        - 将样式编写到外部的CSS文件中，可以使用到浏览器的缓存机制
+            从而加快网页的加载速度，提高用户体验
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
+<p>CSS语法：</p>
+<pre><code>* CSS中的注释格式：/* 注释 */
+* 基本语法：
+    - 选择器：通过选择器可以选中页面中的指定元素
+                比如p的作用就是选中页面中所有的p元素
+    - 声明块：通过声明块来指定要为元素设置的样式
+                声明块由一个一个的声明组成
+                声明是一个名值对结构
+                一个样式名对应一个样式值，名和值之间以：连接，以；结尾</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/09/22/Css/Css01/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/22/Css/Css01/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/22/Css/Css01/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/22/Css/Css01/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/09/22/Css/Css01/
+https://dcq66.github.io/2020/09/22/Css/Css01/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
