@@ -57,7 +57,7 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
-        <a href="/2020/09/22/Css/Css01/">No-title</a>
+        <a href="/2020/09/22/Css01/">No-title</a>
       </h1>
     
     <!-- Date and Author -->
@@ -327,6 +327,50 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/09/17/Java04/">No-title</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-17
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java数组：</p>
+<pre><code>*数组简介：数组是java中最常见的一种数据结构，用于储存多个数据
+
+*数组定义：type []arrayName 或 type arrayName[]
+           如：int []a 或 int a[]
+
+*数组初始化：
+    &gt; 静态数组初始化：arrayName=new type[](....)
+                      如 int []a=new int[](1,2,3)
+    &gt; 动态数组初始化：arrayName=new type[length]
+                      如 int []a=new int[3]</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/09/17/Html/Html02/">No-title</a>
       </h1>
     
@@ -406,6 +450,56 @@ h1会影响到页面在搜索引擎中的排名，一般网页中只会写一个
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/09/16/Java03/">No-title</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-16
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java选择与循环语句：</p>
+<pre><code>* 程序的选择结构：
+    &gt; if语句
+    &gt; if...else语句
+    &gt; if...else if...else语句
+    &gt; switch语句
+
+* 程序的循环结构：
+    &gt; while循环：先判断后执行
+    &gt; do...while循环：先执行后判断
+    &gt; for循环
+    &gt; for循环的嵌套
+
+* 循环结构的控制：
+    &gt; break：结束循环
+    &gt; continue：结束本次循环
+    &gt; return：结束方法</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/09/16/Html/Html01/">No-title</a>
       </h1>
     
@@ -436,6 +530,112 @@ h1会影响到页面在搜索引擎中的排名，一般网页中只会写一个
     如想要一行字其中某些字的颜色变成红色：
     (但一般不赞成用html修改字体属性，html主要用于网页结构，字体属性属于表现，一般用css完成)
     <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/15/Java02/">No-title</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-15
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java数据类型:</p>
+<pre><code>分为基本数据类型和引用数据类型：
+* 基本数据类型
+    &gt; 数值型
+        &gt; 整数类型(byte,short,int,long)
+        &gt; 浮点类型(float,double) 其中小数默认为double类型，所以当表达一个float类型时，必须加一个f,如float a=1.1f;
+    &gt; 字符型(char)
+    &gt; 布尔型(boolean) 布尔类型只有true(真)和false(假)两种，主要用于逻辑判断
+* 引用数据类型
+    &gt; 类(class)
+    &gt; 接口(interface)
+    &gt; 数组
+
+基本类型的转换：
+* 自动类型转换
+    &gt; 条件1.转换前后的数据类型兼容
+    &gt; 条件2.转换后的数据类型的表示范围要比转换前的大
+* 强制类型转换
+    &gt; 如将double转换为float：
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f;</span><br><span class="line"><span class="keyword">double</span> d=<span class="number">1.333</span>;</span><br><span class="line">f=(<span class="keyword">float</span>)d;</span><br></pre></td></tr></table></figure></code></pre>
+<p>Java运算符：</p>
+<pre><code>* 自增：
+    &gt; int a，a++表示先赋值后自增
+    &gt; int a，++a表示先自增后赋值
+* 异或^：当两个操作数不相同时返回true
+*三目运算符：格式为 (表达式)？表达式为true返回值 ： 表达式为false返回值</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/06/29/Java01/">No-title</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-06-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p> 常用的DOS(cmd)命令：</p>
+<pre><code>  - exit 退出当前DOS(cmd)命令窗口
+  - cls  清屏
+  - dir  列出当前目录下所有的子文件/子目录
+  - cd 路径 转入想要进入的路径之下
+    路径包括绝对路径和相对路径
+    绝对路径：表示该路径从某个磁盘的盘符下作为出发点的路径 如C:\Users\Lenovo&gt;
+    相对路径：表示该路径从当前所在的路径下作为出发点的路径 如blog
+  - cd .. 回到上级目录
+  - cd / 直接回到根目录
+  - 切换盘符：c:
+              d:
+              e:
+              f:</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
