@@ -57,6 +57,39 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/11/09/Css01-md/">Css01.md</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-09
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/11/09/Css01/">No-title</a>
       </h1>
     
@@ -870,96 +903,6 @@
     - 大于992（CSS像素）中型屏幕   min-width=992px
     - 大于1200（CSS像素）小屏幕   min-width=1200px
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@media not screen and (min-width:500px) and (max-width:700px)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">        background-color:red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!--</span><br><span class="line"> 该样式意思为带屏幕设备除了宽度在500px和700px之间时body为红色</span><br><span class="line">    not 除了</span><br><span class="line">    and 且</span><br><span class="line">    ,   或</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/25/Css/Css16/">No-title</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-25
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>flex</p>
-<pre><code>* flex
-    - 将元素的display属性设置为flex，则该元素为弹性容器，该元素的子元素为弹性元素
-    - flex还可以作为属性来使用，它可以设置所有弹性元素的三个样式
-        - flex 增长 缩减 基础
-            - initial “flex：0 1 auto”（只缩减不增长）
-            - auto “flex：1 1 auto”（既增长也缩减）
-            - none “flex：0 0 auto”（弹性元素没有弹性）
-* 主轴：弹性元素的排列方式为主轴
-* 侧轴：与主轴垂直方向的为侧轴
-* 属性：
-    - flex-direction 指定容器中弹性元素的排列方式
-        可选值：
-            - row 默认值，弹性元素在容器中水平排列（自左向右）
-                - 主轴 自左向右
-            - row-reverse 弹性元素在容器中反向水平排列（自右向左）
-                - 主轴 自右向左
-            - column 弹性元素在容器中纵向排列（自上向下）
-                - 主轴 自上向下
-            - column 弹性元素在容器中反向纵向排列（自下向上）
-                - 主轴 自下向上
-    - flex-grow 指定弹性元素的伸展系数
-        - 当父元素有多余空间时，子元素如何伸展
-        - 父元素的剩余空间会按照比例分配
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex-grow:1;</span><br><span class="line">&lt;!-- 该弹性元素在父元素的剩余空间分配中占比例中的一份 --&gt;</span><br></pre></td></tr></table></figure>
-    - flex-shrink 指定弹性元素的收缩系数
-        - 当父元素的空间不足以收纳所有子元素时对子元素进行收缩
-        - 子元素越大则该子元素收缩的越大
-    - flex-wrap 设置弹性元素是否在弹性容器中自动换行
-        可选值：
-            - nowrap 默认值，元素不会自动换行
-            - wrap 元素会沿着侧轴方向自动换行
-            - wrap-reserve 元素会沿着侧轴反方向自动换行
-    - flex-flow wrap和direction的简写属性，可同时设置这两个属性
-    - flex-basis 指定的是元素在主轴上的基础长度
-        - 如果主轴是横向的，则该值指定的是元素的宽度
-        - 如果主轴是纵向的，则该值指定的是元素的高度
-        - 默认值是auto，表示参考元素自身的高度或宽度
-        - 如果传递了一个具体的数值，则以该值为准
-    - order 决定弹性元素的排列顺序
-    - justify-content 如何分配主轴上的空白空间（主轴上的元素如何排列）
-        可选值：
-            - flex-start 元素沿着主轴起边排列
-            - flex-end 元素沿着主轴终边排列
-            - center 元素沿着主轴居中排列
-            - space-around 空白均匀分到元素两侧
-            - space-between 空白均匀分到元素间
-            - space-evenly 空白均匀分到元素的单侧
-    - align-items 元素在侧轴上如何对齐
-        可选值：
-            - stretch 默认值，将元素的长度设置为相同的值
-            - flex-start 元素不会拉伸，沿着侧轴起边对齐
-            - flex-end 元素不会拉伸，沿着侧轴终边对齐
-            - center 居中对齐
-            - baseline 基线对齐
-    - align-content 侧轴空白空间的分布，可选值与justify-content一样
-    - align-self 用来覆盖当前当前弹性元素上的align-items</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
