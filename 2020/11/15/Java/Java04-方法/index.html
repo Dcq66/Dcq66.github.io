@@ -1,0 +1,201 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java05——方法 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/15/Java/Java04-方法/">
+            Java05——方法
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-15
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>方法</p>
+<pre><code>* 定义方法的完整格式：
+    修饰符 返回值类型 方法名称(参数类型 参数名称, ....)&#123;
+        方法体
+        return 返回值
+    &#125;
+    - 修饰符：初学阶段的固定写法为public static
+    - 返回值类型：方法最终产生的数据结果是什么类型
+    - 方法名称：方法的名字，一般都是小驼峰写法
+    - 参数类型：传入方法中的数据类型
+    - 参数名字（形参）：进入方法的数据对应的变量名称
+    -方法体：方法所执行的代码
+    - return：
+        - 停止当前方法
+        - 将后面的返回值还给调用处
+        - 注意：return后面的返回值类型必须和方法名称前面的返回值类型一致
+    - 返回值：方法执行后最终产生的数据结果
+* 有参数：小括号中有内容，当一个方法需要一些数据条件才能完成任务时，就是有参
+* 无参数：小括号中没有内容，当一个方法不需要任何数据条件就能完成任务时，就是无参
+* 使用方法的注意事项：
+    - 方法应该定义在类当中，不能在方法中定义方法，即方法不能嵌套
+    - 多个方法定义的前后顺序无所谓
+    - 方法定义之后不会立即执行，只有当调用该方法时才会执行
+    - 如果方法有返回值，那么必须写上“return 返回值;”
+    - 对于一个没有设置返回值（即void）的方法，可以不写return，若写上return就不能加上返回值，
+        即只能return自身
+    - 一个方法当中可以有多个return语句，但是必须保证同时只有一个会被执行，两个return不能连写
+* 方法的重载（Overload）：多个方法的名称一样，但是参数列表不一样
+    - 好处：只需要使用一个方法即可实现多个类似的功能
+    - 方法重载只与以下因素有关：
+        - 参数个数
+        - 参数类型
+        - 参数的多类型顺序不同
+    - 方法重载与以下因素无关：
+        - 参数名称
+        - 返回值类型....
+* 构造方法
+    - 专门用来创建对象的方法，当我们通过关键字new来创建对象时，其实就是在调用构造方法
+    - 格式：public 类名称（参数类型 参数名称）&#123;方法体&#125;
+    - 注意事项：
+        - 构造方法的名称必须和所在类的名称完全一致
+        - 构造方法不用写返回值类型，连void都不用写
+        - 构造方法不能return一个具体的返回值
+        - 如果没有编写构造方法，那么编译器会默认赠送一个构造方法，没有参数、方法体，什么事都不做
+        - 一旦编写了至少一个构造方法，那么编译器将不在赠送
+        - 构造方法也可以重载</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/
+https://dcq66.github.io/2020/11/15/Java/Java04-%25E6%2596%25B9%25E6%25B3%2595/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

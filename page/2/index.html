@@ -57,6 +57,746 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/29/JavaScript/JavaScript09/">JavaScript09</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>方法、属性与事件</p>
+<pre><code>- 修改元素的样式，语法：元素.style.样式名=样式值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box1.style.width&#x3D;&quot;100px&quot;;</span><br></pre></td></tr></table></figure>
+    - 注意：如果CSS样式名中含有-，这样名称在JS中是不合法的，比如：background-color
+            需要将这种样式修改为驼峰命名法：
+                去掉-，然后将-后的字母大写
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box1.style.backgroundColor&#x3D;&quot;100px&quot;;</span><br></pre></td></tr></table></figure>
+- 通过style属性设置的样式都是内联样式，而内联样式拥有较高的优先级
+    所以通过JS修改的样式往往会立即显示，但如果在CSS样式中写了!important，
+        则此时会导致JS修改样式失效
+- 读取样式 语法：元素.style.样式名
+    通过style属性设置和读取的都是内联样式，无法读取到CSS样式表中的样式
+- 获取元素当前正在显示的样式 语法：元素.currentStyle.样式名
+    如果当前元素没有设置样式，则获取它的默认值，currentStyle只有IE浏览器支持
+- 在其他浏览器中获取元素当前正在显示的样式可以使用getComputedStyle()这个方法
+    该方法是window的方法，可以直接使用
+    - 参数：
+        - 第一个参数，要获取样式的元素
+        - 第二个参数，可以传递一个伪元素，一般都传null
+    - 该方法会返回一个对象，对象中封装了当前元素对应的样式，可以通过对象.样式来读取样式
+        如果获取的样式没有设置则获取到真实值，而不是默认值，
+            如没有设置width，它不会获取到auto，而是一个实际长度，但该方法不支持IE8及以下的浏览器
+             <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj&#x3D;getComputedStyle(box1,null);</span><br><span class="line">alert(obj.width);</span><br></pre></td></tr></table></figure>
+- 所以我们可以自己定义一个函数方法来兼容不同浏览器获取元素样式的方法
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">参数：</span><br><span class="line">    obj 要获取样式的元素</span><br><span class="line">    name 要获取的样式名</span><br><span class="line"> --&gt;</span><br><span class="line"> function getStyle(obj,name)&#123;</span><br><span class="line">    if(window,getComputedStyle)&#123;</span><br><span class="line">        &lt;!-- 正常浏览器的方法，具有getComputedStyle()方法 --&gt;</span><br><span class="line">        return getComputedStyle(obj,null)[name];</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &lt;!-- IE8的方式，没有getComputedStyle()方法 --&gt;</span><br><span class="line">        return obj.currentStyle[name];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+- clientWidth clientHeight
+    - 这两个属性可以获取元素的可见高度和宽度
+    - 这些属性都是不带px的，返回的都是一个数字，可以直接进行计算
+    - 会获取元素宽度和高度，包括内容区和内边距
+    - 这些属性都是只读不能修改的
+- offsetWidth offsetHeight
+    - 获取元素整个的高度和宽度，包括内容区、内边距和边框
+- offsetParent
+    - 获取离当前元素最近的开启了定位的祖先元素，如果都没有开启定位则返回body
+- offsetLeft 当前元素相对于其定位父元素的水平偏移量
+- offsetTop 当前元素相对于其定位父元素的垂直偏移量
+- scrollWidth 获取水平滚动条的长度
+- scrollHeight 获取垂直滚动条的长度
+- scrollLeft 获取水平滚动条滚动的距离
+    - 当满足scrollWidth-scrollLeft=clientWidth时，说明水平滚动条到底了
+- scrollTop 获取垂直滚动条滚动的距离
+    - 当满足scrollHeight-scrollTop=clientHeight时，说明垂直滚动条到底了
+- onmousemove
+    - 该事件将会在鼠标在元素中移动时触发
+- 事件对象
+    - 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+        该事件对象中封装了当前事件相关的一切信息，如：鼠标的坐标、键盘哪个按键被按下等等...
+            在IE8中响应函数被触发时浏览器不会传递事件对象，在IE8及以下的浏览器中，
+                是将事件对象作为window对象的属性保存的
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.onmousenove&#x3D;function(event)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- event 事件对象的形参 --&gt;</span><br></pre></td></tr></table></figure>
+- clientX clientY
+    - 可以获取鼠标指针的水平坐标和垂直坐标
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div.onmousenove&#x3D;function(event)&#123;</span><br><span class="line">    var x&#x3D;event.clientX;</span><br><span class="line">    var y&#x3D;event.clientY;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- event 事件对象的形参 --&gt;</span><br></pre></td></tr></table></figure>
+- 事件的冒泡
+    - 所谓的冒泡指的就是事件的向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发
+    - 取消冒泡：将事件对象的cancelBubble设置为true
+- 事件的委派
+    - 指将事件统一绑定给元素共同的祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先元素
+        从而通过祖先元素的响应函数来处理事件
+- target
+    - event中的target可以返回触发事件的对象
+- 使用对象.事件=函数的形式绑定响应函数只能同时为一个元素的一个事件绑定一个响应函数
+    如果绑定多个则后边的会覆盖掉前边的
+- addEventListener()
+    - 该方法可以为元素绑定响应函数
+    - 参数：
+        - 事件的字符串，不要on
+        - 回调函数，当事件触发时该函数会被调用
+        - 是否在捕获阶段触发事件，需要一个布尔值，一般都传false
+    - addEventListener()可以同时为一个元素的相同事件绑定多个响应函数
+        当事件触发时响应函数会按照函数的绑定顺序执行，但不支持IE8及以下浏览器
+- attachEvent()
+    - 该方法可以为元素绑定响应函数
+    - 参数：
+        - 事件的字符串，要on
+        - 回调函数
+    - 该方法也可以同时为一个元素的相同事件绑定多个响应函数，支持IE8
+        不同的是它是后绑定先执行，执行顺序和addEventListener()相反
+- 事件的传播
+    - 关于事件的传播网景公司和微软公司有不同的解释
+    - 微软公司认为事件应该是由内向外传播的，也就是当事件触发时，先触发当前元素上的事件，
+        然后再向当前元素的祖先元素上传播；而网景公司则认为元素事件的传播方式与微软公司的相反
+    - W3C综合了两个公司的传播方案，将事件分为了三个阶段
+        - 捕获阶段
+            - 在捕获阶段时从最外层的祖先元素向目标元素进行事件的捕获，但是此时默认不会触发事件
+        - 目标阶段
+            - 事件捕获到目标元素，捕获结束开始在目标元素上触发事件
+        - 冒泡阶段
+            - 事件从目标元素向它的祖先元素传递，依次触发祖先元素上的事件
+    - 如果希望在捕获阶段就触发事件，可以将addEventListener()中的第三个参数设置为true
+    - IE8及以下的浏览器中没有捕获阶段</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/29/JavaScript/JavaScript%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">JavaScript注意事项</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>超链接</p>
+<pre><code>* 点击超链接之后会跳转页面，这个是超链接的默认行为，当我们不想跳转页面时，
+    可以将超链接的 href 属性设置为javascript:;或者#，设置为javascript:;时，点击超链接不会有任何反应
+        设置为#时，点击超链接时会返回顶部，在绑定事件时也可以在响应函数的最后return false，
+            效果和javascript:;一样</code></pre>
+<p>响应事件中的 for 循环</p>
+<pre><code>* for循环在页面加载之后立即执行，而响应事件会在被触发时才执行</code></pre>
+<p>兼容</p>
+<pre><code>* 我们可以自己定义一个函数方法来兼容不同浏览器获取元素样式的方法
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">参数：</span><br><span class="line">    obj 要获取样式的元素</span><br><span class="line">    name 要获取的样式名</span><br><span class="line"> --&gt;</span><br><span class="line"> function getStyle(obj,name)&#123;</span><br><span class="line">     if(window,getComputedStyle)&#123;</span><br><span class="line">         &lt;!-- 正常浏览器的方法，具有getComputedStyle()方法 --&gt;</span><br><span class="line">         return getComputedStyle(obj,null)[name];</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">         &lt;!-- IE8的方式，没有getComputedStyle()方法 --&gt;</span><br><span class="line">         return obj.currentStyle[name];</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+* 定义一个函数方法来兼容不同浏览器的事件对象event
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">event&#x3D;event||window.event;</span><br><span class="line">&lt;!-- 有则获取event，无则获取window.event --&gt;</span><br></pre></td></tr></table></figure>
+* chrome认为浏览器的滚动条时body的，可以通过body来获取，而火狐等浏览器则认为是html的
+    我们可以定义一个函数方法来兼容不同的获取方法
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.body.scrollTop||document.documentElement.scrollTop;</span><br></pre></td></tr></table></figure>
+* 定义一个函数方法来兼容不同浏览器为同一事件绑定多个响应函数的不同方法
+```
+&lt;!-- 
+参数：
+    - obj 要绑定事件的对象
+    - evnetStr 事件的字符串
+    - callback 回调函数
+ --&gt;
+ function bind(obj,eventStr,callback)&#123;
+     if(obj.addEventListener)&#123;
+         obj.addEventListener(eventStr,callback,false);
+     &#125;else&#123;
+         obj.attachEvent(&quot;on&quot;+eventStr,callback);
+     &#125;
+ &#125;
+ &lt;!--
+    addEventListener()中的this是绑定事件的对象，attachEvent()中的this是window，
+        所以需要统一两个方法中的this，this是谁有调用方式决定:callback.call(obj)
+            因此可以在匿名函数中调用回调函数
+            obj.attachEvent(&quot;on&quot;+eventStr,function()&#123;
+                callback.call(obj);
+            &#125;);
+ --&gt;</code></pre>
+<p>表单</p>
+<pre><code>* 如果为表单项添加disabled=&quot;disabled&quot; 则表单项将变成不可用的状态
+    disabled属性可以设置一个元素是否禁用
+        设置为true则元素禁用
+        设置为false则元素可用</code></pre>
+<p>拖拽</p>
+<pre><code>* 当我们拖拽网页中的一个内容时，浏览器会默认去搜索引擎中搜索内容
+    此时会导致拖拽功能的异常，这是浏览器提供的默认行为
+        可以通过return false来取消默认行为，但此方法对IE8不起作用</code></pre>
+<p>取消默认行为</p>
+<pre><code>* 用addEventListener()方法绑定响应函数，取消默认行为时不能使用return false
+    需要使用event.preventDefault()方法来取消默认行为，但IE8不支持，若直接使用会报错
+* 在文本框内输入内容，属于onkeydown的默认行为，若取消了该默认行为则输入的内容不会在文本框内显示</code></pre>
+<p>滚轮</p>
+<pre><code>* 当滚轮滚动时，若浏览器有滚动条则会随之滚动，这是浏览器的默认行为，可以取消</code></pre>
+<p>定时器</p>
+<pre><code>* 当我们将定时器绑定到一个按钮上时，我们每点击一次按钮就会开启一个定时器
+    点击几次就会开启几个定时器，这会导致定时器所执行的函数间隔时间变的越来越短
+        并且我们只能关闭最后一次开启的定时器，因此在开启定时器时，我们可以先将当前元素上的定时器关闭</code></pre>
+<p>修改元素的样式</p>
+<pre><code>* 通过style属性来修改元素的样式，每修改一个样式，浏览器就需要重新渲染一次页面
+    这样的执行性能是比较差的，而且这种形式当我们需要修改多个样式时也不太方便
+        因此我们可以修改元素的类名或id，然后在css中的该类名中添加想要修改的样式
+            这样一来，我们只需要修改一次即可同时修改多个样式，浏览器也只要重新渲染一次页面即可
+                性能较好，并且这种方式可以使表现和行为进一步的分离</code></pre>
+<p>函数</p>
+<pre><code>* eval()
+    - 这个函数可以用来执行一段字符串形式的JS代码，并将执行结果返回
+    - 如果使用该函数执行的字符串中含有&#123;&#125;,他会将其当作代码块
+        若不希望将其当作代码块来处理则需要将字符串写入()中
+    - 该函数功能十分强大，可以直接执行一个字符串中的JS代码，
+        但在开发中尽量不要使用，首先它的执行性能比较差，然后它还具有安全隐患</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/27/JavaScript/JavaScript08/">JavaScript08</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>正则表达式</p>
+<pre><code>* 正则表达式用于定义一些字符串的规则，计算机可以根据正则表达式来检查一个字符串是否符合规则
+    通过赋值给另一个变量可以将字符串中符合规则的内容提取出来
+* 创建正则表达式
+    - 使用构造函数创建，语法：var 变量=new RegExp(&quot;正则表达式&quot;,&quot;匹配模式&quot;);第二个参数可省略
+    - 匹配模式可选值：
+        - i 忽略大小写
+        - g 全局匹配模式
+    - 使用typeof检查正则表达式，会返回object
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg&#x3D;new RegExp(&quot;a&quot;);</span><br></pre></td></tr></table></figure>
+    - 使用字面量创建，语法：var 变量=/正则表达式/匹配模式
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg&#x3D;&#x2F;a&#x2F;;</span><br></pre></td></tr></table></figure></code></pre>
+<p>DOM</p>
+<pre><code>* DOM，文档对象模型
+    - 文档：表示的就是整个的HTML网页文档
+    - 对象：表示将网页中的每一个部分都转换为了一个对象
+    - 模型：使用模型来表示对象之间的关系
+* 节点（Node），是构成我们网页的最基本的组成结构，网页中的每一个部分都可以称为是一个节点
+    比如：HTML标签、属性、文本、注释、整个文档等都是一个节点
+* 常用节点分为四类：
+    - 文档节点：整个HTML文档
+        - nodeName：#document
+        - nodeType：9
+        - nodeValue：null
+    - 元素节点：HTML文档中的HTML标签
+        - nodeName：标签名
+        - nodeType：1
+        - nodeValue：null
+    - 属性节点：元素的属性
+        - nodeName：属性名
+        - nodeType：2
+        - nodeValue：属性值
+    - 文本节点：HTML标签中的文本内容
+        - nodeName：#text
+        - nodeType：3
+        - nodeValue：文本内容
+* 浏览器已经为我们提供了文档节点对象，这个对象就是window属性
+    可以在网页中直接使用，文档节点表示整个网页
+* 方法与属性：
+    - getElementById() 通过id属性获取一个元素节点对象
+    - getElementsByTagName() 通过标签名获取一组元素节点对象
+        这个方法会给我们返回一个类数组对象，所有查询到的元素都会封装到对象中，
+            即使查询到的元素只有一个，也会封装到数组中返回
+    - getElementsByName() 通过name属性获取一组元素节点对象
+    - getElementsByClassName() 通过class属性获取一组元素节点对象，但不支持IE8及以下的浏览器
+    - innerHTML 用于获取元素内部的HTML代码，可以将其和createElement()结合完成DOM的增删改的操作
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createElement(&quot;li&quot;);</span><br><span class="line">li.innerHTML&#x3D;&quot;广州&quot;;</span><br></pre></td></tr></table></figure>
+    - innerText 获取到元素内部的文本内容，和innerHTML不同的是它会自动将HTML标签除去
+    - parentNode 该属性会获取指定节点的父节点
+    - childNodes 该属性会获取包括文本节点在内的所有子节点，DOM标签与标签之间的空白也会被当成文本节点
+        注意：在IE8及以下的浏览器中不会将空白文本当成子节点
+    - children 该属性可以获取当前元素的所有子元素（即元素节点）
+    - firstChild 获取当前元素的第一个子节点，该属性不支持IE8及以下的浏览器
+    - firstElementChild 获取当前元素的第一个子元素
+    - previousSibling 获取当前节点的前一个兄弟节点
+    - previousElementSibling 获取当前节点的前一个元素节点
+    - appendChild()，向一个父节点添加一个新的子节点，语法：父节点.appendChild(子节点);
+    - insertBefore()，在指定的子节点之前插入新的子节点，语法：父节点.insertBefore(新节点，旧节点);
+    - replaceChild()，使用指定的子节点代替已有的子节点，语法：父节点.replaceChild(新节点，旧节点);
+    - removeChild()，删除一个子节点，语法：父节点.removeChild(子节点);
+    - 若需要读取元素节点属性，直接使用元素.属性，如：元素.id  元素.name
+        注意：class属性不能采用这种方式，读取class属性时需要使用元素.className
+    - 在document中有一个属性body，它保存的是body的引用
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var body&#x3D;document.body;</span><br></pre></td></tr></table></figure>
+    - document.documentElement保存的是html根标签
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var html&#x3D;document.documentElement;</span><br></pre></td></tr></table></figure>
+    - document.all代表页面中的所有元素
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var all&#x3D;document.all;</span><br><span class="line">&lt;!-- all&#x3D;document.getElementsByTagName(&quot;*&quot;); --&gt;</span><br></pre></td></tr></table></figure>
+    - document.querySelector()
+        - 需要一个选择器的字符串作为参数，可以根据一个css选择器来查询一个元素节点对象
+        - 虽然IE8中没有getElementsByClassName()但是可以使用querySelector()代替
+        - 使用该方法总会返回唯一的一个元素，如果满足条件的元素有多个，那么它只会返回第一个
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var div&#x3D;document.querySelector(&quot;.box1 div&quot;);</span><br><span class="line">&lt;!-- 查询到class属性值为box1的元素中的div --&gt;</span><br></pre></td></tr></table></figure>
+    - document.querySelectorAll()
+        - 该方法和querySelector()用法类似，不同的是它会将符合条件的元素封装到一个数组中返回
+            即使符合条件的只有一个元素，它也会返回数组
+    - document.createElement()
+        - 创建一个元素节点对象，需要一个标签名以字符串的形式作为参数，会根据该标签名创建元素节点对象并返回
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createElement(&quot;li&quot;);</span><br></pre></td></tr></table></figure>
+    - document.createTextNode()
+        - 创建一个文本节点对象，需要一个文本内容以字符串的形式作为参数，
+            会根据该文本内容创建文本节点对象并返回
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;document.createTextNode(&quot;广州&quot;);</span><br></pre></td></tr></table></figure></code></pre>
+<p>事件</p>
+<pre><code>* 事件就是文档或是浏览器窗口发生的一些特定的交互瞬间，JavaScript与HTML之间交互是通过事件实现的
+    比如：点击某个元素、将鼠标移动到某个元素上方等等
+* 我们可以在事件对应的属性中设置一些js代码，当事件被触发时代码就会执行
+    这种行为我们称之为结构和行为耦合，不方便维护
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick&#x3D;&quot;alert(&quot;haha&quot;);&quot;&gt;按钮&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+* 可以为按钮的对应事件绑定处理函数的形式来响应事件，这样当事件被触发时，其对应的函数就会被调用
+* 浏览器在加载一个页面时，是按照自上向下的顺序加载的，读取一行就运行一行，
+    如果将script标签写在页面的上边，在代码执行时页面还没加载，
+        页面还没有加载DOM对象也没有加载，会导致DOM对象无法获取
+* 有时script代码的位置会导致执行出错，处理方式：
+    - onload事件会在整个页面加载完成之后再触发，因此为window绑定一个onload事件，
+        该事件对应的响应函数会在页面加载完成后执行，这样可以确保我们的代码执行时所有的DOM对象已经加载完毕
+            即script的入口函数
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.onload&#x3D;function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 将js代码编写到页面的下部，就是为了可以在页面加载完毕后在执行js代码
+    - confirm() 用于弹出一个带有确认和取消按钮的提示框
+        需要一个字符串作为参数，该字符串会作为提示文字显示出来
+            如果用户点击确认则返回true，点击取消则返回false
+    - onscroll 该事件会在元素的滚动条滚动时触发</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/26/JavaScript/JavaScript07/">JavaScript07</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-26
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Date对象</p>
+<pre><code>* 在JS中使用Date对象来表示一个时间
+* 创建一个Date对象，如果直接使用构造函数来创建一个Date对象则会封装为当前代码执行的时间
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date();</span><br></pre></td></tr></table></figure>
+* 创建一个指定的时间对象，需要在构造函数中传递参数
+    - 使用字符串作为参数传递时格式如下
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date(&quot;2001&#x2F;10&#x2F;19 5:10:3&quot;);</span><br><span class="line">&lt;!-- &quot;年&#x2F;月&#x2F;日 小时:分:秒&quot;   注意中间有空格 --&gt;</span><br></pre></td></tr></table></figure>
+    - 直接使用参数传递时格式如下
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;new Date(2001,10,19,5,10,3);</span><br><span class="line">&lt;!-- 年,月,日,小时,分,秒 --&gt;</span><br></pre></td></tr></table></figure>
+* 方法：
+    - getDate() 获取当前时间对象是几日
+    - getDay() 获取当前时间对象是周几
+        - 会返回一个0-6的值
+            0表示周日
+            1表示周一
+            ....
+    - getMonth() 获取当前时间对象的月份
+        - 会返回一个0-11的值
+            0表示1月
+            1表示2月
+            ....
+    - getFullYear() 获取当前时间对象的年份
+    - getTime() 获取当前对象的时间戳
+        - 时间戳指的是从格林威治标准时间的1970年1月1日0时0分0秒到当前日期所花费的毫秒数（1秒=1000毫秒）
+        - 计算机底层在保存时间时使用的都是时间戳
+    - 获取当前的时间戳
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var time&#x3D;Date.now();</span><br></pre></td></tr></table></figure></code></pre>
+<p>Math对象</p>
+<pre><code>* Math和其它对象不一样，他不是一个构造函数，它属于一个工具类不用创建对象
+    它里边封装了数学运算相关的属性和方法，如Math.PI表示圆周率
+* 方法：
+    - abs() 计算一个数的绝对值
+    - Math.ceil() 对一个数进行向上取整，只要有小数位就进1，1向上取整还是1
+    - Math.floor() 对一个数进行向下取整，小数部分会被舍去
+    - Math.round() 对一个数进行四舍五入取整
+    - Math.random() 可以生成一个0-1之间的随机数
+        - 生成一个0-x之间的随机数：
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.round(Math.random()*x);</span><br></pre></td></tr></table></figure>
+    - max() 获取多个数中的最大值
+    - min() 获取多个数中的最小值
+    - Math.pow(x,y) 返回x的y次幂
+    - Math.sprt() 对一个数进行开方运算</code></pre>
+<p>包装类</p>
+<pre><code>* 三个包装类，可以将基本数据类型转换为对象
+    - String()
+        - 可以将基本数据类型转换为String对象
+    - Number()
+        - 可以将基本数据类型转换为Number对象
+    - Boolean()
+        - 可以将基本数据类型转换为Boolean对象
+* 当我们对一些基本数据类型的值去调用属性和方法时，浏览器会临时使用包装类将其转换为对象
+    然后再调用对象的属性和方法，调用完后再将其转换为基本数据类型</code></pre>
+<p>String对象</p>
+<pre><code>* 字符串对象，在底层字符串都是以数组的形式保存的
+* 方法：
+    - charAt()
+        - 返回字符串中指定位置的字符
+        - 根据索引获取指定的字符
+    - charCodeAt()
+        - 获取指定位置字符的字符编码（Unicode编码）
+    - String.formCharCode()
+        - 根据字符编码去获取字符
+    - concat()
+        - 连接两个或多个字符串
+    - indexOf()
+        - 检索一个字符串中是否含有指定的内容
+            若含有则会返回其第一次出现的索引，若没有找到则返回-1
+        - 可以添加第二个参数，指定开始查找的位置
+    - lastIndexOf()
+        - 该方法和indexOf()一样，不同的是indexOf是从前往后找
+            lastIndexOf()是从后往前找
+    - slice()
+        - 获取指定的字符串,不会影响到原字符串
+        - 参数：
+            第一个参数，表示开始位置的索引，包括开始索引       
+            第二个参数，表示结束位置的索引，不包括结束索引
+                第二个参数可以省略不写，此时会截取从开始索引往后的所有元素
+            - 索引可以传递一个负值，如果传递一个负值则从后往前计算
+                -1 倒数第一个
+                -2 倒数第二个....
+    - substring()
+        - 获取指定的字符串，用法规则和slice()类似，不同的是这个方法不接收负值作为参数
+            如果传递了一个负值则默认为0，而且它还可以自动调整参数的位置，
+                如果第二个参数小于第一个参数则自动交换
+    - substr()
+        - 获取指定的字符串
+        - 参数：
+            第一个参数，表示开始位置的索引，包括开始索引       
+            第二个参数，表示截取的长度
+    - split()
+        - 可以将一个字符串拆分为一个数组
+        - 参数：需要一个字符串作为参数，将会根据该字符串去拆分数组，
+                    如果传递一个空串作为参数，则会将每一个字符都拆分为数组中的一个元素
+    - toUpperCase()
+        - 将一个字符串转换为大写并返回
+    - toLowerCase()
+        - 将一个字符串转换为小写并返回</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css17/">Css17</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>像素</p>
+<pre><code>* 屏幕是由一个一个发光的小点构成，这一个一个的小点就是像素
+    分辨率：1920 × 1080 说的就是屏幕中小点的数量
+* 在前端开发中像素要分为两种情况讨论，CSS像素和物理像素
+    - CSS像素，编写网页时我们所用的像素就是CSS像素，浏览器在显示网页时，
+        需要将CSS像素转换为物理像素然后再呈现，一个CSS像素由几个物理像素显示由浏览器决定
+            默认情况下在PC端，一个CSS像素 = 一个物理像素</code></pre>
+<p>视口（viewport）</p>
+<pre><code>* 视口就是屏幕中用来显示网页的区域
+* 可以通过查看视口的大小来观察CSS像素和物理像素的比值
+* 默认情况下：
+    - 视口宽度 1920px （CSS像素）
+            1920px （物理像素）
+            此时，CSS像素和物理像素的比值为1 ：1
+* 放大两倍的情况下：
+    - 视口宽度 960px （CSS像素）
+            1920px （物理像素）
+            此时，CSS像素和物理像素的比值为1 ：2
+    - 我们可以通过改变视口的大小来改变CSS像素和物理像素的比值
+* 在不同的屏幕中，单位像素的大小是不一样的，单位像素越小屏幕越清晰
+    24寸 1920 × 1080
+    iPhone6 4.7寸 750 × 1334
+    https://material.io/resources/devices/ （查询各种手机像素比的网站）
+    - 默认情况下，移动端的网页都会将视口设置为980像素（CSS像素）
+        以确保pc端网页可以在移动端正常访问，但如果网页的宽度超过980
+            移动端的浏览器会自动对网页进行缩放以完整显示网页，但往往不会有一个好的用户体验
+                为了解决这个问题，大部分网站都会专门为了移动端设计网页</code></pre>
+<p>移动端的设计</p>
+<pre><code>* 使用媒体查询
+    - 语法：@media 媒体类型&#123;&#125;
+    - 媒体类型：
+        - all 所有设备
+        - print 打印设备
+        - screen 带屏幕的设备
+        - speech 屏幕阅读器
+    - 可以在媒体类型前添加一个only，表示只有
+        only的使用主要是为了兼容一些老版本浏览器
+* 响应式布局
+    - 网页可以根据不同的设备或窗口大小显示出不同的效果
+    - 使用响应式布局可以使一个网页适用于所有设备
+    - 响应式布局的关键就是媒体查询
+        通过媒体查询可以为不同的设备或设备不同的状态来分别设置样式
+* 媒体特性
+    - width 视口宽度
+    - height 视口高度
+    - min-width 视口的最小宽度（视口大于指定宽度时生效）
+    - max-width 视口的最大宽度（视口小于指定宽度时生效）
+* 断点：样式切换的分界点称之为断点
+* 视口大小
+    - 小于768（CSS像素）超小屏幕 max-width=768px
+    - 大于768（CSS像素）小屏幕   min-width=768px
+    - 大于992（CSS像素）中型屏幕   min-width=992px
+    - 大于1200（CSS像素）小屏幕   min-width=1200px
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@media not screen and (min-width:500px) and (max-width:700px)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">        background-color:red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!--</span><br><span class="line"> 该样式意思为带屏幕设备除了宽度在500px和700px之间时body为红色</span><br><span class="line">    not 除了</span><br><span class="line">    and 且</span><br><span class="line">    ,   或</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css16/">Css16</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>flex</p>
+<pre><code>* flex
+    - 将元素的display属性设置为flex，则该元素为弹性容器，该元素的子元素为弹性元素
+    - flex还可以作为属性来使用，它可以设置所有弹性元素的三个样式
+        - flex 增长 缩减 基础
+            - initial “flex：0 1 auto”（只缩减不增长）
+            - auto “flex：1 1 auto”（既增长也缩减）
+            - none “flex：0 0 auto”（弹性元素没有弹性）
+* 主轴：弹性元素的排列方式为主轴
+* 侧轴：与主轴垂直方向的为侧轴
+* 属性：
+    - flex-direction 指定容器中弹性元素的排列方式
+        可选值：
+            - row 默认值，弹性元素在容器中水平排列（自左向右）
+                - 主轴 自左向右
+            - row-reverse 弹性元素在容器中反向水平排列（自右向左）
+                - 主轴 自右向左
+            - column 弹性元素在容器中纵向排列（自上向下）
+                - 主轴 自上向下
+            - column 弹性元素在容器中反向纵向排列（自下向上）
+                - 主轴 自下向上
+    - flex-grow 指定弹性元素的伸展系数
+        - 当父元素有多余空间时，子元素如何伸展
+        - 父元素的剩余空间会按照比例分配
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex-grow:1;</span><br><span class="line">&lt;!-- 该弹性元素在父元素的剩余空间分配中占比例中的一份 --&gt;</span><br></pre></td></tr></table></figure>
+    - flex-shrink 指定弹性元素的收缩系数
+        - 当父元素的空间不足以收纳所有子元素时对子元素进行收缩
+        - 子元素越大则该子元素收缩的越大
+    - flex-wrap 设置弹性元素是否在弹性容器中自动换行
+        可选值：
+            - nowrap 默认值，元素不会自动换行
+            - wrap 元素会沿着侧轴方向自动换行
+            - wrap-reserve 元素会沿着侧轴反方向自动换行
+    - flex-flow wrap和direction的简写属性，可同时设置这两个属性
+    - flex-basis 指定的是元素在主轴上的基础长度
+        - 如果主轴是横向的，则该值指定的是元素的宽度
+        - 如果主轴是纵向的，则该值指定的是元素的高度
+        - 默认值是auto，表示参考元素自身的高度或宽度
+        - 如果传递了一个具体的数值，则以该值为准
+    - order 决定弹性元素的排列顺序
+    - justify-content 如何分配主轴上的空白空间（主轴上的元素如何排列）
+        可选值：
+            - flex-start 元素沿着主轴起边排列
+            - flex-end 元素沿着主轴终边排列
+            - center 元素沿着主轴居中排列
+            - space-around 空白均匀分到元素两侧
+            - space-between 空白均匀分到元素间
+            - space-evenly 空白均匀分到元素的单侧
+    - align-items 元素在侧轴上如何对齐
+        可选值：
+            - stretch 默认值，将元素的长度设置为相同的值
+            - flex-start 元素不会拉伸，沿着侧轴起边对齐
+            - flex-end 元素不会拉伸，沿着侧轴终边对齐
+            - center 居中对齐
+            - baseline 基线对齐
+    - align-content 侧轴空白空间的分布，可选值与justify-content一样
+    - align-self 用来覆盖当前当前弹性元素上的align-items</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css15/">Css15</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>变形</p>
+<pre><code>* 变形就是指通过css来改变元素的形状或位置
+    - 变形不会影响到页面的布局
+    - transform用来设置元素的变形效果
+        - 平移：
+            - translateX() 沿着X轴方向平移
+            - translateY() 沿着Y轴方向平移
+            - translateZ() 沿着Z轴方向平移
+                - Z轴平移，调整元素在Z轴上的位置，由于其属于立体效果（近大远小），
+                    默认情况下网页是不支持透视的，如果想要看见效果，必须设置网页的视距
+                        即perspective属性，将其设置在html（根元素）的样式中
+            - 平移元素，百分比是相对于自身计算的
+        - 旋转：通过旋转可以使元素沿着x、y或z轴旋转指定的角度
+            - rotateX() 沿着X轴旋转
+            - rotateY() 沿着Y轴旋转
+            - rotateZ() 沿着Z轴旋转
+            - 旋转时还可以通过backface-visibility属性来设置是否显示元素的背面
+        - 3d变形效果
+            - 若想要看到所设置的立体动态效果，需通过transform-style属性来设置其3d效果
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br></pre></td></tr></table></figure>
+        - transform-origin（变形原点）
+            - 默认值为center
+            - 可自定设置原点
+        - 对元素进行缩放的函数（倍数缩放）
+            - scale() 双方向的缩放
+            - scaleX() 水平方向的缩放
+            - scaleY() 垂直方向的缩放</code></pre>
+<p>变量</p>
+<pre><code>* css也支持变量的设置
+    - 变量的设置规范
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--color:red;</span><br></pre></td></tr></table></figure>
+    - 引用变量时的语法规范
+     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color:var(--color);</span><br></pre></td></tr></table></figure>
+    - 设置变量可以帮助我们在做代码量较多的项目修改时更方便</code></pre>
+<p>less</p>
+<pre><code>* less是一门css的预处理语言
+    - less是一个css的增强版，通过该预处理语言我们可以编写更少的代码实现更强大的样式</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/10/21/JavaScript/JavaScript06/">JavaScript06</a>
       </h1>
     
@@ -348,702 +1088,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/20/Css/Css13/">Css13</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-20
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>背景background</p>
-<pre><code>* background-color 设置背景颜色
-* background-image 设置背景图片
-    - 可以同时设置背景图片和颜色，这样背景颜色将会成为图片的背景色
-    - 如果背景图片小于元素，则背景图片会自动重复将元素铺满
-    - 如果背景图片大于元素，则背景图片的溢出部分将不会显示
-    - 如果背景图片和元素一样大，则背景图片正常显示
-* background-repeat 设置背景的重复方式
-    可选值：
-        - repeat 默认值，背景会沿着X和Y轴双方向重复
-        - repeat-x 沿着X轴方向重复
-        - repeat-y 沿着Y轴方向重复
-        - no-repeat 背景图片不重复
-* background-position 设置背景图片的位置
-    设置方式：
-        - 通过top left right bottom center来设置背景图片的位置
-            使用方位词时必须要同时指定两个值，如果只写一个则第二个默认就是center
-        - 通过偏移量来设置背景图片的位置，第一个值是水平方向偏移量，第二个值是垂直方向偏移量
-* background-size 设置背景图片的大小
-    - 第一个值表示宽度，第二个值表示高度
-    - 如果只写一个值，则第二个值默认是auto
-    - cover 图片比例不变，将元素铺满
-    - contain 图片比例不变，将图片在元素中完整显示
-* background-origin 设置背景图片偏移量计算的原点
-    - padding-box 默认值，背景图片的偏移量（background-position）从内边距开始计算
-    - content-box 默认值，背景图片的偏移量（background-position）从内容区开始计算
-    - border-box 默认值，背景图片的偏移量（background-position）从边框开始计算
-* background-clip 设置背景图片的范围
-    - padding-box 默认值，背景图片出现在内边距以内
-    - content-box 默认值，背景图片出现在内容区以内
-    - border-box 默认值，背景图片出现在边框以内
-* background-attachment 设置背景图片是否跟随元素移动
-    - scroll 默认值，背景图片会跟随元素移动
-    - fixed 背景会固定在页面中，不会跟随元素移动
-* background 背景相关的简写属性，所有与背景相关的样式都可以通过该属性来设置
-    注意：background-size必须写在background-position的后边，并且使用/隔开
-        background-clip必须写在background-origin的后边（最好不使用简写，可读性差）</code></pre>
-<p>雪碧图</p>
-<pre><code>* 图片属于网页中的外部资源，外部资源都需要浏览器单独发送请求加载
-    浏览器加载外部资源都是按需加载的，用则加载，不用则不加载
-     因此当我们给一个元素设置在不同情况下的不同背景图片时，使用多个图片切换会出现闪烁问题
-* 解决图片闪烁的问题：可以将多个小图片统一保存到一个大图片中，
-    然后通过调整background-position来显示想要的图片，这样图片会同时加载到网页中，
-        就可以有效地避免出现闪烁的问题，这个技术在网页中应用广泛，称为CSS-Sprite，也就是雪碧图
-* 雪碧图的使用：
-    - 首先确定要使用的图标
-    - 测量图标大小
-    - 根据测量结果创建一个元素
-    - 将雪碧图设置为元素的背景图片
-    - 设置偏移量来显示想要的图片
-* 雪碧图的特点：一次性将多个图片加载进网页，降低请求次数，加快访问速度，提高用户体验</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/15/JavaScript/JavaScript05/">JavaScript05</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-15
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JavaScript构造函数</p>
-<pre><code>* 构造函数就是一个普通的函数，创建方式和普通函数没什么区别，不同的是构造函数习惯首字母大写
-    还有就是调用方式的不同，普通函数是直接调用，而构造函数需要使用new关键字来调用
-* 构造函数的执行流程：
-    1.创建一个新的对象
-    2.将新的对象设置为函数中的this，在构造函数中可以使用this来引用新建的对象
-    3.逐行执行函数中的代码
-    4.将新建的对象作为返回值返回
-* 使用通过一个构造函数创建的对象称为一类对象，也将一个构造函数称为一个类
-    通过一个构造函数创建的对象则称为是该类的实例
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,gender)</span><br><span class="line">&#123;</span><br><span class="line">    this.name&#x3D;name;</span><br><span class="line">    this.age&#x3D;age;</span><br><span class="line">    this.gender&#x3D;gender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 使用instanceof可以检查一个对象是否是一个类的实例
-    如果是则返回true，否则返回false
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(per instanceof Person);</span><br></pre></td></tr></table></figure>
-* 若在构造函数中将一个属性值设置为一个函数方法，则构造函数每执行一次就会创建一个新的方法
-    这就会导致空间浪费，我们可以用以下两个方法解决
-        - 将函数在全局作用域中定义，再将其赋值给构造函数的属性值
-            但将函数定义在全局作用域会污染全局作用域的命名空间
-                且不太安全
-        - 将函数定义在构造函数的原型对象中</code></pre>
-<p>原型prototype</p>
-<pre><code>* 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype
-    这个属性对应着一个对象，这个对象就是原型对象，如果以普通函数来调用prototype没有任何作用
-            但当函数以构造函数的形式来调用时，它所创建的对象都会有一个隐含的属性指向该构造对象的原型对象
-                我们可以通过__proto__（注意前后分别是两个下划线）来访问该对象
-* 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
-    我们可以将对象中共有的内容统一设置到原型对象中
-* 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用
-    如果没有则会去原型对象中寻找，如果找到则直接使用
-* 原型对象也是对象，所以它也有原型
-    当使用一个对象的属性或方法时会在自身中寻找
-          如果没有则会去原型对象中寻找
-            如果还是没有则区原型的原型中寻找，直到找到Object对象的原型
-                Object对象的原型没有原型，若Object中还是没找到则返回undefined</code></pre>
-<p>toString()方法</p>
-<pre><code>* 当我们直接在页面中打印一个对象时，实际上输出的是对象的toString()方法的返回值
-    我们可以通过为对象添加一个toString()方法来改变输出的值</code></pre>
-<p>垃圾回收（GC）</p>
-<pre><code>* 程序运行过程中会产生垃圾，当一个对象没有任何的变量或属性对它进行引用时，此对象就是一个垃圾
-    在JS中拥有自动的垃圾回收机制，会自动地将这些垃圾对象从内存中销毁
-        我们只需要将不再使用的垃圾对象设置为null即可</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/12/Css/Css12/">Css12</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-12
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>字体</p>
-<pre><code>* font可以设置字体相关的所有属性
-    - 语法：
-            font：字重 字体风格 字体大小/行高 字体族
-            行高可以省略不写，将使用默认值
-* font-family字体族（字体的格式）
-    - 可选值：
-        - serif 衬线字体
-        - sans-serif 非衬线字体
-        - monospace 等宽字体
-    - font-family可以同时指定多个字体，多个字体之间用 ， 隔开
-        字体生效时优先使用第一个，第一个无法使用再使用第二个，以此类推
-* font-weight 字重 字体的加粗
-    可选值：
-        - normal 默认值，不加粗
-        - bold 加粗
-            100-900 九个级别（没什么用，主要取决于电脑是否有这么多个种类的字体）
-* font-style 字体风格
-    可选值：
-        - normal 默认值，正常的
-        - italic 斜体
-* 图标字体（iconfont）
-    - 在网页中经常需要使用一些图标，可以通过图片引入图标
-        但图片本身大小比较大，并且非常的不灵活
-    - 所以在使用图标时，我们还可以将图标直接设置为字体
-        然后通过font-face的形式来对字体进行引入
-    - 使用图标字体的方式
-        - 直接通过类名来使用图标字体
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class&#x3D;&quot;fas fa-bell&quot;;</span><br><span class="line">class&#x3D;&quot;fab fa-accessible-icon&quot;</span><br></pre></td></tr></table></figure>
-    - 通过伪元素来设置图标字体
-        - 找到要设置图标的元素通过before或after选中
-        - 在content中设置字体的编码
-        - 设置字体的样式
-    - 通过实体来使用图标字体
-        - &amp;#x图标的编码</code></pre>
-<p>行高</p>
-<pre><code>* 行高（line height）
-    - 行高指的是文字占有的实际高度
-    - 可以通过line-height来设置行高
-        行高可以指定一个大小（px em）
-            也可以直接为行高设置一个整数
-                若是一个整数的话，行高将会是字体的指定的倍数
-    - 行高还可以用来设置文字的行间距
-        行间距=行高-字体大小
-* 字体框
-    - 字体框就是字体存在的格子，设置font-size实际上就是在设置字体框的高度
-* 行高会在字体框的上下平均分配
-* 可以将行高设置为和高度一样的值，使单行文字在一个元素中垂直居中</code></pre>
-<p>文本修饰</p>
-<pre><code>* vertical-align 设置元素垂直对齐的方式
-    可选值：
-        - baseline 默认值，基线对齐
-        - top 顶部对齐
-        - bottom 底部对齐
-        - middle 居中对齐
-* text-decoration 设置文本修饰
-    可选值：
-        - none 什么都没有
-        - underline 下划线
-        - line-through 删除线
-        - overline 上划线
-* white-space 设置网页如何处理空白
-    可选值：
-        - normal 正常
-        - nowrap 不换行
-        - pre 保留空白</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/12/JavaScript/JavaScript04/">JavaScript04</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-12
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JavaScript函数（Function）</p>
-<pre><code>* 立即执行函数（自调用函数）
-    - 函数定义完立即被调用，这种函数叫做立即执行函数
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-* 函数也可以成为对象的属性
-    - 如果一个函数作为一个对象的属性保存
-        那么称这个函数是这个对象的方法
-            调用这个函数就说调用对象的方法（method）
-    - 调用函数和调用对象的方法本质上没有区别
-* 枚举对象中的属性
-    - 使用for...in语句
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var n in obj)&#123;</span><br><span class="line">    consloe.log(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - for...in语句，对象中有几个属性，循环体就会执行几次
-        每次执行时会将对象中的一个属性的名字赋值给变量n</code></pre>
-<p>声明提前</p>
-<pre><code>* 变量的声明提前
-    - 使用var关键字声明的变量会在所有的代码执行之前被声明（但不会被赋值）
-    - 不使用var关键字声明变量则不会提前
-* 函数的声明提前
-    - 使用函数声明形式创建的函数会在所有的代码执行之前被创建
-        所以可以在函数声明之前来调用函数
-    - 使用函数表达式创建的函数不会被声明提前，所以不能在声明之前调用</code></pre>
-<p>作用域</p>
-<pre><code>* 作用域指一个变量作用的范围，在JS中一共有两种作用域：
-    - 全局作用域
-        - 直接编写在script标签中的JS代码都是全局作用域
-        - 全局作用域在页面打开时创建，在页面关闭时销毁
-        - 在全局作用域中有一个全局对象window
-            它代表的是一个浏览器的窗口，有浏览器创建，我们可以直接使用
-        - 在全局作用域中：
-            - 创建的变量都会作为window对象的属性保存
-            - 创建的函数都会作为window对象的方法保存
-        - 全局作用域中的都是全局变量
-            在页面的任意的部分都可以访问的到
-    - 函数作用域
-        - 调用函数时创建函数作用域，函数执行完毕时摧毁
-        - 每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的
-        - 在函数作用域中可以访问到全局作用域的变量
-            反之却不行
-        - 当在函数作用域中操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用
-            如果没有则向上一级作用域中寻找，直到找到全局作用域
-                如果全局作用域中依然没有找到则会报错ReferenceError
-        - 在函数中要访问全局变量可以使用window对象</code></pre>
-<p>this参数</p>
-<pre><code>* 解析器在调用函数时每次都会向函数内部传递一个隐含的this参数
-    - this参数指向的值一个对象，这个对象称之为函数执行的上下文对象
-    - 根据函数的调用方式的不同，this会指向不同的对象
-        - 以函数的形式调用时，this永远都是window
-        - 以方法的形式调用时，this就是调用方法的那个对象
-        - 以构造函数的方式调用时，this就是新创建的那个对象
-        - 使用call()和apply()调用时，this就是指定的那个对象</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/11/JavaScript/JavaScript03/">JavaScript03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-11
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JavaScript对象(Object)</p>
-<pre><code>* 对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性
-* 对象的分类：
-    - 内建对象：
-        - 由ES标准中定义的对象，在任何的ES的实现中都可以使用
-        - 比如：Math String Number Boolean
-    - 宿主对象：
-        - 由JS的运行环境提供的对象，目前来讲主要是指由浏览器提供的对象
-        - 比如：BOM DOM
-    - 自定义对象：
-        - 由开发人员自己创建的对象
-* 使用对象字面量创建对象
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    name:<span class="number">1</span>,</span><br><span class="line">    age:<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 属性值
-    - JS对象的属性值可以是任意的数据类型
-        甚至也可以是一个对象
-* in 运算符
-    - 通过该运算符可以检查一个对象中是否含有指定的属性
-        有则返回true，反之返回false
-    - 语法：
-        &quot;属性名&quot; in 对象  例子如
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
-* 如果要使用特殊的属性名，不能采用.的方式来操作
-        需要使用另一种方式
-    - 语法：对象[&quot;属性名&quot;]=属性值
-        读取时也要采取这种方式
-    - 使用[]这种形式去操作属性，更加的灵活
-        在[]中可以去直接传递一个变量，这样变量值是多少就会读取那个属性
-* 堆内存和栈内存
-    - JS中的变量都是保存到栈内存中的
-        基本数据类型的值直接在栈内存中存储
-            值与值之间是相互独立的，修改一个变量不会影响到另一个变量
-    - 对象是保存到堆内存的，每创建一个新的对象就会在对内存中开辟出一个新的空间
-        而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是同一个对象引用
-            当一个变量修改属性时，另一个也会受到影响
-    - 当比较两个基本数据类型的值时，就是比较值
-        而比较两个引用数据类型时，它比较的是对象的内存地址
-            如果两个对象是一模一样的，但是地址不同，它也会返回false</code></pre>
-<p>JavaScript函数（Function）</p>
-<pre><code>* 函数Function
-    - 函数也是一个对象
-    - 函数可以封装一些功能（代码），在需要时可以执行这些功能（代码）
-    - 使用typeof检查一个函数对象时，返回function
-* 创建函数的方式
-    - 使用构造函数来创建一个函数对象（实际开发中很少用）
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="built_in">Function</span>();</span><br></pre></td></tr></table></figure>
-    - 使用函数声明来创建一个函数，可在括号中加入形参
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - 使用函数表达式来创建一个函数
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="function"><span class="title">Function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 可以使用return来设置函数的返回值
-    - 语法：return 值
-        return后的值将会作为函数的执行结果返回
-            可以定义一个变量来接收
-    - 函数中启用return后的语句都不会继续执行
-    - 如果return语句后不跟任何值就相当于返回一个undefined
-        如果函数中不写return，则也会返回undefined
-* 形参和实参
-    - 可以在函数的()中来指定一个或多个形参（形式参数）
-        多个形参之间使用 ，隔开，声明形参就相当于在函数内部声明了对应的变量但不赋值
-    - 在调用函数时，可以在()中指定实参（实际参数可以是任意的数据类型）
-        实参会赋值给函数中对应的形参
-    - 调用函数时解析器不会检查实参的类型
-        所以要注意是否会接收到非法的参数，如果有可能则需要对参数进行类型的检查
-    - 调用函数时解析器也不会检查实参的数量
-        多余实参不会被赋值
-            如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/05/Css/Css11/">Css11</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS中的定位</p>
-<pre><code>* 定位（position）
-    - 定位是一种更加高级的布局手段
-    - 通过定位可以将元素摆放到页面的任意位置
-    - 使用position属性来设置定位
-        可选值：
-            - static 默认值，元素是静止的，没有开启定位
-            - relative 开启元素的相对定位
-            - absolute1 开启元素的绝对定位
-            - fixed 开启元素的固定定位
-            - sticky 开启元素的粘滞定位</code></pre>
-<p>相对定位</p>
-<pre><code>* 当元素的position属性设置为relative时则开启了元素的相对定位
-* 相对定位的特点：
-    - 不设置偏移量元素不会发生任何的变化
-    - 相对定位是参照元素在文档流种的位置进行定位
-    - 相对定位会提高元素的层级
-    - 相对定位不会使元素脱离文档流
-    - 相对定位不会改变元素的性质，块元素还是块元素，行内元素还是行内元素
-* 偏移量（offset）
-    - 当元素开启定位以后，可以通过偏移量来设置元素的位置
-        - top
-            - 定位元素和定位位置上边的距离
-        - bottom
-            - 定位元素和定位位置下边的距离
-            -定位元素垂直方向的位置由top和bottom两个属性来控制
-                通常情况下我们只会使用其中之一
-        - left
-            - 定位元素和定位位置左边的距离
-        - right
-            - 定位元素和定位位置右边的距离
-            定位元素水平方向的位置由left和right两个属性来控制
-                通常情况下我们只会使用其中之一</code></pre>
-<p>绝对定位</p>
-<pre><code>* 当元素的position属性设置为absolute时，则开启了元素的绝对定位
-* 绝对定位的特点：
-    - 不设置偏移量元素不会发生任何的变化
-    - 元素会从文档流中脱离
-    - 会改变元素的性质，块的宽高被内容撑开
-    - 会提高元素的层级
-    - 绝对定位元素是相对于其包含块进行定位的
-        - 包含块（containing block）
-            - 正常情况下，包含块就是离当前元素最近的祖先块元素
-            - 绝对定位的包含块则是离当前元素最近的开启了定位的祖先元素
-                如果所有的祖先元素都没有开启定位则根元素（html 初始包含块）就是它的包含块
-* 当我们开启了绝对定位后，水平布局等式就需要添加left和right两个值
-    此时规则和之前一样，只是多了两个值
-        - 当发生过度约束：
-            - 如果九个值中没有auto则自动调整right以使等是满足
-            - 如果有auto则自动调整auto的值以使等是满足
-        - 可设置auto的值有margin、width、left、right
-        - 因为left和right的值默认是auto，所以如果不指定这两个值
-            则等式不满足时会自动调整这两个值
-* 开启绝对定位时，垂直方向的布局也必须满足等式
-    top+margin-top/bottom+padding-top/bottom+border-top/bottom+bottom
-* 因此当开启绝对定位时，我们可以利用水平和垂直的布局等式令元素水平垂直居中</code></pre>
-<p>固定定位</p>
-<pre><code>* 当元素的position属性设置为fixed时，则开启了元素的固定定位
-* 固定定位也是一种绝对定位，绝大部分特点与其一致
-    唯一不同的是固定定位永远参照于浏览器的可视窗口进行定位
-    不会随着网页的滚动条滚动</code></pre>
-<p>粘滞定位</p>
-<pre><code>* 当元素的position属性设置为sticky时，则开启了元素的粘滞定位
-* 粘滞定位于相对定位特点基本一致
-    不同的是站指定位可以在元素到达某个位置时将其固定</code></pre>
-<p>层级</p>
-<pre><code>* 开启定位后的元素，可以通过z-index属性来设置元素的层级
-    - z-index的值越大元素的层级越大
-        元素的层级越大越优先显示
-    - 如果元素的层级一样则优先显示靠下的元素
-    - 祖先元素的层级再高也不会盖住后代元素</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/05/JavaScript/JavaScript02/">JavaScript02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>多进制的数字</p>
-<pre><code>* 在JS中表达不同进制的数字需要用不同的表达方式
-    - 如表达16进制的数字，则需要以0x开头
-    - 如表达8进制的数字，则需要以0开头
-    - 如表达2进制的数字，则需要以0b开头</code></pre>
-<p>运算符</p>
-<pre><code>* 运算符也叫操作符
-    - 通过运算符可以对一个或多个值进行运算并获取运算结果
-    - 如：typeof就是运算符，可以来获取一个值的类型
-            它会将该值的类型以字符串的形式返回
-* 算术运算符
-    当对非Number类型的值进行运算时，会将这些值转换为Number然后再运算
-        任何值和做运算都得NaN
-    +
-        + 可以对两个值进行加法运算并将结果返回
-        任何值和字符串相加都会做拼串操作，拼接成一个字符串
-        我们可以利用这一特性，将一个任意的数据类型转换为String
-        只需要为任意的数据类型+一个&quot;&quot;即可将其转换为String
-        这是一种隐式的转换，有浏览器自动完成，实际上也是调用String()函数
-    - 
-        - 可以对两个值进行减法运算并将结果返回
-    *  
-        * 可以对两个值进行乘法运算并将结果返回
-    /
-        / 可以对两个值进行除法运算并将结果返回
-    %
-        % 取模运算（取余数）
-    =
-        = 将符号右侧的值赋值给符号左侧的变量
-    +=
-        += a += 5 等价于 a = a + 5
-    -=
-        -= a -= 5 等价于 a = a - 5
-    *=
-        *= a *= 5 等价于 a = a * 5
-    /=
-        /= a /= 5 等价于 a = a / 5
-    %=
-        %= a %= 5 等价于 a = a % 5
-* 任何值做- * /运算时都会自动转换为Number
-    我们可以利用这一特点做隐式的类型转换
-    可以通过为一个值-0 *1 /1来将其转换为Number
-    原理和Number()函数一样
-* 一元运算符
-    - 正号
-        +（正号）不会对数字产生任何影响
-    - 负号
-        -（负号）可以对数字进行取反
-    - 对于非Number类型的值
-        它会将其转换为Number，然后再运算
-        可以对一个其他的数据类型使用+，来将其转换为number
-        它的原理和Number()函数一样
-    - 自增++
-        - 通过自增可以使变量在自身基础上增加1
-        - 对于一个变量自增以后，原变量的值会立刻自增1
-        - 自增分成两种：前++（++a）和后++（a++）
-            无论是前++还是后++都会使原变量的值自增1
-            不同的是前++和后++本身的值
-            前++（++a）的值等于新值（自增后的值）
-            后++（a++）的值等于原变量的值（自增前的值）
-    - 自减--
-        - 通过自减可以使变量在自身基础上减1
-        - 对于一个变量自减以后，原变量的值会立刻自减1
-        - 自减分成两种：前--（--a）和后--（a--）
-            无论是前--还是后--都会使原变量的值自减1
-            不同的是前--和后--本身的值
-            前--（--a）的值等于新值（自减后的值）
-            后--（a--）的值等于原变量的值（自减前的值）
-* 逻辑运算符
-    - ！（非）
-        - ！可以用来对一个值进行非运算
-        - 所谓非运算就是对一个布尔值进行取反操作
-            true变false，false变true
-        - 如果对一个非布尔值进行取反，则会将其转换为布尔值然后再取反
-            所以可以利用该特点将一个其他数据类型转换为布尔值
-    - &amp;&amp;（与）
-        - &amp;&amp;可以对符号两侧的值进行与运算并返回结果
-        - JS中的“与”属于短路与
-            如果第一个值为false，则不会看第二个值
-    - ||（或）
-        - ||可以对符号两侧的值进行或运算并返回结果
-        - JS中的“或”属于短路或
-            如果第一个值为true，则不会看第二个值
-    - &amp;&amp; || 非布尔值的情况
-        - 对于非布尔值进行与或运算时
-            会先将其转换为布尔值，然后再运算，并且返回原值
-        - 与运算：
-            - 如果第一个值为true，则必然返回第二个值
-            - 如果第一个值为false，则必然返回第一个值
-        - 或运算：
-            - 如果第一个值为true，则必然返回第一个值
-            - 如果第一个值为false，则必然返回第二个值
-* 关系运算符
-    - 如果关系成立则返回true，反之则返回false
-    &gt; 大于号
-    &gt;= 大于等于
-    &lt; 小于号
-    &lt;= 小于等于
-    == 相等
-    != 不相等
-    === 全等：如果两个值的类型不同，直接返回false
-    !== 不全等：如果两个值的类型不同，直接返回true
-        - 任何值和NaN做任何比较都是false
-        - 比较两个字符串时，比较的是字符串的字符编码（Unicode编码）
-            比较字符编码时是一位一位进行比较
-            如果两位一样则比较下一位
-        - undefined衍生自null
-            所以这两个值做相等判断时，会返回true
-        - NaN不和任何值相等，包括它本身
-* 条件运算符（三目运算符）
-    - 语法：
-        条件表达式?语句1:语句2;
-    - 如果条件的表达式的求值结果是一个非布尔值
-        则将其转换为布尔值然后再运算</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
 </div>
 
 

@@ -57,6 +57,565 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/09/29/Css/Css08/">Css08</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS盒子的轮廓与阴影</p>
+<pre><code>* 轮廓outline
+    - 用来设置元素的轮廓线，用法和border一模一样
+        轮廓和边框不同的点，就是轮廓不会影响到可见框的大小
+* 阴影box-shadow
+    - 用来设置元素的阴影效果，阴影不会影响布局
+    - 格式如下
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 50px red;</span><br></pre></td></tr></table></figure>
+    - 第一个值 水平偏移量 设置阴影的水平位置 正值向右移动 负值相反
+    - 第二个值 垂直偏移量 设置阴影的垂直位置 正值向下移动 负值相反
+    - 第三个值 阴影的模糊半径
+    - 第四个值 阴影的颜色</code></pre>
+<p>CSS盒子边框圆角设置</p>
+<pre><code>* border-radius：用来设置圆角 圆角设置的圆的半径大小
+* 取值格式
+    - 四个值：左上 右上 右下 左下
+    - 三个值：左上 右上/左下 右下
+    - 两个值：左上/右下 右上/左下</code></pre>
+<p>CSS盒子的大小</p>
+<pre><code>* 默认情况下，盒子可见框的大小由内容区、内边距和边框共同决定
+* box-sizing：用来设置盒子尺寸的计算方式（设置width和height的作用）
+    - 可选值：
+        - content-box 默认值，宽度和高度用来设置内容区的大小
+        - border-box 宽度和高度用来设置整个盒子可见框的大小
+            width和height指的是内容区、内边距和边框的总大小</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/28/Css/Css07/">Css07</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-28
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS外边距的重叠（折叠）</p>
+<pre><code>* 相邻的垂直方向的外边距会发生重叠现象
+    - 兄弟元素间的相邻垂直外边距会取两者之间较大值（两者都是正值）
+    - 特殊情况：
+        - 如果相邻的外边距一正一负，则取两者的和
+        - 如果相邻的外边距都是负值，则取两者之中绝对值较大的
+    父子元素：
+        - 父子元素间相邻外边距，子元素的移动会传递给父元素
+        - 父子元素外边距的重叠会影响到布局，所以必须处理</code></pre>
+<p>行内元素盒子模型的处理</p>
+<pre><code>* 行内元素不支持设置宽度和高度
+* display：用来设置元素显示的类型
+    可选值：
+        - inline 将元素设置为行内元素
+        - block 将元素设置为块元素
+        - inline-block 将元素设置为行内块元素
+            行内块元素，既可以设置宽度和高度又不会独占一行
+        - table 将元素设置为一个表格
+        - none 元素不在页面中显示
+* visibility 用来设置元素的显示状态
+    可选值：
+        - visible 默认值，元素在页面中正常显示
+        - hidden 元素在页面中隐藏，但是依然占据页面的位置</code></pre>
+<p>默认样式</p>
+<pre><code>* 通常情况下，浏览器都会为元素设置一些默认样式 
+    而默认样式的存在会影响到页面的布局
+    通常情况下编写网页的同时需要除去浏览器的默认样式
+* 使用通配选择器进行设置
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    margin:0;</span><br><span class="line">    padding:0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 使用重置样式表
+    - 重置样式表：专门用来对浏览器的样式进行重置的
+        - reset.css 直接除去了浏览器的默认样式
+        - normalize.css 对默认样式进行了统一</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/28/Css/Css06/">Css06</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-28
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>元素水平方向的布局</p>
+<pre><code>* 元素在其父元素中水平方向的位置有以下七个属性共同决定：
+    - margin-left
+    - border-left
+    - padding-left
+    - width
+    - padding-right
+    - border-right
+    - margin-right
+* 以上七个元素相加之后必须等于其父元素内容区的宽度
+    - 若以上等式不满足，则称为过度约束，等式会自动调整
+    - 调整的情况：
+        - 如果以上七个值中没有为auto的情况，则浏览器会自动调整margin-right值以使等式满足
+        - 这七个值中有三个可以设置为auto
+            - width
+            - margin-left
+            - margin-right
+        - 如果某个值设置为auto，则会自动调整设置为auto的那个值以使等式满足
+        - 如果设置一个外边距和一个宽度为auto，则会使宽度调整到最大，设置为auto的外边距则会调整到0
+        - 如果设置设置两个外边距为auto，宽度固定，则会将两个外边距的值设置为相同的值
+            我们可以利用这一特性来使一个元素在其父元素中居中
+        - 如果设置三个值都为auto，则两个外边为0，宽度最大</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/27/Css/Css05/">Css05</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS盒子模型（box model）</p>
+<pre><code>* CSS将页面中的所有元素都设置为一个矩形盒子
+* 将元素设置为矩形的盒子后，对页面的布局就变成将不同的盒子摆放到不同的位置
+* 盒子的可见框的大小由内容区、内边距、边框共同决定
+    所以在计算盒子大小时，需要将这三个区域加到一起计算
+* 每一个盒子都由以下几个部分组成：
+    - 内容区（content）
+    - 内边距（padding）
+    - 边框（border）
+    - 外边距（margin）
+* 内容区（content）
+    - 元素的所有子元素和文本内容都在内容区中排列
+    - 内容区大小由width和height两个属性来设置
+        - width 设置内容区的宽度
+        - height 设置内容区的高度
+* 内边距（padding）
+    - 内容区和边框之间的距离是内边距
+    - 一共有四个方向的内边距：
+        - padding-top
+        - padding-right
+        - padding-bottom
+        - padding-left
+    - 内边距的设置会影响到盒子的大小
+    - 背景颜色会延伸到内边距上
+    - padding简写属性，规则和border-width一样
+* 边框（border）
+    - 边框属性盒子边缘，边框里边属于盒子内部，出了边框都是盒子的外部
+    - 边框的大小会影响到整个盒子的大小
+    - 设置边框的三个属性：
+        - 边框的宽度 border-width:
+            border-width的默认值一般都是三个像素，可以指定四个方向的边框的宽度
+                指定值的情况：
+                    - 四个值：上，右，下，左
+                    - 三个值：上，左右，下
+                    - 两个值：上下 左右
+                    - 一个值：上下左右
+            除了border-width还有一组：border-xxx-width
+                xxx可以是top,right,bottom,left
+                用来单独指定某一个边的宽度
+        - 边框的颜色 border-color：
+            同样可以分别指定四个边的边框，规则和border-width一样
+                也可以省略不写，如果省略不写则自动使用color的颜色值
+        - 边框的样式 border-style：
+            边框样式：
+                - solid 实线
+                - dotted 点状虚线
+                - dashed 虚线
+                - double 双线
+            border-style的默认值是none，表示没有边框
+    - boeder简写属性，通过该属性可以同时设置边框所有的相关样式，并且没有顺序要求
+        格式；border:宽度 颜色 样式
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border: 10px red solid</span><br></pre></td></tr></table></figure>
+        除了border还有四个 border-xxx，规则和border-width一样
+* 外边距（margin）
+    - 外边距不会影响盒子可见框的大小
+    - 但外边距会影响盒子在页面中的位置
+    - 一共有四个方向的外边距：
+        - margin-top：上外边距，设置一个正值，元素会向下移动
+        - margin-right：默认情况下margin-right不会产生任何效果
+        - margin-bottom：下外边距，设置一个正值，其下边的元素会向下移动
+        - margin-left：左外边距，设置一个正值，元素会向右移动
+        - margin也可以设置负值，其元素向相反的方向移动
+    - 元素在页面中是按照自左向右、自上而下的顺序排列的
+        所以默认情况下如果我们设置的左和上外边距则会移动元素自身
+        而设置下和右外边距会移动其他元素
+    - margin简写属性，通过该属性可以同时设置四个方向的外边距，用法和padding一样
+    - margin会影响到盒子实际占用空间
+* 元素溢出
+    - 子元素是在父元素的内容区中排列的
+        如果子元素的大小超过了父元素，则子元素会从父元素中溢出
+        可以使用overflow属性来设置父元素如何处理溢出的子元素
+    - overflow可选值：
+        - visible 默认值，子元素从父元素中溢出，则在父元素外部的位置显示
+        - hidden 溢出内容将会被裁减不会被显示
+        - scroll 生成两个滚动条，通过滚动条来查看完整的内容
+        - auto 根据需要生成滚动条</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/27/Css/Css04/">Css04</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS文档流（normal flow）</p>
+<pre><code>* 网页是一个多层的结构，一层叠着一层
+* 通过CSS可以分别为每一层来设置样式
+* 作为用户来讲只能看到最顶上一层
+* 这些层中，最底下的一层称为文档流，文档流是网页的基础
+    我们所创建的元素默认都是在文档流中进行排列
+* 对于我们来说，元素主要有两个状态
+    - 在文档流中
+    - 不在文档流中（脱离文档流）
+* 元素在文档流中有什么特点
+    - 块元素
+        - 块元素会在页面中独占一行（自上向下垂直排列）
+        - 默认宽度是父元素的全部（会把父元素撑满）
+        - 默认高度是被内容撑开（子元素）
+    - 行内元素
+        - 行内元素不会独占页面的一行，只占自身的大小
+        - 行内元素在页面中自左向右水平排列，如果一行之中不能容下    
+            则元素会换到第二行继续自左向右排列
+        - 行内元素的默认宽度和默认高度都是被内容撑开</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/25/Css/Css03/">Css03</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS样式的继承：</p>
+<pre><code>- 样式的继承，我们为一个元素设置的样式同时也会应用到它的后代元素上
+    继承是发生在祖先和后代之间的
+    继承的设计是为了方便我们的开发
+        利用继承我们可以将一些通用的样式统一设置到共同的祖先元素上
+            这样只需设置一次即可让所有的元素都具有该样式
+- 注意：并不是所有的样式都会被继承
+        比如：背景相关的，布局相关等的这些样式都不会被继承</code></pre>
+<p>长度单位：</p>
+<pre><code>* 像素：
+    - 屏幕（显示器）实际上是由一个一个的小点点构成的
+    - 不同屏幕的像素大小是不同的，像素越小的屏幕显示的效果越清晰
+        所以同样的200px在不同的设备下显示效果不一样
+* 百分比：
+    - 也可以将属性值设置为相对于其父元素属性的百分比
+    - 设置百分比可以使子元素跟随父元素的改变而改变
+* em
+    - em是相对于元素的字体大小来计算的
+    - 1em = 1font-size
+    - em会根据字体大小改变而改变
+* rem
+    - rem是相对于根元素的字体大小来计算的</code></pre>
+<p>颜色单位：</p>
+<pre><code>* 在CSS中可以直接使用颜色名来设置各种颜色
+    比如：red、yellow、blue.....
+    但是在css中直接使用颜色名是非常的不方便
+* RGB值：
+    - RGB通过三种颜色的不同浓度来调配出各种颜色
+    - R red, G green, B blue
+    - 每一种颜色的范围在0~255（0%~100%）之间
+    - 语法：rgb（红色，绿色，蓝色）
+* RGBA:
+    - 就是在rgb的基础上加了一个a表示不透明度
+    - 需要四个值，前三个和rgb一样，第四个表示不透明
+        1表示完全不透明
+        0表示完全透明
+        .5表示半透明
+* 十六进制的RGB值：
+    - 语法：#红色绿色蓝色
+    - 颜色浓度范围 00~ff
+    - 如果颜色两位两位重复可以进行简写
+        #aabbcc --&gt;  #abc
+* HSL值 HSLA值
+    - H 色相（0 - 360）
+    - S 饱和度，颜色的浓度（0%-100%）
+    - L 亮度，颜色的亮度（0%-100%）
+    - A 表示不透明度</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/23/Css/Css02/">Css02</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-23
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS选择器：</p>
+<pre><code>* 元素选择器：
+    - 作用：根据标签名来选中指定的元素
+    - 语法：标签名&#123;&#125;
+    - 实例：p&#123;&#125;  h1&#123;&#125;   div&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+* id选择器：
+    - 作用：根据元素的id属性值选中一个元素
+    - 语法：#id属性值&#123;&#125;
+    - 实例：#box&#123;&#125;  #red&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#red&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 类选择器：
+    - 作用：根据元素的class属性值选中一组元素
+    - 语法：.class属性值&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.blue&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 通配选择器：
+    - 作用：选中页面中的所有元素
+    - 语法：*&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+*交集选择器：
+    - 作用：选择同时符合多个条件的元素
+    - 语法：选择器1选择器2选择器3选择器n&#123;&#125;
+    - 注意点：交集选择器中如果有元素选择器，必须使用元素选择器开头
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div.red&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">.a.b.c&#123;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br><span class="line">div#box&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 选择器分组（并集选择器）：
+    - 作用：同时选择多个选择器对应的元素
+    - 语法：选择器1，选择器2，选择器3，选择器n&#123;&#125;
+    - 实例：#a,b,c,d&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">h1,span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">* 子元素选择器：</span><br><span class="line">    - 作用：选中指定父元素的指定子元素</span><br><span class="line">    - 语法：父元素 &gt; 子元素&#123;&#125;</span><br><span class="line">```html</span><br><span class="line">div &gt; span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 后代元素选择器：
+    - 作用：选中指定元素内的指定后代元素
+    - 语法：祖先 后代&#123;&#125;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div span&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 选择下一个兄弟元素
+    - 语法：前一个 + 后一个
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p+span&#123;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 选择下边所有的兄弟元素：
+    - 语法：兄 ~ 弟
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p~span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 属性选择器：
+    - [属性名]：选择含有指定属性名的元素
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - [属性名=属性值]：选择含有指定属性名和属性值的元素
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - [属性名^=属性值]：选择属性值以指定值开头的元素
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title^=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - [属性名$=属性值]：选择属性值以指定值结尾的元素
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title$=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - [属性名*=属性值]：选择属性值中含有指定值的元素
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title*=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 伪类选择器（伪类表示不存在的类，特殊的类）： 
+    - 伪类用来描述一个元素的特殊状态
+        比如：第一个子元素、被点击的元素、鼠标移入的元素....
+    - 伪类一般情况下都是使用:开头
+        :first-child 第一个子元素
+        :last-child 最后一个子元素
+        :nth-child() 选中第n个子元素
+            特殊值：
+                n 表示选中元素范围在0到正无穷
+                2n 或 even 表示选中偶数位的元素
+                2n+1 或 odd 表示选中奇数位的元素
+        - 以上这些伪类都是根据所有的子元素进行排序
+            :first-of-type
+            :last-of-type
+            :nth-of-type()
+            - 这几个伪类的功能和上述的类似，不同点是他们是在同类型元素中排序
+            :not() 否定伪类
+            - 将符合条件的元素从选择器中去除
+
+* 超链接的伪类：
+    :link 用来表示没访问过的链接（正常的链接）
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;</span><br><span class="line">    color:red;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    :visited 用来表示访问过的链接，由于隐私原因，visited这个伪类只能修改链接的颜色
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:visited&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    :hover 用来表示鼠标移入的状态
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:hover&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    :active 用来表示鼠标点击
+    ```html
+    a:active&#123;
+        color:red;
+    &#125;
+* 伪元素选择器（伪元素表示页面中一些特殊位置的并不真实存在的元素）：
+    - 伪元素使用::开头
+        ::first-letter 表示第一个字母
+        ::first-line 表示第一行
+        ::selection 表示选中的内容
+        ::before 元素的开始
+        ::after 元素的结束
+        before 和 after 必须结合content属性来使用
+
+* 样式的冲突
+    - 当我们通过不同的选择器选中相同的元素，并为其设置不同的值时，此时就会发生样式的冲突
+        发生样式的冲突时，应用哪个样式有选择器的权重（优先级）决定
+* 选择器的权重
+    - 内联样式          1，0，0，0
+    - id选择器          0，1，0，0
+    - 类和伪类选择器     0，0，1，0
+    - 元素选择器         0，0，0，1
+    - 通配选择器         0，0，0，0
+    - 继承的样式         没有优先级
+* 比较优先级时，需要将所有的选择器的优先级进行相加计算，最后优先级最高，
+    则越优先显示（分组选择器是单独计算）
+    选择器的累加不会超过其最大的数量级，如类选择器最大不会超过id选择器
+    如果优先级相同，则优先使用靠下的样式
+* 可以在某一个样式后面添加 !important，则此时该样式会获取到最高的优先级，甚至超过内联样式
+    注意，在开发时需慎用   </code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/09/22/Css/Css01/">Css01</a>
       </h1>
     
@@ -250,411 +809,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/21/Html/Html03/">Html03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-21
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html实体：</p>
-<pre><code>*在Html中，一些如&lt; &gt;这种特殊字符是不能直接使用，需要用一些特殊的符号来表示，
- 这些特殊符号我们称之为实体(转义字符串)，浏览器解析到实体时，会自动将其转换为对应的字符
-*实体的语法格式：&amp;实体名字
-    如：
-        &lt;    &amp;lt;
-        &gt;    &amp;gt;
-        空格    &amp;nbsp;
-        版权符号    &amp;copy</code></pre>
-<p>Html图片标签：</p>
-<pre><code>*&lt;img /&gt;：一个自结束标签，向网页中引入一个外部图片
-*&lt;img /&gt;属性：
-              arc：设置一个外部图片的路径
-              alt：可以用后来设置在图片不能显示时对图片的描述
-                   搜索引擎可以通过alt属性来识别不同的照片
-                   如果不写此属性，则搜索引擎不会对img中的图片进行收录
-              width：可以用后来修改图片的宽度，一般用px作为单位
-              height：可以用后来修改图片的高度，一般用px作为单位
-*宽度和高度两个属性如果只设置一个，另一个也会同时等比例调整大小
- 一般开发中除了自适应的页面，不建议设置width和height</code></pre>
-<p>图片格式：</p>
-<pre><code>* JPEG(JPG)：
-    - JPEG图片支持的颜色比较多，图片可以压缩，但是不支持透明
-    - 一般使用JPEG来保存照片等颜色丰富的图片
-* GIF：
-    - GIF支持的颜色少，只支持简单的透明，支持动态图
-    - 图片颜色单一或者是动态图时可以使用gif
-* PNG：
-    - PNG支持的颜色多，并且支持复杂的透明
-    - 可以用来显示颜色复杂的透明的图片
-* 图片使用原则：
-    - 效果不一致，使用效果好的
-    - 效果一致，使用小的</code></pre>
-<p>meta标签：</p>
-<pre><code>* 设置网页关键字：如
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;HTML5,JavaScript&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-* 指定网页的描述：搜索引擎在检索页面时，会同时检索关键字和描述，但不影响该页面在搜索引擎中的排名如
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;学习h5和JS的相关内容&quot;</span> /&gt;</span></span><br><span class="line">   ``` </span><br><span class="line"></span><br><span class="line">*做请求的重定向：格式如</span><br><span class="line">```html</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;秒数;url=目标途径&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/17/Java/Java04/">Java04</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java数组：</p>
-<pre><code>*数组简介：数组是java中最常见的一种数据结构，用于储存多个数据
-
-*数组定义：type []arrayName 或 type arrayName[]
-           如：int []a 或 int a[]
-
-*数组初始化：
-    &gt; 静态数组初始化：arrayName=new type[](....)
-                      如 int []a=new int[](1,2,3)
-    &gt; 动态数组初始化：arrayName=new type[length]
-                      如 int []a=new int[3]</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/17/Html/Html02/">Html02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html文档声明：</p>
-<pre><code>我们使用的是html5的版本，因此使用html5的文档声明：&lt;!doctype html&gt;
-文档声明是为了让浏览器识别我们使用的html版本，编写网页时一定要将文档声明写在网页最上边
-如果不写将会导致某些浏览器进入怪异模式，进入此模式之后，浏览器解析网页时会导致网页无法显示</code></pre>
-<p>meta标签：</p>
-<pre><code>此标签用来设置网页的一些元数据，如网页的字符集、关键字、简介，meta是一个自结束的标签，
-编写自结束标签时，可以在开始标签中加上一个/</code></pre>
-<p>标题标签： </p>
-<pre><code>在html中一共有六级标签(h1 - h6)
-在显示效果上h1最大，h6最小
-但在html中使用标题标签，关心的是语义，我们使用的都是语义化标签
-其中h1最重要，表达的是一个网页的主要内容，h2-h6重要性依次降低，一般网页中h3后的标题基本不会使用
-对于搜索引擎来说，h1的重要性仅次于title，检索完title后会立马查看h1中的内容
-h1会影响到页面在搜索引擎中的排名，一般网页中只会写一个h1</code></pre>
-<p>段落标签：</p>
-<pre><code>段落标签用于表示内容中的一个自然段，使用&lt;p&gt; &lt;/p&gt;标签来表示段落，p标签中的内容会默认独占一行，且段与段之间会有一个间距
-但在html中，字符之间写再多的的空格，浏览器也会当作一个间隔，换行也会被当作一个间隔
-因此想要将一个p标签中的段落内容分行，可使用&lt;br /&gt;标签进行换行
-若想要获得水平线，可以使用&lt;hr /&gt;标签</code></pre>
-<p>语义化标签：</p>
-<pre><code>* 块元素(block element)：
-                        - 在页面中独占一行的元素
-                        - 网页中一般通过块元素来对页面进行布局
-                        - 块元素中基本上什么都能放
-                        - p元素内不能放任何的块元素
-* 行内元素(inline element)：
-                        - 行内元素主要用来包裹文字
-                        - 一般情况下会在块元素内放行内元素，而不会在行内元素中放块元素
-* em标签：用于表示语音语调的一个加重，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今天天气<span class="tag">&lt;<span class="name">em</span>&gt;</span>真<span class="tag">&lt;/<span class="name">em</span>&gt;</span>不错！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* strong标签：表示强调重要内容，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>王强是<span class="tag">&lt;<span class="name">strong</span>&gt;</span>戴超群<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>的儿子<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* blockquote标签：表示一个长引用(即引用时换行)，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>鲁迅说<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">	这句话我是从没有说过的！</span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* q标签：表示一个短引用(即引用时不换行)，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>子曰<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">q</span>&gt;</span>学而时习之<span class="tag">&lt;/<span class="name">q</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
-<p>布局标签：</p>
-<pre><code>* header标签：表示网页头部
-* main标签：表示网页的主体(一个页面只会有一个main)
-* footer标签：表示网页的底部
-* nav标签：表示网页中的导航
-* aside标签：和主体相关的其他内容(侧边栏)
-* article标签：表示一个独立的文章
-* section标签：表示一个独立的区块，上边的标签都不能表示时使用section
-* div标签：没有语义，就用来表示一个区块，目前来讲div还是我们主要的布局元素
-* span标签：行内元素，没有任何的语义，一般用于在网页中选中文字</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/16/Java/Java03/">Java03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-16
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java选择与循环语句：</p>
-<pre><code>* 程序的选择结构：
-    &gt; if语句
-    &gt; if...else语句
-    &gt; if...else if...else语句
-    &gt; switch语句
-
-* 程序的循环结构：
-    &gt; while循环：先判断后执行
-    &gt; do...while循环：先执行后判断
-    &gt; for循环
-    &gt; for循环的嵌套
-
-* 循环结构的控制：
-    &gt; break：结束循环
-    &gt; continue：结束本次循环
-    &gt; return：结束方法</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/16/Html/Html01/">Html01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-16
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html标签：</p>
-<pre><code>* html对于网页的编写内容都要存在于标签内(标签一般都是以一对的形式出现)，基本标签如：
-    &lt;html&gt; &lt;/html&gt; : 根标签，html编写网页的所有内容都必须在根标签内，一个页面中有且只有一个根标签
-    &lt;head&gt; &lt;/head&gt; : 设置网页头部信息，在此标签内编写的内容在网页中都不会显示出来，主要作用是帮助浏览器去解析网页
-    &lt;body&gt; &lt;/body&gt; : 设置网页的主体部分，网页中所有可见的内容都应写在此标签中
-    &lt;title&gt; &lt;title&gt; : 网页的标题编写在此标签中，默认显示在浏览器的标题栏中，搜索引擎在检索页面时会首先检索此标签
-                      中的内容，他是页面中对于搜索引擎最重要的内容，会影响到页面在搜索引擎中的排名
-    &lt;h1&gt; &lt;/h1&gt; : 网页内容的一级标题，多级标题以此类推，一共有六级标题
-    &lt;!-- --&gt; : 注释在此标签的空格处编写，注释在网页中不会显示，但在源码中会显示出来
-* html标签的属性：
-    &gt; 可以通过属性来设置标签如何处理标签中的内容
-    &gt; 只能在开始标签内设置属性
-    &gt; 属性实际上就是一个名值对的结构
-    &gt; 属性名=&quot;属性值&quot;，一个开始标签中可以设置多个属性，属性之间需要用空格间隔开来
-
-    如想要一行字其中某些字的颜色变成红色：
-    (但一般不赞成用html修改字体属性，html主要用于网页结构，字体属性属于表现，一般用css完成)
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/15/Java/Java02/">Java02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-15
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java数据类型:</p>
-<pre><code>分为基本数据类型和引用数据类型：
-* 基本数据类型
-    &gt; 数值型
-        &gt; 整数类型(byte,short,int,long)
-        &gt; 浮点类型(float,double) 其中小数默认为double类型，所以当表达一个float类型时，必须加一个f,如float a=1.1f;
-    &gt; 字符型(char)
-    &gt; 布尔型(boolean) 布尔类型只有true(真)和false(假)两种，主要用于逻辑判断
-* 引用数据类型
-    &gt; 类(class)
-    &gt; 接口(interface)
-    &gt; 数组
-
-基本类型的转换：
-* 自动类型转换
-    &gt; 条件1.转换前后的数据类型兼容
-    &gt; 条件2.转换后的数据类型的表示范围要比转换前的大
-* 强制类型转换
-    &gt; 如将double转换为float：
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f;</span><br><span class="line"><span class="keyword">double</span> d=<span class="number">1.333</span>;</span><br><span class="line">f=(<span class="keyword">float</span>)d;</span><br></pre></td></tr></table></figure></code></pre>
-<p>Java运算符：</p>
-<pre><code>* 自增：
-    &gt; int a，a++表示先赋值后自增
-    &gt; int a，++a表示先自增后赋值
-* 异或^：当两个操作数不相同时返回true
-*三目运算符：格式为 (表达式)？表达式为true返回值 ： 表达式为false返回值</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/06/29/Java/Java01/">Java01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-06-29
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>常用的DOS(cmd)命令：</p>
-<ul>
-<li>exit 退出当前DOS(cmd)命令窗口</li>
-<li>cls  清屏</li>
-<li>dir  列出当前目录下所有的子文件/子目录</li>
-<li>cd 路径 转入想要进入的路径之下<br>路径包括绝对路径和相对路径<br>绝对路径：表示该路径从某个磁盘的盘符下作为出发点的路径 如C:\Users\Lenovo&gt;<br>相对路径：表示该路径从当前所在的路径下作为出发点的路径 如blog</li>
-<li>cd .. 回到上级目录</li>
-<li>cd / 直接回到根目录</li>
-<li>切换盘符：c:<pre><code>      d:
-      e:
-      f:</code></pre>
-</li>
-</ul>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
 </div>
 
 

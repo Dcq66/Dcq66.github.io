@@ -1,0 +1,198 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java05——数组 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/09/17/Java/Java05-数组/">
+            Java05——数组
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-17
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java 数组：</p>
+<pre><code>*数组简介：数组是java中最常见的一种数据结构，用于储存多个数据
+*数组的特点：
+    - 数组是一种引用数据类型
+    - 数组中的多个数据必须类型统一
+    - 数组的长度在程序运行期间不可改变
+
+*数组定义：type []arrayName 或 type arrayName[]
+           如：int []a 或 int a[]
+
+*数组初始化：在内存中创建一个数组，并且向其中赋予一些默认值
+    - 动态初始化（指定长度）：在创建数组时直接指定数组当中的数据元素个数
+        - 标准格式：数据类型[] 数组名称=new 数据类型[数组长度];
+    - 静态初始化（指定内容）：在创建数组时不直接指定数据个数，而是直接将具体的数据内容进行指定
+        - 标准格式：数据类型[] 数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
+        - 省略格式：数据类型[] 数组名称=&#123;元素1,元素2,....&#125;;
+    - 注意事项：
+        - 虽然静态初始化没有指定长度，但根据括号中的具体数据内容也可以自动推算出来
+        - 动态初始化标准格式可以拆分为两个步骤：
+            数据类型[] 数组名称;
+            数组名称=new 数据类型[数组长度];
+        - 静态初始化标准格式也可以拆分为两个步骤：
+            数据类型[] 数组名称;
+            数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
+        - 但静态初始化一旦使用省略格式就不能拆分为两个步骤了
+* 直接输出数组名称得到的是数组对应的内存地址哈希值
+* 访问数组元素的格式：数组名称[索引值]
+    - 索引值：一个int数字，代表数组当中元素的编号，若访问数组元素时，访问的索引编号不存在，
+                则会发生数组索引越界异常（ArrayIndexOutOfBoundsException）
+    - 注意：索引值从0开始，一直到“数组的长度-1”为止
+* 数组元素的默认值：
+    - 使用动态数组初始化时，其中的数组元素将会自动拥有一个默认值，规则如下：
+        - 整数类型则默认为0
+        - 浮点类型则默认为0.0
+        - 字符类型则默认为&#39;\u0000&#39;
+        - 如果是布尔类型则默认为false
+        - 如果是引用类型则默认为null
+    - 静态初始化其实也有默认值，只不过系统马上将默认值自动替换成了大括号当中具体的数据了
+* 空指针异常（NullPointerException）
+    - 所有的引用类型变量都可以赋值为一个null值，这代表其中什么都没有，
+        数组必须进行new初始化才能试用期中的元素，若只是赋值了一个null，没有进行new创建
+            那么将会发生空指针异常
+* 获取数组的长度：数组名称.Length</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/
+https://dcq66.github.io/2020/09/17/Java/Java05-%25E6%2595%25B0%25E7%25BB%2584/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

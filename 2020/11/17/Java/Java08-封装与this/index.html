@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2020/6 | 小戴的学习日记</title>
+    <title>Java08-封装与this | 小戴的学习日记</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,54 +51,74 @@
 </div>
 
   <div id='main-part'>
-      
-
-<div class="article-index">
-      <div class="sidelist">
-        <div class="list">
-          
-              <h3>2020 - 6</h3>
-          
-          
-          <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">11月 - 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">10月 - 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">9月 - 2020</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">6月 - 2020</a><span class="archive-list-count">1</span></li></ul>          
-      </div>
-    </div>
-    <div class="main lists">
-        
-        <!-- Date and Author -->
-<p class="blog-post-meta">
-    2020-06-29
-    
-</p>
-
+      <div class="main">
 <div class="blog-post">
     <!-- Title -->
-    <!--
-    <h3 class="blog-post-title-archive">
-        <a href="/2020/06/29/Java/Java01-DOS(cmd)命令/">
-            Java01——DOS(cmd)命令
+    <h1 class="blog-post-title">
+        <a href="/2020/11/17/Java/Java08-封装与this/">
+            Java08-封装与This
         </a>
-    </h3>
-  -->
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-17
+        
+    </p>
+
     
-      <h3 class="blog-post-title-archive">
-        <a href="/2020/06/29/Java/Java01-DOS(cmd)%E5%91%BD%E4%BB%A4/">Java01——DOS(cmd)命令</a>
-      </h3>
+
+    <!-- Content -->
+    <p>封装</p>
+<pre><code>* 封装就是将一些细节信息隐藏起来，对于外界不可见
+* 封装性在Java中的体现：
+    - 方法就是一种封装
+    - 关键字private也是一种封装
+        - 一旦使用关键字private对成员变量进行修饰，那么本类当中仍然可以随意访问
+            但超出本类范围之外就不能再直接访问了
+        - 因此我们可以采取间接访问private成员变量的方法，就是定义一对Getter/Setter方法</code></pre>
+<p>this</p>
+<pre><code>* 当方法的局部变量和类的成员变量重名时，根据“就近原则”，优先使用局部变量
+    若需要在方法中访问成员变量可以使用this.成员变量名
+* 通过谁调用的方法，this就是谁</code></pre>
+
+
+    <!-- Social share choices -->
     
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/
+https://dcq66.github.io/2020/11/17/Java/Java08-%25E5%25B0%2581%25E8%25A3%2585%25E4%25B8%258Ethis/
+-->
+
 
 
     <hr />
+
+
+    <!-- Tags and Categories links -->
     
 
     
 
+
+    <!-- Comment using disqus -->
+    
+
+</div>
 </div>
 
-        
-        
-
-    </div>
-</div>
 
   </div>
   <!-- Footer -->

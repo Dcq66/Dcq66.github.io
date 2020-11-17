@@ -1,0 +1,537 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/21/Html/Html03/">Html03</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-21
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Html实体：</p>
+<pre><code>*在Html中，一些如&lt; &gt;这种特殊字符是不能直接使用，需要用一些特殊的符号来表示，
+ 这些特殊符号我们称之为实体(转义字符串)，浏览器解析到实体时，会自动将其转换为对应的字符
+*实体的语法格式：&amp;实体名字
+    如：
+        &lt;    &amp;lt;
+        &gt;    &amp;gt;
+        空格    &amp;nbsp;
+        版权符号    &amp;copy</code></pre>
+<p>Html图片标签：</p>
+<pre><code>*&lt;img /&gt;：一个自结束标签，向网页中引入一个外部图片
+*&lt;img /&gt;属性：
+              arc：设置一个外部图片的路径
+              alt：可以用后来设置在图片不能显示时对图片的描述
+                   搜索引擎可以通过alt属性来识别不同的照片
+                   如果不写此属性，则搜索引擎不会对img中的图片进行收录
+              width：可以用后来修改图片的宽度，一般用px作为单位
+              height：可以用后来修改图片的高度，一般用px作为单位
+*宽度和高度两个属性如果只设置一个，另一个也会同时等比例调整大小
+ 一般开发中除了自适应的页面，不建议设置width和height</code></pre>
+<p>图片格式：</p>
+<pre><code>* JPEG(JPG)：
+    - JPEG图片支持的颜色比较多，图片可以压缩，但是不支持透明
+    - 一般使用JPEG来保存照片等颜色丰富的图片
+* GIF：
+    - GIF支持的颜色少，只支持简单的透明，支持动态图
+    - 图片颜色单一或者是动态图时可以使用gif
+* PNG：
+    - PNG支持的颜色多，并且支持复杂的透明
+    - 可以用来显示颜色复杂的透明的图片
+* 图片使用原则：
+    - 效果不一致，使用效果好的
+    - 效果一致，使用小的</code></pre>
+<p>meta标签：</p>
+<pre><code>* 设置网页关键字：如
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;HTML5,JavaScript&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+* 指定网页的描述：搜索引擎在检索页面时，会同时检索关键字和描述，但不影响该页面在搜索引擎中的排名如
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;学习h5和JS的相关内容&quot;</span> /&gt;</span></span><br><span class="line">   ``` </span><br><span class="line"></span><br><span class="line">*做请求的重定向：格式如</span><br><span class="line">```html</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;秒数;url=目标途径&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/">Java05——数组</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-17
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java 数组：</p>
+<pre><code>*数组简介：数组是java中最常见的一种数据结构，用于储存多个数据
+*数组的特点：
+    - 数组是一种引用数据类型
+    - 数组中的多个数据必须类型统一
+    - 数组的长度在程序运行期间不可改变
+
+*数组定义：type []arrayName 或 type arrayName[]
+           如：int []a 或 int a[]
+
+*数组初始化：在内存中创建一个数组，并且向其中赋予一些默认值
+    - 动态初始化（指定长度）：在创建数组时直接指定数组当中的数据元素个数
+        - 标准格式：数据类型[] 数组名称=new 数据类型[数组长度];
+    - 静态初始化（指定内容）：在创建数组时不直接指定数据个数，而是直接将具体的数据内容进行指定
+        - 标准格式：数据类型[] 数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
+        - 省略格式：数据类型[] 数组名称=&#123;元素1,元素2,....&#125;;
+    - 注意事项：
+        - 虽然静态初始化没有指定长度，但根据括号中的具体数据内容也可以自动推算出来
+        - 动态初始化标准格式可以拆分为两个步骤：
+            数据类型[] 数组名称;
+            数组名称=new 数据类型[数组长度];
+        - 静态初始化标准格式也可以拆分为两个步骤：
+            数据类型[] 数组名称;
+            数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
+        - 但静态初始化一旦使用省略格式就不能拆分为两个步骤了
+* 直接输出数组名称得到的是数组对应的内存地址哈希值
+* 访问数组元素的格式：数组名称[索引值]
+    - 索引值：一个int数字，代表数组当中元素的编号，若访问数组元素时，访问的索引编号不存在，
+                则会发生数组索引越界异常（ArrayIndexOutOfBoundsException）
+    - 注意：索引值从0开始，一直到“数组的长度-1”为止
+* 数组元素的默认值：
+    - 使用动态数组初始化时，其中的数组元素将会自动拥有一个默认值，规则如下：
+        - 整数类型则默认为0
+        - 浮点类型则默认为0.0
+        - 字符类型则默认为&#39;\u0000&#39;
+        - 如果是布尔类型则默认为false
+        - 如果是引用类型则默认为null
+    - 静态初始化其实也有默认值，只不过系统马上将默认值自动替换成了大括号当中具体的数据了
+* 空指针异常（NullPointerException）
+    - 所有的引用类型变量都可以赋值为一个null值，这代表其中什么都没有，
+        数组必须进行new初始化才能试用期中的元素，若只是赋值了一个null，没有进行new创建
+            那么将会发生空指针异常
+* 获取数组的长度：数组名称.Length</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/17/Html/Html02/">Html02</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-17
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Html文档声明：</p>
+<pre><code>我们使用的是html5的版本，因此使用html5的文档声明：&lt;!doctype html&gt;
+文档声明是为了让浏览器识别我们使用的html版本，编写网页时一定要将文档声明写在网页最上边
+如果不写将会导致某些浏览器进入怪异模式，进入此模式之后，浏览器解析网页时会导致网页无法显示</code></pre>
+<p>meta标签：</p>
+<pre><code>此标签用来设置网页的一些元数据，如网页的字符集、关键字、简介，meta是一个自结束的标签，
+编写自结束标签时，可以在开始标签中加上一个/</code></pre>
+<p>标题标签： </p>
+<pre><code>在html中一共有六级标签(h1 - h6)
+在显示效果上h1最大，h6最小
+但在html中使用标题标签，关心的是语义，我们使用的都是语义化标签
+其中h1最重要，表达的是一个网页的主要内容，h2-h6重要性依次降低，一般网页中h3后的标题基本不会使用
+对于搜索引擎来说，h1的重要性仅次于title，检索完title后会立马查看h1中的内容
+h1会影响到页面在搜索引擎中的排名，一般网页中只会写一个h1</code></pre>
+<p>段落标签：</p>
+<pre><code>段落标签用于表示内容中的一个自然段，使用&lt;p&gt; &lt;/p&gt;标签来表示段落，p标签中的内容会默认独占一行，且段与段之间会有一个间距
+但在html中，字符之间写再多的的空格，浏览器也会当作一个间隔，换行也会被当作一个间隔
+因此想要将一个p标签中的段落内容分行，可使用&lt;br /&gt;标签进行换行
+若想要获得水平线，可以使用&lt;hr /&gt;标签</code></pre>
+<p>语义化标签：</p>
+<pre><code>* 块元素(block element)：
+                        - 在页面中独占一行的元素
+                        - 网页中一般通过块元素来对页面进行布局
+                        - 块元素中基本上什么都能放
+                        - p元素内不能放任何的块元素
+* 行内元素(inline element)：
+                        - 行内元素主要用来包裹文字
+                        - 一般情况下会在块元素内放行内元素，而不会在行内元素中放块元素
+* em标签：用于表示语音语调的一个加重，如
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今天天气<span class="tag">&lt;<span class="name">em</span>&gt;</span>真<span class="tag">&lt;/<span class="name">em</span>&gt;</span>不错！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+* strong标签：表示强调重要内容，如
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>王强是<span class="tag">&lt;<span class="name">strong</span>&gt;</span>戴超群<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>的儿子<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+* blockquote标签：表示一个长引用(即引用时换行)，如
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>鲁迅说<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">	这句话我是从没有说过的！</span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+* q标签：表示一个短引用(即引用时不换行)，如
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>子曰<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">q</span>&gt;</span>学而时习之<span class="tag">&lt;/<span class="name">q</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
+<p>布局标签：</p>
+<pre><code>* header标签：表示网页头部
+* main标签：表示网页的主体(一个页面只会有一个main)
+* footer标签：表示网页的底部
+* nav标签：表示网页中的导航
+* aside标签：和主体相关的其他内容(侧边栏)
+* article标签：表示一个独立的文章
+* section标签：表示一个独立的区块，上边的标签都不能表示时使用section
+* div标签：没有语义，就用来表示一个区块，目前来讲div还是我们主要的布局元素
+* span标签：行内元素，没有任何的语义，一般用于在网页中选中文字</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/16/Java/Java03-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%BE%AA%E7%8E%AF/">Java03——选择与循环</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-16
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java 选择与循环语句：</p>
+<pre><code>* 程序的选择结构：
+    &gt; if语句
+    &gt; if...else语句
+    &gt; if...else if...else语句
+    &gt; switch语句
+
+* 程序的循环结构：
+    &gt; while循环：先判断后执行
+    &gt; do...while循环：先执行后判断
+    &gt; for循环
+    &gt; for循环的嵌套
+
+* 循环结构的控制：
+    &gt; break：结束循环
+    &gt; continue：结束本次循环
+    &gt; return：结束方法</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/16/Html/Html01/">Html01</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-16
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Html标签：</p>
+<pre><code>* html对于网页的编写内容都要存在于标签内(标签一般都是以一对的形式出现)，基本标签如：
+    &lt;html&gt; &lt;/html&gt; : 根标签，html编写网页的所有内容都必须在根标签内，一个页面中有且只有一个根标签
+    &lt;head&gt; &lt;/head&gt; : 设置网页头部信息，在此标签内编写的内容在网页中都不会显示出来，主要作用是帮助浏览器去解析网页
+    &lt;body&gt; &lt;/body&gt; : 设置网页的主体部分，网页中所有可见的内容都应写在此标签中
+    &lt;title&gt; &lt;title&gt; : 网页的标题编写在此标签中，默认显示在浏览器的标题栏中，搜索引擎在检索页面时会首先检索此标签
+                      中的内容，他是页面中对于搜索引擎最重要的内容，会影响到页面在搜索引擎中的排名
+    &lt;h1&gt; &lt;/h1&gt; : 网页内容的一级标题，多级标题以此类推，一共有六级标题
+    &lt;!-- --&gt; : 注释在此标签的空格处编写，注释在网页中不会显示，但在源码中会显示出来
+* html标签的属性：
+    &gt; 可以通过属性来设置标签如何处理标签中的内容
+    &gt; 只能在开始标签内设置属性
+    &gt; 属性实际上就是一个名值对的结构
+    &gt; 属性名=&quot;属性值&quot;，一个开始标签中可以设置多个属性，属性之间需要用空格间隔开来
+
+    如想要一行字其中某些字的颜色变成红色：
+    (但一般不赞成用html修改字体属性，html主要用于网页结构，字体属性属于表现，一般用css完成)
+    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/15/Java/Java02-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/">Java02——数据类型和运算符</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-15
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Java 数据类型:</p>
+<pre><code>分为基本数据类型和引用数据类型：
+* 基本数据类型
+    &gt; 数值型
+        &gt; 整数类型(byte,short,int,long)
+        &gt; 浮点类型(float,double) 其中小数默认为double类型，所以当表达一个float类型时，必须加一个f,如float a=1.1f;
+    &gt; 字符型(char)
+    &gt; 布尔型(boolean) 布尔类型只有true(真)和false(假)两种，主要用于逻辑判断
+* 引用数据类型
+    &gt; 类(class)
+    &gt; 接口(interface)
+    &gt; 数组
+
+基本类型的转换：
+* 自动类型转换
+    &gt; 条件1.转换前后的数据类型兼容
+    &gt; 条件2.转换后的数据类型的表示范围要比转换前的大
+* 强制类型转换
+    &gt; 如将double转换为float：
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f;</span><br><span class="line"><span class="keyword">double</span> d=<span class="number">1.333</span>;</span><br><span class="line">f=(<span class="keyword">float</span>)d;</span><br></pre></td></tr></table></figure></code></pre>
+<p>Java 运算符：</p>
+<pre><code>* 自增：
+    &gt; int a，a++表示先赋值后自增
+    &gt; int a，++a表示先自增后赋值
+* 异或^：当两个操作数不相同时返回true
+*三目运算符：格式为 (表达式)？表达式为true返回值 ： 表达式为false返回值</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/06/29/Java/Java01-DOS(cmd)%E5%91%BD%E4%BB%A4/">Java01——DOS(cmd)命令</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-06-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>常用的 DOS(cmd)命令：2w22s</p>
+<ul>
+<li>exit 退出当前 DOS(cmd)命令窗口</li>
+<li>cls 清屏</li>
+<li>dir 列出当前目录下所有的子文件/子目录</li>
+<li>cd 路径 转入想要进入的路径之下<br>路径包括绝对路径和相对路径<br>绝对路径：表示该路径从某个磁盘的盘符下作为出发点的路径 如 C:\Users\Lenovo&gt;<br>相对路径：表示该路径从当前所在的路径下作为出发点的路径 如 blog</li>
+<li>cd .. 回到上级目录</li>
+<li>cd / 直接回到根目录</li>
+<li>切换盘符：c:<br>d:<br>e:<br>f:</li>
+</ul>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+
+
+<div id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+</div>
+
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

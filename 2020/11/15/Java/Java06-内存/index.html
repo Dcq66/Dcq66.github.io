@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Java03 | 小戴的学习日记</title>
+    <title>Java06——内存 | 小戴的学习日记</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,45 +55,44 @@
 <div class="blog-post">
     <!-- Title -->
     <h1 class="blog-post-title">
-        <a href="/2020/09/16/Java/Java03/">
-            Java03
+        <a href="/2020/11/15/Java/Java06-内存/">
+            Java06——内存
         </a>
     </h1>
     <!-- Date and Author -->
     <p class="blog-post-meta">
-        2020-09-16
+        2020-11-15
         
     </p>
 
     
 
     <!-- Content -->
-    <p>Java选择与循环语句：</p>
-<pre><code>* 程序的选择结构：
-    &gt; if语句
-    &gt; if...else语句
-    &gt; if...else if...else语句
-    &gt; switch语句
-
-* 程序的循环结构：
-    &gt; while循环：先判断后执行
-    &gt; do...while循环：先执行后判断
-    &gt; for循环
-    &gt; for循环的嵌套
-
-* 循环结构的控制：
-    &gt; break：结束循环
-    &gt; continue：结束本次循环
-    &gt; return：结束方法</code></pre>
+    <p>内存</p>
+<pre><code>* Java内存需要划分为5个部分：
+    - 栈（Stack）：存放的都是方法中的局部变量。方法的运行一定在栈当中运行
+        - 局部变量：方法的参数，或是方法内部的变量
+        - 作用域：一旦超出作用域立刻从栈内存中消失
+    - 堆（Heap）：凡是new出来的东西都在堆内存中
+        - 堆内存里面的东西都有一个地址值（16进制）
+        - 堆内存中的数据都有一个默认值：
+            - 整数类型则默认为0
+            - 浮点类型则默认为0.0
+            - 字符类型则默认为&#39;\u0000&#39;
+            - 如果是布尔类型则默认为false
+            - 如果是引用类型则默认为null
+    - 方法区（Method Area）：储存.class相关信息，包含方法的信息
+    - 本地方法栈（Native Method Stack）：与操作系统有关
+    - 寄存器（pc Register）：与CPU有关</code></pre>
 
 
     <!-- Social share choices -->
     
   <div id="social-share">
-    <a data-url="https://dcq66.github.io/2020/09/16/Java/Java03/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/09/16/Java/Java03/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/09/16/Java/Java03/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/09/16/Java/Java03/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
   </div>
 
 
@@ -103,8 +102,8 @@
 <!--
 
 
-https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/09/16/Java/Java03/
-https://dcq66.github.io/2020/09/16/Java/Java03/
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/
+https://dcq66.github.io/2020/11/15/Java/Java06-%25E5%2586%2585%25E5%25AD%2598/
 -->
 
 

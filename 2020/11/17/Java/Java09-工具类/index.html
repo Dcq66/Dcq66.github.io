@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java09-工具类 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/17/Java/Java09-工具类/">
+            Java09-工具类
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-17
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Scanner</p>
+<pre><code>* Scanner类可以实现键盘输入数据到程序中
+    - 获取键盘输入的一个int数字:
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc&#x3D;new Scanner(System.in);</span><br><span class="line">int num&#x3D;sc.nextInt();</span><br></pre></td></tr></table></figure>
+    - 获取键盘输入的一个String字符串:
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc&#x3D;new Scanner(System.in);</span><br><span class="line">String str&#x3D;sc.next();</span><br></pre></td></tr></table></figure></code></pre>
+<p>Random</p>
+<pre><code>* Random类用来生成随机数字
+    - 方法：
+        - nextInt() 获取一个随机的int数字，范围是int所有范围，有正负
+        - nextInt(int 参数) 获取一个随机的int数字，范围是0-参数，左闭右开区间</code></pre>
+<p>ArrayList</p>
+<pre><code>* 数组的长度不可以发生改变，但ArrayList集合的长度可以随意改变
+* 格式：ArrayList&lt;泛型&gt; 集合名称=new ArrayList&lt;&gt;();
+* 对于ArrayList集合来说，有一个尖括号&lt;E&gt;代表泛型
+    从JDK1.7+开始，右侧的尖括号内部可以不写内容，但是&lt;&gt;本身还是得写
+        - 泛型：装在集合中的所有元素，全都是统一的类型
+        - 注意：泛型只能是引用类型，不能是基本类型
+* 注意事项：对于ArrayList集合来说，直接打印得到的不是地址值，而是内容
+            若内容是空，得到的是空的中括号[]
+* 方法：
+    - public boolean add(E e) 向集合中添加元素，参数的类型和泛型一致，返回值为Boolean
+        - 注意：对于ArrayList集合添加时一定成功的，但对于其他集合就不一定了
+    - public E get(int index) 从集合中获取元素，参数是索引编号，返回值是对应位置的元素
+    - public E remove(int index) 从集合中删除元素，参数是索引编号，返回值是被删除的元素
+    - public int size() 获取集合的长度，返回值是集合的长度
+* 如果希望向ArrayList集合当中储存基本数据类型数据，必须使用基本类型对应的“包装类”
+    基本类型        包装类（引用类型，包装类都位于java.lang包下）
+    byte            Byte
+    short           Short
+    int             Integer
+    long            Long
+    float           Float
+    double          Double
+    char            Character
+    boolean         Boolean
+    - 从JDK1.5开始，支持自动装箱、自动拆箱
+        - 自动装箱：基本类型--&gt;包装类型
+        - 自动拆箱：包装类型--&gt;基本类型</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/
+https://dcq66.github.io/2020/11/17/Java/Java09-%25E5%25B7%25A5%25E5%2585%25B7%25E7%25B1%25BB/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
