@@ -1,0 +1,171 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java10-static | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/18/Java/Java10-static/">
+            Java10-Static
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-18
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>static</p>
+<pre><code>* static 静态关键词
+* 一旦使用static修饰成员变量/成员方法，那么就成为了静态变量/静态方法，则不属于对象，而是属于类的
+    - 如果没有static关键词，那么必须先创建对象，然后通过对象来使用
+    - 如果有了static关键词，那么不需要创建对象，可以直接通过类名来使用
+    - 无论是成员变量还是成员方法，如果有了static都推荐通过类名称来使用
+        - 静态变量：类名称.静态变量
+        - 静态方法：类名称.静态方法()
+* 注意事项：
+    - 静态不能直接访问非静态，因为内存中先有的静态内容，后有的非静态内容
+    - 静态方法中不能用this，因为this代表当前对象，通过谁调用的方法，谁就是当前对象
+    - 根据类名称访问静态成员变量/成员方法的时候，全程和对象没有关系，只和类有关系
+* 静态代码块：static&#123;&#125;;
+    - 当第一次用到本类时，静态代码块执行唯一的一次，静态内容总是优先于非静态，
+        所以静态代码块比构造方法先执行
+    - 用来一次性的对静态成员变量进行赋值</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/18/Java/Java10-static/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/18/Java/Java10-static/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/18/Java/Java10-static/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/18/Java/Java10-static/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/18/Java/Java10-static/
+https://dcq66.github.io/2020/11/18/Java/Java10-static/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

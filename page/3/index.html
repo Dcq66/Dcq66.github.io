@@ -57,6 +57,94 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/20/Css/Css14/">Css14</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-20
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>过渡</p>
+<pre><code>* 过渡（transition）
+    - 通过过渡可以指定一个属性发生变化时的切换方式
+    - 通过过渡可以创建一些非常好的效果，提高用户的体验
+* 属性：
+    - transition-property：指定要执行过渡的属性，多个属性之间使用 ，隔开
+                            如果所有属性都需要过渡，则使用all关键字，大部分属性都支持过渡效果
+                                过渡时必须是从一个有效数值向另一个有效数值进行过渡（如auto就不行）
+    - transition-duration：指定过渡效果的持续时间
+    - transition-timing-function：过渡的时序函数，指定过渡的执行方式
+        可选值：
+            - ease 默认值，先加速，后减速
+            - linear 匀速运动
+            - ease-in 加速运动
+            - ease-out 减速运动
+            - ease-in-out 先加速后减速
+            - cubic-bezier()（贝塞尔函数）自定义指定时序函数（可用网站查询：https://cubic-bezier.com）
+            - step() 分布执行过渡效果
+                - 第一个值是分的步数
+                - 第二个值（可省略，省略则使用默认值）：
+                    - end 默认值，在时间结束时执行过渡
+                    - start 在时间开始时执行过渡
+    - transition-delay：过渡效果的延迟，等待一段时间后再执行
+    - transition：可以同时设置和过渡相关的所有属性，只有一个要求，如果要写延迟，
+                    则持续时间必须在延迟时间之前</code></pre>
+<p>动画</p>
+<pre><code>* 动画（animation）
+    - 动画和过渡相似，都是可以实现一些动态的效果，不同的是过渡需要在某个属性发生变化时才会触发
+        动画可以自动触发动态效果
+    - 设置动态效果，必须先要设置一个关键帧，关键帧设置了动画执行的每一个步骤
+* 属性：
+    - animation-name：对当前元素生效的关键帧的名字
+    - animation-duration：动画的执行时间
+    - animation-delay：动画的延迟时间
+    - animation-timing-function：动画的时序函数，指定动画的执行方式，规则和可选值与过渡一样
+    - animation-iteration-count：动画执行的次数
+        可选值：
+            - 次数
+            - infinite 无限执行
+    - animation-direction：指定动画运行的方向
+        可选值：
+            - normal 默认值 从 from 到 to 运行，每次都是这样
+            - reverse 默认值 从 to 到 from 运行，每次都是这样
+            - alternate 默认值 从 from 到 to 运行，重复执行动画时反向执行
+            - alternate-reverse 默认值 从 to 到 from 运行，重复执行动画时反向执行
+    - animation-play-state：设置动画的执行状态
+        可选值：
+            - running 默认值，动画执行
+            - paused 动画暂停
+    - animation-fill-mode：设置动画的填充模式
+        可选值：
+            - none 默认值，动画执行完毕元素回到原来位置
+            - forwards 动画执行完毕会停止在动画结束的位置
+            - backwards 动画延时等待时，元素就会处于开始位置
+            - both 结合了forwards和backwards</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/10/20/Css/Css13/">Css13</a>
       </h1>
     
@@ -953,65 +1041,6 @@
 <p>clearfix</p>
 <pre><code>* 设置clearfix类可以同时解决高度塌陷和外边距重叠的问题
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,.clearfix::after&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/03/Css/Css09/">Css09</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-03
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS的浮动</p>
-<pre><code>* 通过浮动可以使一个元素向其父元素的左侧或右侧移动
-    - 使用float属性来设置元素的浮动
-        可选值：
-            - none 默认值，元素不浮动
-            - left 元素向左移动
-            - right 元素向右移动
-    - 注意：元素设置浮动以后，水平布局的等式便不需要强制成立
-            元素设置浮动后，会完全从文档流中脱离，不再占用文档流的位置
-            所以元素下边的还在文档流中的元素会自动向上移动
-    - 浮动的特点：
-        - 浮动元素会完全脱离文档流，不再占据文档流的位置
-        - 设置浮动以后元素会向父元素的左侧或右侧移动
-        - 浮动元素默认不会从父元素中移出
-        - 浮动元素向左或向右移动时，不会超过它前边的其他浮动元素
-        - 如果浮动元素的上边是一个没有浮动的块元素，则浮动元素无法上移
-        - 浮动元素不会超过它上边浮动的兄弟元素，最多和它一样高
-    - 简单总结：浮动目前来讲它的主要作用就是让页面中的元素可以水平排列
-                通过浮动可以制作一些水平方向的布局</code></pre>
-<p>CSS中脱离文档流的元素特点</p>
-<pre><code>* 块元素：
-    - 块元素不再独占一行
-    - 脱离文档流后，块元素的宽度和高度都默认被内容撑开
-* 行内元素：
-    - 行内元素脱离文档流以后会变成块元素，特点和块元素一样
-* 脱离文档流以后，不需要再区分快和行内了</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     

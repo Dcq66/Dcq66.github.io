@@ -57,24 +57,73 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
-        <a href="/2020/11/17/Java/Java10-%E5%AD%97%E7%AC%A6%E4%B8%B2/">Java10-字符串</a>
+        <a href="/2020/11/18/Java/Java11-%E7%BB%A7%E6%89%BF/">Java11-继承</a>
       </h1>
     
     <!-- Date and Author -->
     <p class="blog-post-meta">
-        2020-11-17
+        2020-11-18
         
     </p>
 
     
 
     <!-- Content -->
-    <p>字符串</p>
-<pre><code>* java.lang.String类代表字符串
-* 字符串的特点：
-    - 字符串的内容永不可变
-    - 正因为字符串的内容永不可变，所以字符串是共享的
-    - 字符串效果上相当于char[]字符数组，但底层原理是byte[]字节数组</code></pre>
+    <p>继承</p>
+<pre><code>* 继承的特点：
+    - 子类可以拥有父类的“内容”
+    - 子类还可以拥有自己的“专属内容
+* 定义父类（基类、超类）的格式（一个普通类的定义）：public class 父类名称&#123;&#125;;
+* 定义子类：public class 子类名称 extends 父类名称&#123;&#125;;</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/18/Java/Java10-static/">Java10-Static</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-18
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>static</p>
+<pre><code>* static 静态关键词
+* 一旦使用static修饰成员变量/成员方法，那么就成为了静态变量/静态方法，则不属于对象，而是属于类的
+    - 如果没有static关键词，那么必须先创建对象，然后通过对象来使用
+    - 如果有了static关键词，那么不需要创建对象，可以直接通过类名来使用
+    - 无论是成员变量还是成员方法，如果有了static都推荐通过类名称来使用
+        - 静态变量：类名称.静态变量
+        - 静态方法：类名称.静态方法()
+* 注意事项：
+    - 静态不能直接访问非静态，因为内存中先有的静态内容，后有的非静态内容
+    - 静态方法中不能用this，因为this代表当前对象，通过谁调用的方法，谁就是当前对象
+    - 根据类名称访问静态成员变量/成员方法的时候，全程和对象没有关系，只和类有关系
+* 静态代码块：static&#123;&#125;;
+    - 当第一次用到本类时，静态代码块执行唯一的一次，静态内容总是优先于非静态，
+        所以静态代码块比构造方法先执行
+    - 用来一次性的对静态成员变量进行赋值</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
@@ -147,6 +196,59 @@
     - 从JDK1.5开始，支持自动装箱、自动拆箱
         - 自动装箱：基本类型--&gt;包装类型
         - 自动拆箱：包装类型--&gt;基本类型</code></pre>
+<p>String</p>
+<pre><code>* java.lang.String类代表字符串
+* 字符串的特点：
+    - 字符串的内容永不可变
+    - 正因为字符串的内容永不可变，所以字符串是共享的
+    - 字符串效果上相当于char[]字符数组，但底层原理是byte[]字节数组
+* 创建字符串的方法：
+    - 构造方法：
+        - public String() 创建一个空白字符串，不含有任何内容
+        - public String(char[] array) 根据字符数组的内容来创建对应的字符串
+        - public String(byte[] array) 根据字节数组的内容来创建对应的字符串
+    - 直接创建：
+        - String 字符串名称=&quot;字符串内容&quot;
+        - 对于引用类型来说，==进行的是地址值的比较
+        - 双引号直接创建的字符串在字符串常量池中，new的不在池中
+* 方法
+    - public boolean equals(Object obj) 参数可以是任意对象，
+        只有参数是一个字符串并且内容相同才会返回true，否则返回false
+            - 注意事项：
+                - 该方法具有对称性，a.equals(b)和b.equals(a)效果一样
+                - 若比较双方一个常量一个变量，推荐把常量字符串写在前面
+    - public boolean equalsIgnoreCase() 忽略大小写进行比较
+    - public int length() 获得字符串长度
+    - public String concat(String str) 将当前字符串和参数字符串拼接成一个新的字符串并返回
+    - public char charAt(int index) 获得指定索引位置的单个字符
+    - public int indexOf(String str) 查找参数字符串在本字符串首次出现的索引位置，若没有则返回-1
+    - public String substring(int index) 截取从参数索引位置一直到字符串末尾的字符串并返回
+    - public String substring(int begin,int end) 截取从begin开始，到end结束中间的字符串并返回
+        - [begin,end)，左闭右开
+    - public char[] toCharArray() 将当前字符串拆分为字符数组作为返回值
+    - public byte[] getBytes() 将当前字符串拆分为字节数组作为返回值
+    - public String replace(CharSequence oldString,CharSequence newString)
+        - 将所有出现的老字符串替换为新的字符串并返回替换之后的新字符串
+     -public String[] split(String regex) 按照参数的规则将字符串切分为若干部分
+        - 注意事项：
+            - split方法的参数是一个“正则表达式“
+            - 若按照英文句点切分，必须写&quot;\\.&quot;</code></pre>
+<p>Arrays</p>
+<pre><code>* Arrays是一个与数组相关的工具类
+* 方法：
+    - public static String toString(数组) 将参数数组变成字符串
+    - public static void sort(数组) 按照默认升序对数组的元素进行排序
+        - 若是数值，sort默认按照升序从小到大
+        - 若是字符串，sort默认按照字母从小到大
+        - 若是自定义的类型，那么这个自定义的类型需要有Comparable或者Comparator接口的支持</code></pre>
+<p>Math</p>
+<pre><code>* Math类是一个与数学相关的工具类
+* 方法：
+    - public static double abs(double num) 获取绝对值
+    - public static double ceil(double num) 向上取整
+    - public static double floor(double num) 向下取整
+    - public static long round(double num) 四舍五入
+    - Math.PI代表圆周率常量</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
@@ -583,102 +685,6 @@
 * 产生闭包的条件
     - 函数嵌套
     - 内部函数引用了外部函数的数据（变量/函数 ）</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/04/JavaScript/JavaScript10/">JavaScript10</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-04
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>方法、属性与事件</p>
-<pre><code>* setCapture() 设置该元素对事件进行捕获
-* releaseCapture() 取消对事件的捕获
-* wheelDelta属性 可以获取鼠标滚轮滚动的方向
-    - 向上滚 120 向下滚 -120
-    - 用正负来判断滚动方向
-    - 火狐中不支持
-* detail属性() 可以获取鼠标滚轮滚动的方向，火狐支持
-* 键盘事件
-    - 键盘事件一般都会绑定给一些可以获取到焦点的对象或者是document
-    - onkeydown 按键被按下
-        - 若一直按着绑定该事件的按键则事件会一直触发
-        - 该事件连续触发时，第一次和第二次之间会间隔稍微长一些，其它的会非常的快，这种设计是为了防止误操作
-    - onkeyup 按键被松开
-    - keyCode 获取按键的编码，通过它可以判断哪个按键被按下
-        - 37 左
-        - 38 上
-        - 39 右
-        - 40 下
-    - altkey ctrlkey shiftkey
-        - 判断alt ctrl shift是否被按下，按下则返回true 反之返回false</code></pre>
-<p>BOM</p>
-<pre><code>* 浏览器对象模型
-* BOM可以使我们通过JS来操作浏览器
-* 在BOM中提供了一组对象用来完成对浏览器的操作
-* BOM对象
-    - Window
-        - 代表整个浏览器的窗口，同时window也是网页中的全局对象
-    - Navigator
-        - 代表当前浏览器的信息，可用来识别不同的浏览器
-        - 由于历史原因，Navigator对象中的大部分属性已经不能帮助我们识别浏览器了
-        - 一般我们会使用userAgent来判断浏览器的信息，userAgent是一个字符串，
-            这个字符串包含有用来描述浏览器信息的内容，不同的浏览器有不同的userAgent
-                但在IE11中已经将微软和IE有关的标识都去除了，所以基本不能通过userAgent来识别是否为IE11了
-        - 我们可以通过ActiveXObject来判断一个浏览器是否为IE11
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var ua&#x3D;navigator.userAgent;</span><br><span class="line">&lt;!-- 通过正则表达式来检查 --&gt;</span><br><span class="line">if(&#x2F;firefox&#x2F;i.test(ua))&#123;</span><br><span class="line">    alert(&quot;火狐浏览器&quot;);</span><br><span class="line">&#125;else if(&#x2F;chrome&#x2F;i.test(ua))&#123;</span><br><span class="line">    alert(&quot;Chrome浏览器&quot;);</span><br><span class="line">&#125;else if(&#x2F;msie&#x2F;i.test(ua))&#123;</span><br><span class="line">    alert(&quot;IE浏览器&quot;);</span><br><span class="line">&#125;else if(&quot;ActiveXObject&quot; in window)&#123;</span><br><span class="line">    alert(&quot;IE11&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - Location
-        - 代表当前浏览器的地址栏信息，通过Location可以获取地址栏信息或者操作浏览器跳转页面
-        - 若直接输出location则可以获取到当前浏览器地址栏的信息（当前浏览器的完整路径）
-            若直接将location属性修改为其他路径则页面会自动跳转到该路径，并且会生相应的历史记录
-        - assign() 跳转到其他的页面，作用和直接修改location属性一样
-        - reload() 重新加载当前页面，作用和刷新按钮一样
-            - 若在方法中传递一个true作为参数，则会强制清空缓存刷新页面
-        - replace() 使用一个新的页面替换当前页面，调用完毕后也会跳转页面，
-            不会生成历史记录，也不能使用回退按钮回退
-    - History
-        - 代表浏览器的历史记录，可以通过该对象来操作浏览器的历史记录
-            但由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页
-                而且该操作只在当次访问时有效
-        - length属性 可以获取到当前访问的链接数量
-        - back() 回退到上一个页面，作用和浏览器的回退按钮一样
-        - forward() 跳转到下一个页面，作用和浏览器的前进按钮一样
-        - go()
-            - 跳转到指定的页面
-            - 需要一个整数作为参数：
-                1：表示向前跳转一个页面，相当于forward()
-                2：表示向前跳转两个页面
-                -1：表示向后回退一个页面
-                -2：表示向后回退两个页面
-    - Screen
-        - 代表用户的屏幕信息，通过该对象可以获取到用户显示器的相关信息
-    - 这些BOM对象在浏览器中都是作为window对象的属性保存的，
-        可以通过window对象来使用，也可以直接使用</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
