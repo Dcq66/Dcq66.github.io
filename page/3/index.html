@@ -57,6 +57,284 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css15/">Css15</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>变形</p>
+<pre><code>* 变形就是指通过css来改变元素的形状或位置
+    - 变形不会影响到页面的布局
+    - transform用来设置元素的变形效果
+        - 平移：
+            - translateX() 沿着X轴方向平移
+            - translateY() 沿着Y轴方向平移
+            - translateZ() 沿着Z轴方向平移
+                - Z轴平移，调整元素在Z轴上的位置，由于其属于立体效果（近大远小），
+                    默认情况下网页是不支持透视的，如果想要看见效果，必须设置网页的视距
+                        即perspective属性，将其设置在html（根元素）的样式中
+            - 平移元素，百分比是相对于自身计算的
+        - 旋转：通过旋转可以使元素沿着x、y或z轴旋转指定的角度
+            - rotateX() 沿着X轴旋转
+            - rotateY() 沿着Y轴旋转
+            - rotateZ() 沿着Z轴旋转
+            - 旋转时还可以通过backface-visibility属性来设置是否显示元素的背面
+        - 3d变形效果
+            - 若想要看到所设置的立体动态效果，需通过transform-style属性来设置其3d效果
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br></pre></td></tr></table></figure>
+        - transform-origin（变形原点）
+            - 默认值为center
+            - 可自定设置原点
+        - 对元素进行缩放的函数（倍数缩放）
+            - scale() 双方向的缩放
+            - scaleX() 水平方向的缩放
+            - scaleY() 垂直方向的缩放</code></pre>
+<p>变量</p>
+<pre><code>* css也支持变量的设置
+    - 变量的设置规范
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--color:red;</span><br></pre></td></tr></table></figure>
+    - 引用变量时的语法规范
+     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color:var(--color);</span><br></pre></td></tr></table></figure>
+    - 设置变量可以帮助我们在做代码量较多的项目修改时更方便</code></pre>
+<p>less</p>
+<pre><code>* less是一门css的预处理语言
+    - less是一个css的增强版，通过该预处理语言我们可以编写更少的代码实现更强大的样式</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/21/JavaScript/JavaScript06/">JavaScript06</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-21
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>数组</p>
+<pre><code>* 数组（Array）
+    - 数组也是一个对象
+    - 它和普通对象功能类似，也是用来储存一些值的
+    - 不同的是普通对象使用的是字符串作为属性名的
+        而数组是使用数字来作为索引操作元素的
+    - 索引：从0开始的整数就是索引
+    - 数组的存储性能比普通对象要好
+* 创建数组对象
+    - 使用构造函数创建数组
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;new Array();</span><br></pre></td></tr></table></figure>
+    - 使用typeof检查一个数组时会返回object
+    - 如果读取不存在的索引，不会报错而是返回undefined
+    - 获取数组的长度
+        - 可以使用length属性来获取数组长度
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;new Array();</span><br><span class="line">console.log(arr.length);</span><br></pre></td></tr></table></figure>
+        对于连续的数组，使用length可以获取到数组的长度（元素的个数）
+            对于非连续的数组，使用length可以获取到数组的最大索引+1
+                尽量不要创建非连续的数组
+    - 修改length
+        - 如果修改的length大于原长度，则多出部分会空出来
+        - 如果修改的length小于原长度，则多出的元素会被删除
+    - 使用字面量创建数组
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;[];</span><br></pre></td></tr></table></figure>
+    - 使用字面量创建数组，可以在创建时就指定数组中的元素
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;[1，2，3];</span><br></pre></td></tr></table></figure>
+    使用构造函数创建数组时，也可以同时添加元素，将需要添加的元素作为构造函数的参数传递
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;new Array(10,20);</span><br></pre></td></tr></table></figure>
+    - 创建一个长度为10的数组
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr&#x3D;new Array(10);</span><br></pre></td></tr></table></figure>
+    - 数组中的元素可以是任意的数据类型，包括对象，数组也可以放数组
+* 数组的常用方法
+    - push()
+        - 该方法可以在数组的末尾添加一个或多个元素，并返回数组的新长度
+    - pop()
+        - 该方法可以删除数组中的最后一个元素，并将被删除的元素作为返回值返回
+    - unshift()
+        - 向数组开头添加一个或多个元素，并返回数组的新长度
+        - 向前边加入新的元素后，其他的元素索引会依次调整
+    - shift()
+        - 该方法可以删除数组中的第一个元素，并将被删除的元素作为返回值返回
+    - forEach() 
+        - 用来遍历数组，该方法需要一个函数作为参数
+        - 像这种函数由我们创建但不由我们调用的称之为回调函数
+        - 数组中有几个元素函数就会执行几次，每次执行时，浏览器会将遍历到的元素以实参的形式传递进来
+            我们可以定义形参来读取这些内容
+        - 浏览器会在回调函数中传递三个参数
+            第一个参数，就是当前正在遍历的元素
+            第二个参数，就是当前正在遍历的元素的索引
+            第三个参数，就是正在遍历的数组
+        - 该方法只支持IE8以上的浏览器
+    - splice()
+        - 可以用于删除数组中的指定元素
+        - 使用splice()会影响到原数组，会将指定元素从原数组中删除
+            并将删除的元素作为返回值返回
+        - 参数：
+            第一个参数，表示开始位置的索引            
+            第二个参数，表示删除的数量            
+            第三个及以后的参数，表示传递一些新的元素，这些元素会自动插入到开始位置的索引前
+    - slice()
+        - 可以用来从数组提取指定元素并将其封装到一个新的数组中作为返回值返回
+        - 该方法不会影响到原数组
+        - 参数：
+            第一个参数，表示开始位置的索引，包括开始索引       
+            第二个参数，表示结束位置的索引，不包括结束索引
+                第二个参数可以省略不写，此时会截取从开始索引往后的所有元素
+            - 索引可以传递一个负值，如果传递一个负值则从后往前计算
+                -1 倒数第一个
+                -2 倒数第二个....
+    - concat() 
+        - 该方法可以连接两个或多个数组，并将新的数组返回，该方法不会对原数组产生影响，
+            参数也可以填写新的元素
+    - join() 
+        - 该方法可以将数组转换为一个字符串
+        - 该方法不会对原数组产生影响，而是将转换后的字符串作为返回值返回
+        - 在该方法中可以指定一个字符串作为参数，这个字符串将会成为数组中元素的连接符
+            如果不指定连接符则默认使用,作为连接符
+    - reverse()
+        - 该方法可以将原数组中的元素颠倒位置，会直接影响原数组
+    - sort() 
+        - 可以对原数组中的元素进排列
+        - 会影响到原数组，默认会按照Unicode编码进行排序
+        - 即使对于纯数字的数组，使用该方法排序时也会按照Unicode编码进行排序
+            所以对数字进行排序时可能会得到错误的结果
+        - 我们可以自己来指定排序的规则，在该方法中添加一个回调函数来指定排序规则
+            该回调函数需要定义两个形参，浏览器会分别使用数组中的元素作为实参去调用回调函数
+                使用哪个元素调用不确定，但第一个实参在数组中的位置一定在第二个实参之前
+        - 浏览器会根据回调函数的返回值来决定元素的顺序
+            - 如果返回一个大于0的数则元素会交换位置
+            - 如果返回一个小于0的数则元素不会交换位置
+            - 如果返回0则元素也不会交换位置
+        - 因此若想要升序排列的话，则返回a-b
+            若想要降序排列则返回b-a
+    - call()和apply()
+        - 这两个方法都是函数对象的方法，需要通过函数对象来调用
+        - 当对函数调用call()和apply()都会调用函数执行
+        - 在调用call()和apply()可以将一个对象指定为第一个参数
+            此时这个对象将成为函数执行是时的this
+        - call()方法可以将函数对象的实参在指定为第一个参数的对象之后依次传递
+        - apply()方法需要将实参封装到一个数组中统一传递
+* 在调用函数时，浏览器每次都会传递两个隐含的参数：
+    - 函数的上下文对象this
+    - 封装实参的对象arguments
+        - arguments是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
+        - 在调用函数时，我们所传递的实参都会在arguments中保存
+        - arguments.length可以用来获取实参的长度
+        - 即使我们不定义形参，也可以通过arguments来使用实参，只不过比较麻烦
+            arguments[0] 表示第一个实参
+            arguments[1] 表示第二个实参
+        - 它里边有一个属性叫做callee
+            这个属性对应一个函数对象就是当前正在指向的函数的对象</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/20/Html/Html06/">Html06</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-20
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>表格</p>
+<pre><code>* 通过table标签来创建一个表格
+    - 在table中使用tr表示表格中的一行，有几个tr就有几行
+    - 在tr中使用td表示一个单元格，有几个td就有几个单元格
+* 可以将一个表格分成三个部分
+    - 头部 thead
+        - th 表示头部的单元格
+    - 主体 tbody
+        - 如果表格中没有使用tbody而是直接使用tr，那么浏览器会自动创建一个tbody
+            并将tr全都放到tbody中，因此tr并不是table的子元素
+    - 底部 tfoot
+* 属性：
+    - rowspan 纵向的合并单元格
+    - colspan 横向的合并单元格
+    - border-spacing 单元格边框之间的距离
+    - border-collapse 设置单元格边框的合并
+* 默认情况下元素在td中是垂直居中的，可以通过vertical-align来设置
+    因此可以将一个元素设置为单元格的形式，这样就可以通过vertical-align来设置元素中的内容</code></pre>
+<p>表单</p>
+<pre><code>* 通过form标签来创建一个表单
+    数据要提交到服务器中，必须要为元素指定一个name属性
+* 单选按钮
+    - 必须要为其指定一个value属性，value属性最终会作为用户填写的值返回服务器
+    - checked 可以将一个选项设置为默认选中
+* 属性：
+    - autocomplete 设置是否自动补全（显示出曾经填写过的数据）
+        - on 默认值，开启自动补全
+        - off 关闭自动补全
+    - readonly 将表单选项设置为只读，数据会提交
+    - disabled，将选项设置为禁用，数据不会提交
+    - autofocus 设置某个表单选项自动获取焦点（即一进入光标就锁定到该选项）</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/10/20/Css/Css14/">Css14</a>
       </h1>
     
@@ -685,382 +963,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/05/JavaScript/JavaScript02/">JavaScript02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>多进制的数字</p>
-<pre><code>* 在JS中表达不同进制的数字需要用不同的表达方式
-    - 如表达16进制的数字，则需要以0x开头
-    - 如表达8进制的数字，则需要以0开头
-    - 如表达2进制的数字，则需要以0b开头</code></pre>
-<p>运算符</p>
-<pre><code>* 运算符也叫操作符
-    - 通过运算符可以对一个或多个值进行运算并获取运算结果
-    - 如：typeof就是运算符，可以来获取一个值的类型
-            它会将该值的类型以字符串的形式返回
-* 算术运算符
-    当对非Number类型的值进行运算时，会将这些值转换为Number然后再运算
-        任何值和做运算都得NaN
-    +
-        + 可以对两个值进行加法运算并将结果返回
-        任何值和字符串相加都会做拼串操作，拼接成一个字符串
-        我们可以利用这一特性，将一个任意的数据类型转换为String
-        只需要为任意的数据类型+一个&quot;&quot;即可将其转换为String
-        这是一种隐式的转换，有浏览器自动完成，实际上也是调用String()函数
-    - 
-        - 可以对两个值进行减法运算并将结果返回
-    *  
-        * 可以对两个值进行乘法运算并将结果返回
-    /
-        / 可以对两个值进行除法运算并将结果返回
-    %
-        % 取模运算（取余数）
-    =
-        = 将符号右侧的值赋值给符号左侧的变量
-    +=
-        += a += 5 等价于 a = a + 5
-    -=
-        -= a -= 5 等价于 a = a - 5
-    *=
-        *= a *= 5 等价于 a = a * 5
-    /=
-        /= a /= 5 等价于 a = a / 5
-    %=
-        %= a %= 5 等价于 a = a % 5
-* 任何值做- * /运算时都会自动转换为Number
-    我们可以利用这一特点做隐式的类型转换
-    可以通过为一个值-0 *1 /1来将其转换为Number
-    原理和Number()函数一样
-* 一元运算符
-    - 正号
-        +（正号）不会对数字产生任何影响
-    - 负号
-        -（负号）可以对数字进行取反
-    - 对于非Number类型的值
-        它会将其转换为Number，然后再运算
-        可以对一个其他的数据类型使用+，来将其转换为number
-        它的原理和Number()函数一样
-    - 自增++
-        - 通过自增可以使变量在自身基础上增加1
-        - 对于一个变量自增以后，原变量的值会立刻自增1
-        - 自增分成两种：前++（++a）和后++（a++）
-            无论是前++还是后++都会使原变量的值自增1
-            不同的是前++和后++本身的值
-            前++（++a）的值等于新值（自增后的值）
-            后++（a++）的值等于原变量的值（自增前的值）
-    - 自减--
-        - 通过自减可以使变量在自身基础上减1
-        - 对于一个变量自减以后，原变量的值会立刻自减1
-        - 自减分成两种：前--（--a）和后--（a--）
-            无论是前--还是后--都会使原变量的值自减1
-            不同的是前--和后--本身的值
-            前--（--a）的值等于新值（自减后的值）
-            后--（a--）的值等于原变量的值（自减前的值）
-* 逻辑运算符
-    - ！（非）
-        - ！可以用来对一个值进行非运算
-        - 所谓非运算就是对一个布尔值进行取反操作
-            true变false，false变true
-        - 如果对一个非布尔值进行取反，则会将其转换为布尔值然后再取反
-            所以可以利用该特点将一个其他数据类型转换为布尔值
-    - &amp;&amp;（与）
-        - &amp;&amp;可以对符号两侧的值进行与运算并返回结果
-        - JS中的“与”属于短路与
-            如果第一个值为false，则不会看第二个值
-    - ||（或）
-        - ||可以对符号两侧的值进行或运算并返回结果
-        - JS中的“或”属于短路或
-            如果第一个值为true，则不会看第二个值
-    - &amp;&amp; || 非布尔值的情况
-        - 对于非布尔值进行与或运算时
-            会先将其转换为布尔值，然后再运算，并且返回原值
-        - 与运算：
-            - 如果第一个值为true，则必然返回第二个值
-            - 如果第一个值为false，则必然返回第一个值
-        - 或运算：
-            - 如果第一个值为true，则必然返回第一个值
-            - 如果第一个值为false，则必然返回第二个值
-* 关系运算符
-    - 如果关系成立则返回true，反之则返回false
-    &gt; 大于号
-    &gt;= 大于等于
-    &lt; 小于号
-    &lt;= 小于等于
-    == 相等
-    != 不相等
-    === 全等：如果两个值的类型不同，直接返回false
-    !== 不全等：如果两个值的类型不同，直接返回true
-        - 任何值和NaN做任何比较都是false
-        - 比较两个字符串时，比较的是字符串的字符编码（Unicode编码）
-            比较字符编码时是一位一位进行比较
-            如果两位一样则比较下一位
-        - undefined衍生自null
-            所以这两个值做相等判断时，会返回true
-        - NaN不和任何值相等，包括它本身
-* 条件运算符（三目运算符）
-    - 语法：
-        条件表达式?语句1:语句2;
-    - 如果条件的表达式的求值结果是一个非布尔值
-        则将其转换为布尔值然后再运算</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/04/JavaScript/JavaScript01/">JavaScript01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-04
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>语法规范：</p>
-<pre><code>* JS中严格区分大小写
-* JS中每一条语句以分号结尾
-    - 如果不写分号，浏览器会自动添加，但是会消耗一些系统资源
-        而且有些时候，浏览器会加错分号，所以在开发中分号必须写
-* JS中会忽略多个空格和换行，所以我们可以利用空格和换行对代码进行格式化
-* 在JS中可以使用&#123;&#125;来为语句进行分组
-    同一个&#123;&#125;中的语句我们称为是一组语句
-    它们要么都执行，要么都不执行
-        一个&#123;&#125;中的语句我们也称为一个代码块
-            在JS中的代码块只具有分组的作用
-                代码块的内容在外部都是完全可见的</code></pre>
-<p>编写位置</p>
-<pre><code>* 编写在标签内
-    - 可以将js代码编写到标签的onclick属性中，当我们点击按钮时，js代码才会执行
-    - 可以将js代码写在超链接的href属性中，这样当点击超链接时会执行js代码
-* 将js代码编写到script标签中
-* 引入外部js文件
-    - 将js代码编写到外部到外部js文件中，然后通过script标签引入
-        写到外部文件中可以在不同的页面中同时引用，
-            推荐的使用方法
-    - script标签一旦用于引入外部文件了，就不能在编写代码了，即使编写了浏览器也会忽略
-        如果需要则可以再创建一个新的script标签用于编写内部代码</code></pre>
-<p>字面量、变量和标识符</p>
-<pre><code>* 字面量：都是一些不可改变的值
-    - 如：1 2 3 4 5
-    - 字面量都是可以直接使用的，但我们一般都不会直接使用字面量
-* 变量：变量的值可以任意改变
-    - 变量可以用来保存字面量，更加方便我们使用，所以在开发中都是通过变量去保存一个字面量
-        而很少直接使用字面量
-    - 在js使用var关键字来声明一个变量
-* 标识符
-    - 在JS中所有的可以由我们自主命名的都可以称为是标识符
-    - 如：变量名、函数名、属性名都属于标识符
-    - 命名一个标识符时需要遵循如下的规则：
-        - 标识符中可以含有字母、数字、_、$
-        - 标识符不能以数字开头
-        - 标识符不能是JS中的关键字和保留字
-    - JS底层保存标识符时实际上使用的是Unicode编码
-        所以理论上讲，所有的utf-8中含有的内容都可以作为标识符</code></pre>
-<p>数据类型</p>
-<pre><code>* 可以使用一个运算符typeof来检查一个变量的类型
-    - 语法：typeof 变量
-    - 检查字符串时，会返回string
-    - 检查数值时，会返回number
-
-* 数据类型指的就是字面量的类型，在js中一共有六种数据类型：
-    - String 字符串
-        - 在JS中字符串需要使用引号引起来
-        - 使用双引号或单引号都可以，但不能混合使用
-        - 引号不能嵌套，双引号不能放双引号，单引号也是
-        - 在字符串中我们可以使用\作为转义字符
-            - \&quot; 表示 &quot;
-            - \&#39; 表示 &#39;
-            - \n 表示换行
-            - \t 表示制表符（Tab）
-            - \\ 表示 \
-    - Number 数值
-        - 包括整数和浮点数（小数）
-        - 可以表达的数字的最大值为Number.MAX_VALUE（1.7976931348623157e+308）
-        - 可以表达的大于零的数字的最小值为Number.MIN_VALUE（5e-324）
-        - 如果使用Number表示的数字超过了最大值，则会返回一个
-            Infinity 表示正无穷
-            -Infinity 表示负无穷
-            使用typeof检查Infinity也会返回number
-        - NaN是一个特殊的数字，表示Not A Number
-            使用typeof检查一个NaN也会返回number
-        - 在JS中整数的运算基本可以保证精确
-            但如果进行浮点运算可能会得到一个不精确的结果
-    - Boolean 布尔值
-        - 布尔值只有两个值，主要用于做逻辑判断
-        - 使用typeof检查一个布尔值时，会返回Boolean
-    - Null 空值
-        - Null只有一个值，就是null
-        - 这个值专门用来表示一个为空的对象
-        - 使用typeof检查一个null值时，会返回object
-    - Undefined 未定义
-        - Undefined只有一个值，就是undefined
-        - 当声明一个变量，但是并不给变量赋值时，它的值就是undefined
-        - 使用typeof检查一个undefined时也会返回undefined
-    - Object 对象
-    - 其中String Number Boolean Null Undefined属于基本数据类型
-        而Object属于引用数据类型</code></pre>
-<p>数据类型的转换</p>
-<pre><code>* 将其他的数据类型转换为String
-    - 方式一：
-        - 调用被转换数据类型的toString()方法
-        - 该方法不会影响到原变量，它会将转换的结果返回
-        - 但null和undefined两个值没有toString()方法
-            如果调用他们的方法会报错
-    - 方式二：
-        - 调用String()函数，并将被转换的数据作为参数传递给函数
-        - 使用String()函数做强制类型转换时
-            - 对于Number和Boolean实际上就是调用的toString()方法
-            - 对于null和undefined就不会调用toString()方法
-                它会将null直接转换成&quot;null&quot;
-                将undefined直接转换成&quot;undefined&quot;
-
-* 将其他的数据类型转换为Number
-    - 方式一：
-        - 使用Number()函数
-            - 字符串 --&gt; 数字
-                - 如果是纯数字的字符串，则直接将其转换成数字
-                - 如果字符串中有非数字的内容，则转换为NaN
-                - 如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
-            - 布尔 --&gt; 数字
-                - true 转成 1
-                - false 转成 0
-            - null --&gt; 数字 0
-            - undefined --&gt; 数字 NaN
-    - 方式二：
-        - 这种方式专门用来对付字符串
-        - parseInt() 把一个字符串转换成一个整数
-            像“070”这样的字符串，有些浏览器会当成8进制来解析，有些会当成10进制来解析
-            因此可在其中加入第二个参数来指定数字的进制
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="string">&quot;070&quot;</span>;</span><br><span class="line">a=<span class="built_in">parseInt</span>(a,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-        - parseFloat() 把一个字符串转换为一个浮点数
-* 将其他的数据类型转换为Boolean
-    - 使用Boolean()函数
-        - 数字--&gt;布尔
-            除了0和NaN，其余都是true
-        - 字符串--&gt;布尔
-            除了空串，其余都是true
-        - null和undefined都会转换为false
-        - 对象也会转换为true</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/04/Css/Css10/">Css10</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-04
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS中的高度塌陷问题</p>
-<pre><code>* 高度塌陷的问题：
-    - 在浮动布局中，父元素的高度默认是被子元素撑开的
-        当子元素浮动后，其完全脱离文档流，子元素从文档流后将无法撑起父元素的高度
-        导致父元素的高度丢失
-    - 父元素高度丢失后，其下的元素会自动上移，导致页面的布局混乱
-        所以这个问题必须处理</code></pre>
-<p>CSS高度塌陷的处理</p>
-<pre><code>* BFC（Block Formatting Context）块级格式化环境
-    - BFC是CSS中的一个隐含元素，可以为一个元素开启BFC
-        开启BFC该元素会变成一个独立的布局区域
-    - 元素开启BFC后的特点：
-        - 不会被浮动的父元素所覆盖
-        - 子元素和父元素外边距不会重叠
-        - 可以包含浮动的子元素
-    - 可以通过一些特殊的方式来开启元素的BFC：
-        - 设置元素的浮动（不推荐）
-        - 将元素设置为行内块元素（不推荐）
-        - 将元素的overflow属性设置为一个非visible（默认值）的值
-            常用的方式 为元素设置overflow:auto或overflow:hidden
-* 利用after伪元素
-    - 向其塌陷的父元素添加一个after伪元素，在其末尾设置一个空内容
-        并将其设置为块元素同时使用clear属性清除浮动元素的影响，以此来撑起父元素的高度</code></pre>
-<p>CSS中的clear属性</p>
-<pre><code>* 作用：清除浮动元素对当前元素所产生影响
-* 可选值：
-    - left 清除左侧浮动元素对当前元素的影响
-    - right 清除右侧浮动元素对当前元素的影响
-    - both 清除两侧中影响最大的那侧
-* 原理：设置清除浮动后，浏览器会自动为元素添加一个上外边距
-        以使其位置不受其他元素的影响</code></pre>
-<p>clearfix</p>
-<pre><code>* 设置clearfix类可以同时解决高度塌陷和外边距重叠的问题
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,.clearfix::after&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
 </div>
 
 

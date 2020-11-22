@@ -57,6 +57,193 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/11/22/ES6/ES6-%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F/">ES6-常量与变量</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-22
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>常量</p>
+<pre><code>* 格式：const 常量名称=&quot;常量值&quot;;
+* 注意事项：
+    - 一定要赋初始值
+    - 一般常量都用大写字母命名（推荐）
+    - 常量的值不能修改
+    - 块级作用域：只在当前大括号以及大括号所包含的下级大括号中起作用
+    - 对于赋予常量的数组和对象中的元素修改时，不算做对常量的修改</code></pre>
+<p>变量</p>
+<pre><code>* 格式：let 变量名称=&quot;变量值&quot;;
+* 注意事项：
+    - 块级作用域：只在当前大括号以及大括号所包含的下级大括号中起作用
+    - 不存在变量提前</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/22/Java/Java13-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">Java13-抽象类与接口</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-22
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>抽象类</p>
+<pre><code>* 抽象方法：就是普通方法加上abstract关键字，然后去掉大括号，直接分号结束
+* 抽象类：抽象方法所在的类必须抽象类，但抽象类中的方法不一定要必须是抽象方法，在class之前加上abstract
+* 如何使用抽象方法和抽象类：
+    - 不能直接创建new抽象类对象
+    - 必须创建一个子类来继承抽象类才能使用
+    - 子类必须覆盖重写抽象父类当中所有的抽象方法
+        - 覆盖重写实现：子类去掉父类中的抽象方法的abstract关键字，然后补上方法体大括号</code></pre>
+<p>接口</p>
+<pre><code>* 接口就是多个类的公共规范，是一种引用数据类型
+* 格式：public interface 接口名称&#123;&#125;
+* 换成关键字interface之后，编译生成的字节码文件仍是：.java --&gt; .class
+* 接口使用：
+    - 接口不能直接使用，必须有一个实现类来实现接口
+    - 格式：public class 实现类名称 implements 接口名称&#123;&#125;
+    - 实现类必须覆盖重写接口中的所有抽象方法
+        - 覆盖重写实现：实现类去掉接口中的抽象方法的abstract关键字，然后补上方法体大括号
+    - 创建实现类的对象进行使用
+    - 注意事项：
+        - 如果实现类没有重写接口中所有的抽象方法，那这个实现类自己就必须是抽象类
+* 在任意版本的Java中接口都可以定义抽象方法
+    - 格式：public abstract 返回值类型 方法名称（参数列表）;
+    - 注意事项：
+        - 接口当中的抽象方法，修饰符必须是两个固定的关键字：public abstract
+        - 这两个关键字可以都省略也可以省略其中一个
+* 如果Java7，那么接口中可以包含：
+    - 常量
+        - 必须使用public static final三个关键字修饰
+        - 格式：public static final 数据类型 常量名字=数据值
+        - 注意事项：
+            - 接口中的常量可以省略public static final，但省略效果也是一样
+            - 接口中的常量必须进行赋值
+            - 接口中的常量名称使用完全大写的字母，用下划线进行分隔（推进的命名规则）
+* 如果Java8，那么接口中可以包含：
+    - 默认方法
+        - 接口的默认方法，可以通过接口实现类对象直接调用
+        - 接口的默认方法也可以被接口实现类覆盖重写
+        - 格式：public default 返回值类型 方法名称（参数列表）&#123;&#125;
+        - 默认方法可用于解决接口升级的问题
+    - 静态方法
+        - 格式：public static 返回值类型 方法名称（参数列表）&#123;&#125;
+        - 直接通过接口名称调用其中的静态方法
+        - 注意事项：
+            - 不能通过接口实现类的对象调用接口中的静态方法
+* 如果Java9，那么接口中可以包含：
+    - 私有方法
+        - 普通私有方法
+            - 用于解决多个默认方法之间重复代码的问题
+            - 格式：private 返回值类型 方法名称（参数列表）&#123;&#125;
+        - 静态私有方法
+            - 用于解决多个静态方法之间重复代码的问题
+            - 格式：private static 返回值类型 方法名称（参数列表）&#123;&#125;
+* 使用接口时需注意：
+    - 接口没有静态代码块或构造方法的
+    - 一个类的父类是唯一的，但一个类可以同时有多个接口，接口之间用逗号分隔开
+    - 如果实现类所实现的多个接口中存在重复的抽象方法，那么只要重写一次即可
+    - 如果实现类所实现的多个接口中存在重复的默认方法，那么实现类一定要重写重复的默认方法
+    - 一个类的父类中的方法和接口中的默认方法重复时，父类方法优先级更高
+    - 接口与接口之间也是多继承的</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/">Java12-This与super关键字</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-19
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>this</p>
+<pre><code>* 当方法的局部变量和类的成员变量重名时，根据“就近原则”，优先使用局部变量
+    若需要在方法中访问成员变量可以使用this.成员变量名
+* 通过谁调用的方法，this就是谁
+* 用this关键字访问本类内容：
+    - 在本类的成员方法中，访问本类的成员变量
+    - 在本类的成员方法中，访问本类的另一个成员变量
+    - 在本类的构造方法中，访问本类的另一个构造变量
+    - 注意：
+        - this必须是构造方法的第一个语句，唯一一个
+        - super和this两种构造调用不能同时调用</code></pre>
+<p>super</p>
+<pre><code>* super关键字用来访问父类内容：
+    - 在子类的成员方法中，访问父类的成员变量
+    - 在子类的成员方法中，访问父类的成员方法
+    - 在子类的构造方法中，访问父类的构造方法</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/11/18/Java/Java11-%E7%BB%A7%E6%89%BF/">Java11-继承</a>
       </h1>
     
@@ -74,7 +261,29 @@
     - 子类可以拥有父类的“内容”
     - 子类还可以拥有自己的“专属内容
 * 定义父类（基类、超类）的格式（一个普通类的定义）：public class 父类名称&#123;&#125;;
-* 定义子类：public class 子类名称 extends 父类名称&#123;&#125;;</code></pre>
+* 定义子类：public class 子类名称 extends 父类名称&#123;&#125;;
+* 在父子类的继承关系中，若成员变量/成员方法重名，则创建子类对象时，访问有两种方式：
+    - 直接通过子类对象访问成员变量/成员方法：通过谁调用就优先用谁，没有则向上找
+    - 间接通过成员方法访问成员变量：该方法属于谁就优先用谁，没有则向上找
+    - 注意：无论是成员变量还是成员方法，如果没有都是向上找父类，绝不会向下找子类
+* 使用变量：
+    - 局部变量：直接写成员变量名
+    - 本类的成员变量：this.成员变量名
+    - 父类的成员变量：super.成员变量名
+* 重写（Override）
+    - 概念：在继承关系中方法的名称一样，参数列表也一样
+    - 特点：创建的是子类对象则优先使用子类方法
+    - 注意事项：
+        - 必须保证父子类之间方法的名称、参数列表一样
+        - @Override关键字写在方法的前面，可以检测重写是否有效
+        - 子类方法的返回值必须小于等于父类方法的返回值范围
+        - 子类方法的权限必须大于等于父类方法的权限修饰符
+            - public&gt;protected&gt;（default）&gt;private
+            - （default）不是关键字，而是什么都不写，留空
+* 父子类构造方法的访问特点：
+    - 子类构造方法中有一个隐含默认的&quot;super()&quot;调用，所以一定先调用父类构造方法，后执行子类的构造方法
+    - 子类构造可以通过super关键字来调用父类重载构造
+    - super的父类构造调用必须是子类构造方法的第一个语句，不能一个子类构造调用多次super构造</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
@@ -270,7 +479,7 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
-        <a href="/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85%E4%B8%8Ethis/">Java08-封装与This</a>
+        <a href="/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85/">Java08-封装</a>
       </h1>
     
     <!-- Date and Author -->
@@ -290,10 +499,6 @@
         - 一旦使用关键字private对成员变量进行修饰，那么本类当中仍然可以随意访问
             但超出本类范围之外就不能再直接访问了
         - 因此我们可以采取间接访问private成员变量的方法，就是定义一对Getter/Setter方法</code></pre>
-<p>this</p>
-<pre><code>* 当方法的局部变量和类的成员变量重名时，根据“就近原则”，优先使用局部变量
-    若需要在方法中访问成员变量可以使用this.成员变量名
-* 通过谁调用的方法，this就是谁</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
@@ -515,196 +720,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/14/ajax/ajax01/">Ajax01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-14
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JS 原生 ajax</p>
-<pre><code>* HTTP(hypertext transport protocol)协议(超文本传输协议)，
-    协议详细规定了浏览器和万维网服务器之间互相通信的规则
-* 请求报文和响应报文格式与参数
-    - 行
-    - 头
-    - 体
-* 创建ajax
-    1.创建对象
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var xhr&#x3D;new XMLHttpRequest();</span><br></pre></td></tr></table></figure>
-    2.初始化，设置请求方法和url
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&quot;GET&quot;,&quot;style.json&quot;);</span><br><span class="line">&lt;!-- xhr.open(&quot;POST&quot;,&quot;style.json&quot;); --&gt;</span><br></pre></td></tr></table></figure>
-    3.发送
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
-    4.事件绑定，处理服务端返回的结果
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">    &lt;!-- 判断状态(因为服务器返回了所有的结果) --&gt;</span><br><span class="line">    if(xhr.readyState&#x3D;&#x3D;&#x3D;4)&#123;</span><br><span class="line">        &lt;!-- 判断响应状态码 --&gt;</span><br><span class="line">        if(xhr.status&gt;&#x3D;200&amp;&amp;xhr.status&lt;&#x3D;300||xhr.status&#x3D;&#x3D;&#x3D;304&gt;)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-<p>jquery ajax</p>
-<pre><code>* 创建ajax，直接调用jquery中的.ajax()方法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;&quot;;</span><br><span class="line">    type:&quot;&quot;;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/08/JavaScript/tools/">Tools</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-08
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>自定义的函数</p>
-<pre><code>* 定义一个函数用来判断一个元素中是否有指定的class属性值
-    有则返回 true 反之返回 false
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">参数：</span><br><span class="line">    obj 要添加 class 属性的元素</span><br><span class="line">    cn 要添加的 class 属性值 </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">function hasClass(obj,cn)&#123;</span><br><span class="line">&#x2F;&#x2F; 创建一个正则表达式</span><br><span class="line">var reg&#x3D;new RegExp(&quot;\\b&quot;+cn+&quot;\\b&quot;);</span><br><span class="line">return reg.test(obj.className);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-* 定义一个函数用来向一个元素中添加指定的 class 属性值
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">参数：</span><br><span class="line">    obj 要添加 class 属性的元素</span><br><span class="line">    cn 要添加的 class 属性值 </span><br><span class="line">--&gt;</span><br><span class="line">function addClass(obj,cn)&#123;</span><br><span class="line">&#x2F;&#x2F; 检查 obj 中是否含有 cn</span><br><span class="line">if(!hasClass(obj,cn))&#123;</span><br><span class="line">obj.className+&#x3D;&quot;&quot;+cn;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-* 定义一个函数用来删除一个元素中指定的 class 属性值
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--         </span><br><span class="line">参数：</span><br><span class="line">obj 要添加 class 属性的元素</span><br><span class="line">cn 要添加的 class 属性值</span><br><span class="line">--&gt;</span><br><span class="line">function removeClass(obj,cn)&#123;</span><br><span class="line">&#x2F;&#x2F; 创建一个正则表达式</span><br><span class="line">var reg&#x3D;new RegExp(&quot;\\b&quot;+cn+&quot;\\b&quot;);</span><br><span class="line">&#x2F;&#x2F; 删除 class</span><br><span class="line">obj.className&#x3D;obj.className.replace(reg,&quot;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-* 定义一个函数用来切换一个类,如果元素中有该类则删除,如果元素中没有该类则添加
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--     </span><br><span class="line">参数：</span><br><span class="line">obj 要添加 class 属性的元素</span><br><span class="line">cn 要添加的 class 属性值</span><br><span class="line"> --&gt;</span><br><span class="line">function toggleClass(obj,cn)&#123;</span><br><span class="line">&#x2F;&#x2F; 检查 obj 中是否含有 cn</span><br><span class="line">if(hasClass(obj,cn))&#123;</span><br><span class="line">&#x2F;&#x2F; 有则删除</span><br><span class="line">removeClass(obj,cn);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">&#x2F;&#x2F; 没有则添加</span><br><span class="line">addClass(obj,cn);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/05/JavaScript/JavaScript11/">JavaScript11</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>计时器</p>
-<pre><code>* setInterval()
-    - 定时调用
-    - 可以将一个函数每隔一段时间执行一次
-    - 参数：
-        1.回调函数，该函数每隔一段时间被调用一次
-        2.每次调用间隔的时间，单位是毫秒
-    - 返回值：返回一个Number类型的数据，这个数字用来作为定时器的唯一标识
-* setTimeout()
-    - 延时调用
-    - 延时调用一个函数不会马上执行，而是隔一段时间后再执行，而且只会执行一次
-    - 参数：
-        1.回调函数
-        2.执行之前间隔的时间，单位是毫秒
-    - 返回值：返回一个Number类型的数据，这个数字用来作为定时器的唯一标识
-* clearInterval()
-    - 可以用来关闭一个定时器
-    - 可以接收任意参数，当一个定时器的标识作为参数，这样将关闭标识对应的定时器
-        若参数不是一个有效的标识则什么都不做</code></pre>
-<p>JSON</p>
-<pre><code>* JavaScript Object Notation JS对象表示法
-* JS中的对象只有JS自己认识，其他语言都不认识
-* JSON就是一个特殊格式的字符串，这个字符串可以被任意的语言识别
-    并且可以转换为任意语言中的对象，JSON在开发中主要用来数据的交互
-* JSON和JS对象的格式一样，只不过JSON字符串中的属性名必须要加双引号
-* JSON中允许的值：
-    - 字符串
-    - 数值
-    - 布尔值
-    - null
-    - 对象
-    - 数组
-* 将JSON字符串转换为JS中的对象
-    - 在JS中为我们提供了一个工具类就叫JSON，这个对象可以帮助我们将一个JSON转换为JS对象
-        也可以将JS对象转换为JSON
-    - JSON--&gt;JS
-        - JSON.parse()
-            - 将一个JSON转换为JS对象
-            - 需要一个JSON字符串作为参数，会将该字符串转换为JS对象并将其作为返回值返回
-    - JS--&gt;JSON
-        - JSON.stringify()
-            - 将一个JS转换为JSON对象
-            - 需要一个JS对象作为参数，会将该对象转换为JSON字符串并将其作为返回值返回
-    - JSON这个对象在IE7及以下的浏览器中不支持，如果需要兼容IE7及以下的浏览器的JSON操作
-        可以通过引入一个外部的JS文件来处理</code></pre>
-<p>闭包</p>
-<pre><code>* 如何产生闭包？
-    - 当一个嵌套的内部子函数引用了嵌套的外部父函数的变量（函数）时，就产生了闭包
-* 闭包到底是什么？
-    - 闭包是嵌套的内部函数
-    - 包含被引用变量（函数）的对象
-    - 注意：闭包存在于嵌套的内部函数中
-* 产生闭包的条件
-    - 函数嵌套
-    - 内部函数引用了外部函数的数据（变量/函数 ）</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
 </div>
 
 
