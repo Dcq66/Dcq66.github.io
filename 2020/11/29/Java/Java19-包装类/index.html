@@ -1,0 +1,191 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java19-包装类 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/29/Java/Java19-包装类/">
+            Java19-包装类
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>包装类</p>
+<pre><code>* 想要基本类型数据像对象一样操作，就可以使用基本类型对应的包装类如下：
+    - 基本类型          对应的包装类
+        byte              Byte
+        short             Short
+        int               Integer
+        long              Long
+        float             Float
+        double            Double
+        char              Character
+        boolean           Boolean
+* 装箱与拆箱
+    - 装箱：把基本类型数据包装到包装类中（基本类型的数据--&gt;包装类）
+        - 构造方法：
+            - Integer(int value)    构造一个Integer对象表示指定的int值
+            - Integer(String s)    构造一个Integer对象表示指定String参数代表的int值
+                - 注意：传递的字符串必须是基本类型数据的字符串形式
+        - 静态方法：
+            - static Integer valueOf(int i)    返回一个表示指定int值的Integer对象
+            - static Integer valueOf(String s)    返回保存指定的String值的Integer对象
+    - 拆箱：在包装类中取出基本类型的数据（包装类--&gt;基本类型的数据）
+        - 成员方法：
+            - int intValue()    以int类型返回该Integer的值
+* 自动装箱与自动拆箱：基本类型的数据和包装类之间可以自动的相互转换（JDK1.5之后开始的特性）
+* 基本类型与字符串之间的转换
+    - 基本类型--&gt;字符串
+        - 基本类型数据的值+&quot;&quot;（最简单的、最常用的方式）
+        - 使用包装类中的静态方法：
+            - static String toString(int i)    返回一个表示指定整数的String对象
+        - 使用String类中的静态方法：
+            - static String valueOf(int i)      返回int参数的字符串表现形式
+    - 字符串--&gt;基本类型
+        - 使用包装类的静态方法parseXX(&quot;字符串&quot;)
+            - Integer类：   static int parseInt(String s)
+            - Double类：    static double parseDouble(String s)
+            .....</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/
+https://dcq66.github.io/2020/11/29/Java/Java19-%25E5%258C%2585%25E8%25A3%2585%25E7%25B1%25BB/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -57,6 +57,710 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/04/JavaScript/JavaScript01/">JavaScript01</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-04
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>语法规范：</p>
+<pre><code>* JS中严格区分大小写
+* JS中每一条语句以分号结尾
+    - 如果不写分号，浏览器会自动添加，但是会消耗一些系统资源
+        而且有些时候，浏览器会加错分号，所以在开发中分号必须写
+* JS中会忽略多个空格和换行，所以我们可以利用空格和换行对代码进行格式化
+* 在JS中可以使用&#123;&#125;来为语句进行分组
+    同一个&#123;&#125;中的语句我们称为是一组语句
+    它们要么都执行，要么都不执行
+        一个&#123;&#125;中的语句我们也称为一个代码块
+            在JS中的代码块只具有分组的作用
+                代码块的内容在外部都是完全可见的</code></pre>
+<p>编写位置</p>
+<pre><code>* 编写在标签内
+    - 可以将js代码编写到标签的onclick属性中，当我们点击按钮时，js代码才会执行
+    - 可以将js代码写在超链接的href属性中，这样当点击超链接时会执行js代码
+* 将js代码编写到script标签中
+* 引入外部js文件
+    - 将js代码编写到外部到外部js文件中，然后通过script标签引入
+        写到外部文件中可以在不同的页面中同时引用，
+            推荐的使用方法
+    - script标签一旦用于引入外部文件了，就不能在编写代码了，即使编写了浏览器也会忽略
+        如果需要则可以再创建一个新的script标签用于编写内部代码</code></pre>
+<p>字面量、变量和标识符</p>
+<pre><code>* 字面量：都是一些不可改变的值
+    - 如：1 2 3 4 5
+    - 字面量都是可以直接使用的，但我们一般都不会直接使用字面量
+* 变量：变量的值可以任意改变
+    - 变量可以用来保存字面量，更加方便我们使用，所以在开发中都是通过变量去保存一个字面量
+        而很少直接使用字面量
+    - 在js使用var关键字来声明一个变量
+* 标识符
+    - 在JS中所有的可以由我们自主命名的都可以称为是标识符
+    - 如：变量名、函数名、属性名都属于标识符
+    - 命名一个标识符时需要遵循如下的规则：
+        - 标识符中可以含有字母、数字、_、$
+        - 标识符不能以数字开头
+        - 标识符不能是JS中的关键字和保留字
+    - JS底层保存标识符时实际上使用的是Unicode编码
+        所以理论上讲，所有的utf-8中含有的内容都可以作为标识符</code></pre>
+<p>数据类型</p>
+<pre><code>* 可以使用一个运算符typeof来检查一个变量的类型
+    - 语法：typeof 变量
+    - 检查字符串时，会返回string
+    - 检查数值时，会返回number
+
+* 数据类型指的就是字面量的类型，在js中一共有六种数据类型：
+    - String 字符串
+        - 在JS中字符串需要使用引号引起来
+        - 使用双引号或单引号都可以，但不能混合使用
+        - 引号不能嵌套，双引号不能放双引号，单引号也是
+        - 在字符串中我们可以使用\作为转义字符
+            - \&quot; 表示 &quot;
+            - \&#39; 表示 &#39;
+            - \n 表示换行
+            - \t 表示制表符（Tab）
+            - \\ 表示 \
+    - Number 数值
+        - 包括整数和浮点数（小数）
+        - 可以表达的数字的最大值为Number.MAX_VALUE（1.7976931348623157e+308）
+        - 可以表达的大于零的数字的最小值为Number.MIN_VALUE（5e-324）
+        - 如果使用Number表示的数字超过了最大值，则会返回一个
+            Infinity 表示正无穷
+            -Infinity 表示负无穷
+            使用typeof检查Infinity也会返回number
+        - NaN是一个特殊的数字，表示Not A Number
+            使用typeof检查一个NaN也会返回number
+        - 在JS中整数的运算基本可以保证精确
+            但如果进行浮点运算可能会得到一个不精确的结果
+    - Boolean 布尔值
+        - 布尔值只有两个值，主要用于做逻辑判断
+        - 使用typeof检查一个布尔值时，会返回Boolean
+    - Null 空值
+        - Null只有一个值，就是null
+        - 这个值专门用来表示一个为空的对象
+        - 使用typeof检查一个null值时，会返回object
+    - Undefined 未定义
+        - Undefined只有一个值，就是undefined
+        - 当声明一个变量，但是并不给变量赋值时，它的值就是undefined
+        - 使用typeof检查一个undefined时也会返回undefined
+    - Object 对象
+    - 其中String Number Boolean Null Undefined属于基本数据类型
+        而Object属于引用数据类型</code></pre>
+<p>数据类型的转换</p>
+<pre><code>* 将其他的数据类型转换为String
+    - 方式一：
+        - 调用被转换数据类型的toString()方法
+        - 该方法不会影响到原变量，它会将转换的结果返回
+        - 但null和undefined两个值没有toString()方法
+            如果调用他们的方法会报错
+    - 方式二：
+        - 调用String()函数，并将被转换的数据作为参数传递给函数
+        - 使用String()函数做强制类型转换时
+            - 对于Number和Boolean实际上就是调用的toString()方法
+            - 对于null和undefined就不会调用toString()方法
+                它会将null直接转换成&quot;null&quot;
+                将undefined直接转换成&quot;undefined&quot;
+
+* 将其他的数据类型转换为Number
+    - 方式一：
+        - 使用Number()函数
+            - 字符串 --&gt; 数字
+                - 如果是纯数字的字符串，则直接将其转换成数字
+                - 如果字符串中有非数字的内容，则转换为NaN
+                - 如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
+            - 布尔 --&gt; 数字
+                - true 转成 1
+                - false 转成 0
+            - null --&gt; 数字 0
+            - undefined --&gt; 数字 NaN
+    - 方式二：
+        - 这种方式专门用来对付字符串
+        - parseInt() 把一个字符串转换成一个整数
+            像“070”这样的字符串，有些浏览器会当成8进制来解析，有些会当成10进制来解析
+            因此可在其中加入第二个参数来指定数字的进制
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="string">&quot;070&quot;</span>;</span><br><span class="line">a=<span class="built_in">parseInt</span>(a,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+        - parseFloat() 把一个字符串转换为一个浮点数
+* 将其他的数据类型转换为Boolean
+    - 使用Boolean()函数
+        - 数字--&gt;布尔
+            除了0和NaN，其余都是true
+        - 字符串--&gt;布尔
+            除了空串，其余都是true
+        - null和undefined都会转换为false
+        - 对象也会转换为true</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/04/Css/Css10/">Css10</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-04
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS中的高度塌陷问题</p>
+<pre><code>* 高度塌陷的问题：
+    - 在浮动布局中，父元素的高度默认是被子元素撑开的
+        当子元素浮动后，其完全脱离文档流，子元素从文档流后将无法撑起父元素的高度
+        导致父元素的高度丢失
+    - 父元素高度丢失后，其下的元素会自动上移，导致页面的布局混乱
+        所以这个问题必须处理</code></pre>
+<p>CSS高度塌陷的处理</p>
+<pre><code>* BFC（Block Formatting Context）块级格式化环境
+    - BFC是CSS中的一个隐含元素，可以为一个元素开启BFC
+        开启BFC该元素会变成一个独立的布局区域
+    - 元素开启BFC后的特点：
+        - 不会被浮动的父元素所覆盖
+        - 子元素和父元素外边距不会重叠
+        - 可以包含浮动的子元素
+    - 可以通过一些特殊的方式来开启元素的BFC：
+        - 设置元素的浮动（不推荐）
+        - 将元素设置为行内块元素（不推荐）
+        - 将元素的overflow属性设置为一个非visible（默认值）的值
+            常用的方式 为元素设置overflow:auto或overflow:hidden
+* 利用after伪元素
+    - 向其塌陷的父元素添加一个after伪元素，在其末尾设置一个空内容
+        并将其设置为块元素同时使用clear属性清除浮动元素的影响，以此来撑起父元素的高度</code></pre>
+<p>CSS中的clear属性</p>
+<pre><code>* 作用：清除浮动元素对当前元素所产生影响
+* 可选值：
+    - left 清除左侧浮动元素对当前元素的影响
+    - right 清除右侧浮动元素对当前元素的影响
+    - both 清除两侧中影响最大的那侧
+* 原理：设置清除浮动后，浏览器会自动为元素添加一个上外边距
+        以使其位置不受其他元素的影响</code></pre>
+<p>clearfix</p>
+<pre><code>* 设置clearfix类可以同时解决高度塌陷和外边距重叠的问题
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,.clearfix::after&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/03/Css/Css09/">Css09</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-03
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS的浮动</p>
+<pre><code>* 通过浮动可以使一个元素向其父元素的左侧或右侧移动
+    - 使用float属性来设置元素的浮动
+        可选值：
+            - none 默认值，元素不浮动
+            - left 元素向左移动
+            - right 元素向右移动
+    - 注意：元素设置浮动以后，水平布局的等式便不需要强制成立
+            元素设置浮动后，会完全从文档流中脱离，不再占用文档流的位置
+            所以元素下边的还在文档流中的元素会自动向上移动
+    - 浮动的特点：
+        - 浮动元素会完全脱离文档流，不再占据文档流的位置
+        - 设置浮动以后元素会向父元素的左侧或右侧移动
+        - 浮动元素默认不会从父元素中移出
+        - 浮动元素向左或向右移动时，不会超过它前边的其他浮动元素
+        - 如果浮动元素的上边是一个没有浮动的块元素，则浮动元素无法上移
+        - 浮动元素不会超过它上边浮动的兄弟元素，最多和它一样高
+    - 简单总结：浮动目前来讲它的主要作用就是让页面中的元素可以水平排列
+                通过浮动可以制作一些水平方向的布局</code></pre>
+<p>CSS中脱离文档流的元素特点</p>
+<pre><code>* 块元素：
+    - 块元素不再独占一行
+    - 脱离文档流后，块元素的宽度和高度都默认被内容撑开
+* 行内元素：
+    - 行内元素脱离文档流以后会变成块元素，特点和块元素一样
+* 脱离文档流以后，不需要再区分快和行内了</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/29/Css/Css08/">Css08</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS盒子的轮廓与阴影</p>
+<pre><code>* 轮廓outline
+    - 用来设置元素的轮廓线，用法和border一模一样
+        轮廓和边框不同的点，就是轮廓不会影响到可见框的大小
+* 阴影box-shadow
+    - 用来设置元素的阴影效果，阴影不会影响布局
+    - 格式如下
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 50px red;</span><br></pre></td></tr></table></figure>
+    - 第一个值 水平偏移量 设置阴影的水平位置 正值向右移动 负值相反
+    - 第二个值 垂直偏移量 设置阴影的垂直位置 正值向下移动 负值相反
+    - 第三个值 阴影的模糊半径
+    - 第四个值 阴影的颜色</code></pre>
+<p>CSS盒子边框圆角设置</p>
+<pre><code>* border-radius：用来设置圆角 圆角设置的圆的半径大小
+* 取值格式
+    - 四个值：左上 右上 右下 左下
+    - 三个值：左上 右上/左下 右下
+    - 两个值：左上/右下 右上/左下</code></pre>
+<p>CSS盒子的大小</p>
+<pre><code>* 默认情况下，盒子可见框的大小由内容区、内边距和边框共同决定
+* box-sizing：用来设置盒子尺寸的计算方式（设置width和height的作用）
+    - 可选值：
+        - content-box 默认值，宽度和高度用来设置内容区的大小
+        - border-box 宽度和高度用来设置整个盒子可见框的大小
+            width和height指的是内容区、内边距和边框的总大小</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/28/Css/Css07/">Css07</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-28
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS外边距的重叠（折叠）</p>
+<pre><code>* 相邻的垂直方向的外边距会发生重叠现象
+    - 兄弟元素间的相邻垂直外边距会取两者之间较大值（两者都是正值）
+    - 特殊情况：
+        - 如果相邻的外边距一正一负，则取两者的和
+        - 如果相邻的外边距都是负值，则取两者之中绝对值较大的
+    父子元素：
+        - 父子元素间相邻外边距，子元素的移动会传递给父元素
+        - 父子元素外边距的重叠会影响到布局，所以必须处理</code></pre>
+<p>行内元素盒子模型的处理</p>
+<pre><code>* 行内元素不支持设置宽度和高度
+* display：用来设置元素显示的类型
+    可选值：
+        - inline 将元素设置为行内元素
+        - block 将元素设置为块元素
+        - inline-block 将元素设置为行内块元素
+            行内块元素，既可以设置宽度和高度又不会独占一行
+        - table 将元素设置为一个表格
+        - none 元素不在页面中显示
+* visibility 用来设置元素的显示状态
+    可选值：
+        - visible 默认值，元素在页面中正常显示
+        - hidden 元素在页面中隐藏，但是依然占据页面的位置</code></pre>
+<p>默认样式</p>
+<pre><code>* 通常情况下，浏览器都会为元素设置一些默认样式 
+    而默认样式的存在会影响到页面的布局
+    通常情况下编写网页的同时需要除去浏览器的默认样式
+* 使用通配选择器进行设置
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    margin:0;</span><br><span class="line">    padding:0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 使用重置样式表
+    - 重置样式表：专门用来对浏览器的样式进行重置的
+        - reset.css 直接除去了浏览器的默认样式
+        - normalize.css 对默认样式进行了统一</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/28/Css/Css06/">Css06</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-28
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>元素水平方向的布局</p>
+<pre><code>* 元素在其父元素中水平方向的位置有以下七个属性共同决定：
+    - margin-left
+    - border-left
+    - padding-left
+    - width
+    - padding-right
+    - border-right
+    - margin-right
+* 以上七个元素相加之后必须等于其父元素内容区的宽度
+    - 若以上等式不满足，则称为过度约束，等式会自动调整
+    - 调整的情况：
+        - 如果以上七个值中没有为auto的情况，则浏览器会自动调整margin-right值以使等式满足
+        - 这七个值中有三个可以设置为auto
+            - width
+            - margin-left
+            - margin-right
+        - 如果某个值设置为auto，则会自动调整设置为auto的那个值以使等式满足
+        - 如果设置一个外边距和一个宽度为auto，则会使宽度调整到最大，设置为auto的外边距则会调整到0
+        - 如果设置设置两个外边距为auto，宽度固定，则会将两个外边距的值设置为相同的值
+            我们可以利用这一特性来使一个元素在其父元素中居中
+        - 如果设置三个值都为auto，则两个外边为0，宽度最大</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/27/Css/Css05/">Css05</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS盒子模型（box model）</p>
+<pre><code>* CSS将页面中的所有元素都设置为一个矩形盒子
+* 将元素设置为矩形的盒子后，对页面的布局就变成将不同的盒子摆放到不同的位置
+* 盒子的可见框的大小由内容区、内边距、边框共同决定
+    所以在计算盒子大小时，需要将这三个区域加到一起计算
+* 每一个盒子都由以下几个部分组成：
+    - 内容区（content）
+    - 内边距（padding）
+    - 边框（border）
+    - 外边距（margin）
+* 内容区（content）
+    - 元素的所有子元素和文本内容都在内容区中排列
+    - 内容区大小由width和height两个属性来设置
+        - width 设置内容区的宽度
+        - height 设置内容区的高度
+* 内边距（padding）
+    - 内容区和边框之间的距离是内边距
+    - 一共有四个方向的内边距：
+        - padding-top
+        - padding-right
+        - padding-bottom
+        - padding-left
+    - 内边距的设置会影响到盒子的大小
+    - 背景颜色会延伸到内边距上
+    - padding简写属性，规则和border-width一样
+* 边框（border）
+    - 边框属性盒子边缘，边框里边属于盒子内部，出了边框都是盒子的外部
+    - 边框的大小会影响到整个盒子的大小
+    - 设置边框的三个属性：
+        - 边框的宽度 border-width:
+            border-width的默认值一般都是三个像素，可以指定四个方向的边框的宽度
+                指定值的情况：
+                    - 四个值：上，右，下，左
+                    - 三个值：上，左右，下
+                    - 两个值：上下 左右
+                    - 一个值：上下左右
+            除了border-width还有一组：border-xxx-width
+                xxx可以是top,right,bottom,left
+                用来单独指定某一个边的宽度
+        - 边框的颜色 border-color：
+            同样可以分别指定四个边的边框，规则和border-width一样
+                也可以省略不写，如果省略不写则自动使用color的颜色值
+        - 边框的样式 border-style：
+            边框样式：
+                - solid 实线
+                - dotted 点状虚线
+                - dashed 虚线
+                - double 双线
+            border-style的默认值是none，表示没有边框
+    - boeder简写属性，通过该属性可以同时设置边框所有的相关样式，并且没有顺序要求
+        格式；border:宽度 颜色 样式
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border: 10px red solid</span><br></pre></td></tr></table></figure>
+        除了border还有四个 border-xxx，规则和border-width一样
+* 外边距（margin）
+    - 外边距不会影响盒子可见框的大小
+    - 但外边距会影响盒子在页面中的位置
+    - 一共有四个方向的外边距：
+        - margin-top：上外边距，设置一个正值，元素会向下移动
+        - margin-right：默认情况下margin-right不会产生任何效果
+        - margin-bottom：下外边距，设置一个正值，其下边的元素会向下移动
+        - margin-left：左外边距，设置一个正值，元素会向右移动
+        - margin也可以设置负值，其元素向相反的方向移动
+    - 元素在页面中是按照自左向右、自上而下的顺序排列的
+        所以默认情况下如果我们设置的左和上外边距则会移动元素自身
+        而设置下和右外边距会移动其他元素
+    - margin简写属性，通过该属性可以同时设置四个方向的外边距，用法和padding一样
+    - margin会影响到盒子实际占用空间
+* 元素溢出
+    - 子元素是在父元素的内容区中排列的
+        如果子元素的大小超过了父元素，则子元素会从父元素中溢出
+        可以使用overflow属性来设置父元素如何处理溢出的子元素
+    - overflow可选值：
+        - visible 默认值，子元素从父元素中溢出，则在父元素外部的位置显示
+        - hidden 溢出内容将会被裁减不会被显示
+        - scroll 生成两个滚动条，通过滚动条来查看完整的内容
+        - auto 根据需要生成滚动条</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/27/Css/Css04/">Css04</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-27
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS文档流（normal flow）</p>
+<pre><code>* 网页是一个多层的结构，一层叠着一层
+* 通过CSS可以分别为每一层来设置样式
+* 作为用户来讲只能看到最顶上一层
+* 这些层中，最底下的一层称为文档流，文档流是网页的基础
+    我们所创建的元素默认都是在文档流中进行排列
+* 对于我们来说，元素主要有两个状态
+    - 在文档流中
+    - 不在文档流中（脱离文档流）
+* 元素在文档流中有什么特点
+    - 块元素
+        - 块元素会在页面中独占一行（自上向下垂直排列）
+        - 默认宽度是父元素的全部（会把父元素撑满）
+        - 默认高度是被内容撑开（子元素）
+    - 行内元素
+        - 行内元素不会独占页面的一行，只占自身的大小
+        - 行内元素在页面中自左向右水平排列，如果一行之中不能容下    
+            则元素会换到第二行继续自左向右排列
+        - 行内元素的默认宽度和默认高度都是被内容撑开</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/09/25/Css/Css03/">Css03</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-09-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS样式的继承：</p>
+<pre><code>- 样式的继承，我们为一个元素设置的样式同时也会应用到它的后代元素上
+    继承是发生在祖先和后代之间的
+    继承的设计是为了方便我们的开发
+        利用继承我们可以将一些通用的样式统一设置到共同的祖先元素上
+            这样只需设置一次即可让所有的元素都具有该样式
+- 注意：并不是所有的样式都会被继承
+        比如：背景相关的，布局相关等的这些样式都不会被继承</code></pre>
+<p>长度单位：</p>
+<pre><code>* 像素：
+    - 屏幕（显示器）实际上是由一个一个的小点点构成的
+    - 不同屏幕的像素大小是不同的，像素越小的屏幕显示的效果越清晰
+        所以同样的200px在不同的设备下显示效果不一样
+* 百分比：
+    - 也可以将属性值设置为相对于其父元素属性的百分比
+    - 设置百分比可以使子元素跟随父元素的改变而改变
+* em
+    - em是相对于元素的字体大小来计算的
+    - 1em = 1font-size
+    - em会根据字体大小改变而改变
+* rem
+    - rem是相对于根元素的字体大小来计算的</code></pre>
+<p>颜色单位：</p>
+<pre><code>* 在CSS中可以直接使用颜色名来设置各种颜色
+    比如：red、yellow、blue.....
+    但是在css中直接使用颜色名是非常的不方便
+* RGB值：
+    - RGB通过三种颜色的不同浓度来调配出各种颜色
+    - R red, G green, B blue
+    - 每一种颜色的范围在0~255（0%~100%）之间
+    - 语法：rgb（红色，绿色，蓝色）
+* RGBA:
+    - 就是在rgb的基础上加了一个a表示不透明度
+    - 需要四个值，前三个和rgb一样，第四个表示不透明
+        1表示完全不透明
+        0表示完全透明
+        .5表示半透明
+* 十六进制的RGB值：
+    - 语法：#红色绿色蓝色
+    - 颜色浓度范围 00~ff
+    - 如果颜色两位两位重复可以进行简写
+        #aabbcc --&gt;  #abc
+* HSL值 HSLA值
+    - H 色相（0 - 360）
+    - S 饱和度，颜色的浓度（0%-100%）
+    - L 亮度，颜色的亮度（0%-100%）
+    - A 表示不透明度</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/09/23/Css/Css02/">Css02</a>
       </h1>
     
@@ -175,591 +879,6 @@
     如果优先级相同，则优先使用靠下的样式
 * 可以在某一个样式后面添加 !important，则此时该样式会获取到最高的优先级，甚至超过内联样式
     注意，在开发时需慎用   </code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/22/Css/Css01/">Css01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-22
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS简介：</p>
-<pre><code>* 层叠样式表，网页实际上是一个多层的结构，通过CSS可以分别为网页的每一层来设置样式
-        而我们最终看到的只是网页的最上边一层
-* 使用CSS来修改元素的样式：
-    - 第一种方式(内联样式，行内样式)：
-        - 在标签内通过style属性来设置元素的样式
-        - 问题：使用内联样式，只能对一个标签生效
-                如果希望影响到多个元素则必须在每一个元素中都复制一遍
-                并且当样式发生改变时，我们必须要一个一个修改，非常的不方便
-        - 注意：开发时尽量不要用内联样式，在练习时可用
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:red;font-size:60px;&quot;</span>&gt;</span>今天天气针不戳！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-    - 第二种方式(内部样式表)：
-        - 将样式编写到head中的style标签里
-            然后通过CSS的选择器来选中元素并为其设置各种样式
-            可以同时为多个标签设置样式，并且修改时只需要修改一处即可全部应用
-            更加方便对样式进行复用
-            style标签内只能按照CSS的语法规范来编写
-        - 问题：内部样式表只能对一个网页起作用
-                    它里面的样式不能跨页面进行复用
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">	p</span><br><span class="line">	&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">font-size</span><span class="selector-pseudo">:50px</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-    - 第三种方式(外部样式表，最佳实践)：
-        - 可以将CSS样式编写到一个外部的CSS文件中
-            然后通过link标签来引入外部的CSS文件
-        - 外部样式表需要通过link标签进行引入
-            意味着只要想使用这些样式的网页都可以对其引用
-        - 将样式编写到外部的CSS文件中，可以使用到浏览器的缓存机制
-            从而加快网页的加载速度，提高用户体验
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
-<p>CSS语法：</p>
-<pre><code>* CSS中的注释格式：/* 注释 */
-* 基本语法：
-    - 选择器：通过选择器可以选中页面中的指定元素
-                比如p的作用就是选中页面中所有的p元素
-    - 声明块：通过声明块来指定要为元素设置的样式
-                声明块由一个一个的声明组成
-                声明是一个名值对结构
-                一个样式名对应一个样式值，名和值之间以：连接，以；结尾</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/22/Html/Html05/">Html05</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-22
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html音视频：</p>
-<pre><code>* audio标签：用来页面中引入一个外部的音频文件
-             音视频文件引入时，默认情况下不允许用户自己控制播放停止
-* audio属性：
-            - controls：是否允许用户控制播放
-            - autoplay：音频文件是否自动播放
-                        若设置了该属性，则音乐在页面打开时会自动播放
-                        但目前来讲大部分浏览器不会自动对音乐进行播放
-            - loop：音乐是否循环播放
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">loop</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-*除了通过src来制定外部文件的路径之外，还可以通过source来指定文件
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">	对不起，您的浏览器不支持播放音频，请升级浏览器！<span class="comment">&lt;!-- 当两者都不兼容时，给用户的提示 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span>&gt;</span><span class="comment">&lt;!-- 首先使用mp3格式的 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;audio.ogg&quot;</span>&gt;</span><span class="comment">&lt;!-- 当前浏览器不兼容mp3时，使用ogg格式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-当想要某些低版本的浏览器播放你所选的音频时，可用以下标签
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">embed</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* 使用video标签来向网页中引入一个视频时，使用方式和audio基本一致</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/21/Html/Html04/">Html04</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-21
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html语法规范：</p>
-<pre><code>1.HTML中不区分大小写
-2.HTML中的注释不能嵌套
-3.HTML标签必须结构完整，要么成对出现，要么自结束标签
-4.HTML标签可以嵌套，但不可以交叉嵌套
-5.HTML标签中的属性必须有值，且值必须加引号(双引号单引号都行)
-* 浏览器尽最大的努力正确解析页面，你所有不符合语法规范的内容，
-  浏览器都会尽可能的自动修正，但有些情况会修正错误</code></pre>
-<p>内联框架：</p>
-<pre><code>* 使用iframe来创建一个内联框架，内联框架可以引入一个外部页面
-  如
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src&#x3D;&quot;Html01.md&quot; name&#x3D;&quot;tom&quot;&gt; &lt;&#x2F;iframe&gt;</span><br></pre></td></tr></table></figure>
-
-
-* 属性：
-        src：指向一个外部页面的路径，可以使用相对路径
-        width：
-        height：
-        name：可以为内联框架指定一个name属性
-* 在现实开发中不推荐使用内联框架，因为内联框架中的内容不会被搜索引擎所检索</code></pre>
-<p>超链接：</p>
-<pre><code>* 使用&lt;a&gt;标签来创建一个超链接，超链接可以让我们从一个页面跳转到另一个页面
-* 属性：
-        href：指向链接跳转的目标地址，如果将属性值设置为#，则点击超链接后会自动跳转到当前页面顶部
-              若将属性值设置为javascript:;，则点击这个超链接什么也不会发生，可作为一个占位符使用
-              若将属性值设置为#加上id属性，则点击这个超链接将会跳转到该id属性标识的元素处
-        target：用来指定打开链接的位置
-                可选值：
-                        _self：表示在当前页面打开(默认值)
-                        _blank：在新的窗口打开链接
-                        可以设置一个内联框架的name属性值，链接将会在指定的内联框架中打开
-
-        id属性(唯一不重复的)：
-                - 每一个标签都可以添加一个id属性
-                - id属性就是元素的唯一标识，同一个页面不能出现重复的id属性</code></pre>
-<p>相对路径：</p>
-<pre><code>但我们需要跳转一个服务器内部的页面时，一般我们都会使用相对路径
-    相对路径往往都会使用.或..开头
-        ./
-        ../
-    ./可以省略不写，如果同时不写../则默认为./
-    ./表示当前文件所在的目录
-    ../表示当前文件所在目录的上一级目录</code></pre>
-<p>center标签：</p>
-<pre><code>此标签中的内容会默认在页面中居中显示，我们可以将要居中的元素全放到center中</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/21/Html/Html03/">Html03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-21
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html实体：</p>
-<pre><code>*在Html中，一些如&lt; &gt;这种特殊字符是不能直接使用，需要用一些特殊的符号来表示，
- 这些特殊符号我们称之为实体(转义字符串)，浏览器解析到实体时，会自动将其转换为对应的字符
-*实体的语法格式：&amp;实体名字
-    如：
-        &lt;    &amp;lt;
-        &gt;    &amp;gt;
-        空格    &amp;nbsp;
-        版权符号    &amp;copy</code></pre>
-<p>Html图片标签：</p>
-<pre><code>*&lt;img /&gt;：一个自结束标签，向网页中引入一个外部图片
-*&lt;img /&gt;属性：
-              arc：设置一个外部图片的路径
-              alt：可以用后来设置在图片不能显示时对图片的描述
-                   搜索引擎可以通过alt属性来识别不同的照片
-                   如果不写此属性，则搜索引擎不会对img中的图片进行收录
-              width：可以用后来修改图片的宽度，一般用px作为单位
-              height：可以用后来修改图片的高度，一般用px作为单位
-*宽度和高度两个属性如果只设置一个，另一个也会同时等比例调整大小
- 一般开发中除了自适应的页面，不建议设置width和height</code></pre>
-<p>图片格式：</p>
-<pre><code>* JPEG(JPG)：
-    - JPEG图片支持的颜色比较多，图片可以压缩，但是不支持透明
-    - 一般使用JPEG来保存照片等颜色丰富的图片
-* GIF：
-    - GIF支持的颜色少，只支持简单的透明，支持动态图
-    - 图片颜色单一或者是动态图时可以使用gif
-* PNG：
-    - PNG支持的颜色多，并且支持复杂的透明
-    - 可以用来显示颜色复杂的透明的图片
-* 图片使用原则：
-    - 效果不一致，使用效果好的
-    - 效果一致，使用小的</code></pre>
-<p>meta标签：</p>
-<pre><code>* 设置网页关键字：如
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;HTML5,JavaScript&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-* 指定网页的描述：搜索引擎在检索页面时，会同时检索关键字和描述，但不影响该页面在搜索引擎中的排名如
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;学习h5和JS的相关内容&quot;</span> /&gt;</span></span><br><span class="line">   ``` </span><br><span class="line"></span><br><span class="line">*做请求的重定向：格式如</span><br><span class="line">```html</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;秒数;url=目标途径&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/17/Java/Java05-%E6%95%B0%E7%BB%84/">Java05——数组</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java 数组：</p>
-<pre><code>*数组简介：数组是java中最常见的一种数据结构，用于储存多个数据
-*数组的特点：
-    - 数组是一种引用数据类型
-    - 数组中的多个数据必须类型统一
-    - 数组的长度在程序运行期间不可改变
-
-*数组定义：type []arrayName 或 type arrayName[]
-           如：int []a 或 int a[]
-
-*数组初始化：在内存中创建一个数组，并且向其中赋予一些默认值
-    - 动态初始化（指定长度）：在创建数组时直接指定数组当中的数据元素个数
-        - 标准格式：数据类型[] 数组名称=new 数据类型[数组长度];
-    - 静态初始化（指定内容）：在创建数组时不直接指定数据个数，而是直接将具体的数据内容进行指定
-        - 标准格式：数据类型[] 数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
-        - 省略格式：数据类型[] 数组名称=&#123;元素1,元素2,....&#125;;
-    - 注意事项：
-        - 虽然静态初始化没有指定长度，但根据括号中的具体数据内容也可以自动推算出来
-        - 动态初始化标准格式可以拆分为两个步骤：
-            数据类型[] 数组名称;
-            数组名称=new 数据类型[数组长度];
-        - 静态初始化标准格式也可以拆分为两个步骤：
-            数据类型[] 数组名称;
-            数组名称=new 数据类型[]&#123;元素1,元素2,....&#125;;
-        - 但静态初始化一旦使用省略格式就不能拆分为两个步骤了
-* 直接输出数组名称得到的是数组对应的内存地址哈希值
-* 访问数组元素的格式：数组名称[索引值]
-    - 索引值：一个int数字，代表数组当中元素的编号，若访问数组元素时，访问的索引编号不存在，
-                则会发生数组索引越界异常（ArrayIndexOutOfBoundsException）
-    - 注意：索引值从0开始，一直到“数组的长度-1”为止
-* 数组元素的默认值：
-    - 使用动态数组初始化时，其中的数组元素将会自动拥有一个默认值，规则如下：
-        - 整数类型则默认为0
-        - 浮点类型则默认为0.0
-        - 字符类型则默认为&#39;\u0000&#39;
-        - 如果是布尔类型则默认为false
-        - 如果是引用类型则默认为null
-    - 静态初始化其实也有默认值，只不过系统马上将默认值自动替换成了大括号当中具体的数据了
-* 空指针异常（NullPointerException）
-    - 所有的引用类型变量都可以赋值为一个null值，这代表其中什么都没有，
-        数组必须进行new初始化才能试用期中的元素，若只是赋值了一个null，没有进行new创建
-            那么将会发生空指针异常
-* 获取数组的长度：数组名称.Length</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/17/Html/Html02/">Html02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html文档声明：</p>
-<pre><code>我们使用的是html5的版本，因此使用html5的文档声明：&lt;!doctype html&gt;
-文档声明是为了让浏览器识别我们使用的html版本，编写网页时一定要将文档声明写在网页最上边
-如果不写将会导致某些浏览器进入怪异模式，进入此模式之后，浏览器解析网页时会导致网页无法显示</code></pre>
-<p>meta标签：</p>
-<pre><code>此标签用来设置网页的一些元数据，如网页的字符集、关键字、简介，meta是一个自结束的标签，
-编写自结束标签时，可以在开始标签中加上一个/</code></pre>
-<p>标题标签： </p>
-<pre><code>在html中一共有六级标签(h1 - h6)
-在显示效果上h1最大，h6最小
-但在html中使用标题标签，关心的是语义，我们使用的都是语义化标签
-其中h1最重要，表达的是一个网页的主要内容，h2-h6重要性依次降低，一般网页中h3后的标题基本不会使用
-对于搜索引擎来说，h1的重要性仅次于title，检索完title后会立马查看h1中的内容
-h1会影响到页面在搜索引擎中的排名，一般网页中只会写一个h1</code></pre>
-<p>段落标签：</p>
-<pre><code>段落标签用于表示内容中的一个自然段，使用&lt;p&gt; &lt;/p&gt;标签来表示段落，p标签中的内容会默认独占一行，且段与段之间会有一个间距
-但在html中，字符之间写再多的的空格，浏览器也会当作一个间隔，换行也会被当作一个间隔
-因此想要将一个p标签中的段落内容分行，可使用&lt;br /&gt;标签进行换行
-若想要获得水平线，可以使用&lt;hr /&gt;标签</code></pre>
-<p>语义化标签：</p>
-<pre><code>* 块元素(block element)：
-                        - 在页面中独占一行的元素
-                        - 网页中一般通过块元素来对页面进行布局
-                        - 块元素中基本上什么都能放
-                        - p元素内不能放任何的块元素
-* 行内元素(inline element)：
-                        - 行内元素主要用来包裹文字
-                        - 一般情况下会在块元素内放行内元素，而不会在行内元素中放块元素
-* em标签：用于表示语音语调的一个加重，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今天天气<span class="tag">&lt;<span class="name">em</span>&gt;</span>真<span class="tag">&lt;/<span class="name">em</span>&gt;</span>不错！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* strong标签：表示强调重要内容，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>王强是<span class="tag">&lt;<span class="name">strong</span>&gt;</span>戴超群<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>的儿子<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* blockquote标签：表示一个长引用(即引用时换行)，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>鲁迅说<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">	这句话我是从没有说过的！</span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
-* q标签：表示一个短引用(即引用时不换行)，如
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>子曰<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">q</span>&gt;</span>学而时习之<span class="tag">&lt;/<span class="name">q</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre>
-<p>布局标签：</p>
-<pre><code>* header标签：表示网页头部
-* main标签：表示网页的主体(一个页面只会有一个main)
-* footer标签：表示网页的底部
-* nav标签：表示网页中的导航
-* aside标签：和主体相关的其他内容(侧边栏)
-* article标签：表示一个独立的文章
-* section标签：表示一个独立的区块，上边的标签都不能表示时使用section
-* div标签：没有语义，就用来表示一个区块，目前来讲div还是我们主要的布局元素
-* span标签：行内元素，没有任何的语义，一般用于在网页中选中文字</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/16/Java/Java03-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%BE%AA%E7%8E%AF/">Java03——选择与循环</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-16
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java 选择与循环语句：</p>
-<pre><code>* 程序的选择结构：
-    &gt; if语句
-    &gt; if...else语句
-    &gt; if...else if...else语句
-    &gt; switch语句
-
-* 程序的循环结构：
-    &gt; while循环：先判断后执行
-    &gt; do...while循环：先执行后判断
-    &gt; for循环
-    &gt; for循环的嵌套
-
-* 循环结构的控制：
-    &gt; break：结束循环
-    &gt; continue：结束本次循环
-    &gt; return：结束方法</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/16/Html/Html01/">Html01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-16
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Html标签：</p>
-<pre><code>* html对于网页的编写内容都要存在于标签内(标签一般都是以一对的形式出现)，基本标签如：
-    &lt;html&gt; &lt;/html&gt; : 根标签，html编写网页的所有内容都必须在根标签内，一个页面中有且只有一个根标签
-    &lt;head&gt; &lt;/head&gt; : 设置网页头部信息，在此标签内编写的内容在网页中都不会显示出来，主要作用是帮助浏览器去解析网页
-    &lt;body&gt; &lt;/body&gt; : 设置网页的主体部分，网页中所有可见的内容都应写在此标签中
-    &lt;title&gt; &lt;title&gt; : 网页的标题编写在此标签中，默认显示在浏览器的标题栏中，搜索引擎在检索页面时会首先检索此标签
-                      中的内容，他是页面中对于搜索引擎最重要的内容，会影响到页面在搜索引擎中的排名
-    &lt;h1&gt; &lt;/h1&gt; : 网页内容的一级标题，多级标题以此类推，一共有六级标题
-    &lt;!-- --&gt; : 注释在此标签的空格处编写，注释在网页中不会显示，但在源码中会显示出来
-* html标签的属性：
-    &gt; 可以通过属性来设置标签如何处理标签中的内容
-    &gt; 只能在开始标签内设置属性
-    &gt; 属性实际上就是一个名值对的结构
-    &gt; 属性名=&quot;属性值&quot;，一个开始标签中可以设置多个属性，属性之间需要用空格间隔开来
-
-    如想要一行字其中某些字的颜色变成红色：
-    (但一般不赞成用html修改字体属性，html主要用于网页结构，字体属性属于表现，一般用css完成)
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/15/Java/Java02-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/">Java02——数据类型和运算符</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-15
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Java 数据类型:</p>
-<pre><code>分为基本数据类型和引用数据类型：
-* 基本数据类型
-    &gt; 数值型
-        &gt; 整数类型(byte,short,int,long)
-        &gt; 浮点类型(float,double) 其中小数默认为double类型，所以当表达一个float类型时，必须加一个f,如float a=1.1f;
-    &gt; 字符型(char)
-    &gt; 布尔型(boolean) 布尔类型只有true(真)和false(假)两种，主要用于逻辑判断
-* 引用数据类型
-    &gt; 类(class)
-    &gt; 接口(interface)
-    &gt; 数组
-
-基本类型的转换：
-* 自动类型转换
-    &gt; 条件1.转换前后的数据类型兼容
-    &gt; 条件2.转换后的数据类型的表示范围要比转换前的大
-* 强制类型转换
-    &gt; 如将double转换为float：
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> f;</span><br><span class="line"><span class="keyword">double</span> d=<span class="number">1.333</span>;</span><br><span class="line">f=(<span class="keyword">float</span>)d;</span><br></pre></td></tr></table></figure></code></pre>
-<p>Java 运算符：</p>
-<pre><code>* 自增：
-    &gt; int a，a++表示先赋值后自增
-    &gt; int a，++a表示先自增后赋值
-* 异或^：当两个操作数不相同时返回true
-*三目运算符：格式为 (表达式)？表达式为true返回值 ： 表达式为false返回值</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Java12-this与super关键字 | 小戴的学习日记</title>
+    <title>Java12-this、super、final关键字 | 小戴的学习日记</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,8 +55,8 @@
 <div class="blog-post">
     <!-- Title -->
     <h1 class="blog-post-title">
-        <a href="/2020/11/19/Java/Java12-this与super关键字/">
-            Java12-This与super关键字
+        <a href="/2020/11/19/Java/Java12-this、super、final关键字/">
+            Java12-This、super、final关键字
         </a>
     </h1>
     <!-- Date and Author -->
@@ -84,15 +84,30 @@
     - 在子类的成员方法中，访问父类的成员变量
     - 在子类的成员方法中，访问父类的成员方法
     - 在子类的构造方法中，访问父类的构造方法</code></pre>
+<p>final</p>
+<pre><code>* final关键字代表最终、不可改变的
+* 常见的四种用法：
+    - 修饰一个类
+        - 格式：public final class 类名称&#123;....&#125;
+        - 修饰一个类时，这个类不能有任何的子类
+    - 修饰一个方法
+        - 修饰符 final 返回值类型 方法名称(参数列表)&#123;....&#125;
+        - 该方法不能覆盖重写
+    - 修饰一个成员变量
+        - 使用final修饰后该成员变量不能发生改变
+        - 由于成员变量具有默认值，使用final修饰后不会再赠送默认值了，所以要么手动直接赋值，要么
+            通过构造方法赋值，且必须保证类当中所有重载的构造方法最终都会对该成员变量赋值
+    - 修饰一个局部变量
+        - - 使用final修饰后该局部变量不能发生改变</code></pre>
 
 
     <!-- Social share choices -->
     
   <div id="social-share">
-    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E3%80%81super%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E3%80%81super%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E3%80%81super%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/19/Java/Java12-this%E3%80%81super%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
   </div>
 
 
@@ -102,8 +117,8 @@
 <!--
 
 
-https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/19/Java/Java12-this%E4%B8%8Esuper%E5%85%B3%E9%94%AE%E5%AD%97/
-https://dcq66.github.io/2020/11/19/Java/Java12-this%25E4%25B8%258Esuper%25E5%2585%25B3%25E9%2594%25AE%25E5%25AD%2597/
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/19/Java/Java12-this%E3%80%81super%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97/
+https://dcq66.github.io/2020/11/19/Java/Java12-this%25E3%2580%2581super%25E3%2580%2581final%25E5%2585%25B3%25E9%2594%25AE%25E5%25AD%2597/
 -->
 
 

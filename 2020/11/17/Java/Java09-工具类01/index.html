@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Java09-工具类 | 小戴的学习日记</title>
+    <title>Java09-工具类01 | 小戴的学习日记</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,8 +55,8 @@
 <div class="blog-post">
     <!-- Title -->
     <h1 class="blog-post-title">
-        <a href="/2020/11/17/Java/Java09-工具类/">
-            Java09-工具类
+        <a href="/2020/11/17/Java/Java09-工具类01/">
+            Java09-工具类01
         </a>
     </h1>
     <!-- Date and Author -->
@@ -160,15 +160,43 @@
     - public static double floor(double num) 向下取整
     - public static long round(double num) 四舍五入
     - Math.PI代表圆周率常量</code></pre>
+<p>Date</p>
+<pre><code>* Date类是一个与日期相关的工具类
+* 方法：
+    - Date类的带参构造方法：Date(long date)
+        - 传入毫秒值，将毫秒转换为Date日期
+    - Date类的无参构造方法：Date(long date)
+        - 获取当前系统的日期和时间</code></pre>
+<p>DateFormat</p>
+<pre><code>* DateFormat类是日期/时间格式化子类的抽象类
+* 作用：格式化（日期--&gt;文本） 解析（文本--&gt;日期）
+* DateFormat类是一个抽象类，所以得通过它的子类SimpleDateFormat来使用它的方法
+* 方法
+    - String format(Date date) 按照指定的模式把Date日期格式化为符合模式的字符串
+    - Date parse(String source) 把符合模式的字符串解析为Date日期
+        - 注意事项：
+            - 该方法声明了一个异常，使用时要么需要throw抛出异常，要么try...catch自己处理这个异常</code></pre>
+<p>SimpleDateFormat 类</p>
+<pre><code>* 构造方法：SimpleDateFormat(String pattern) 用给定的模式和默认语言环境构造SimpleDateFormat
+    - 参数：传递指定的模式
+    - 模式（区分大小写）：
+        - y     年
+        - M     月
+        - d     日
+        - H     时
+        - m     分
+        - s     秒
+        - 将模式按照自己的格式组合起来即可，如：&quot;yyyy-MM-dd HH:mm:ss&quot;或&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;
+        - 注意：模式中字母不可以随意改动，连接字母的符号可以改变</code></pre>
 
 
     <!-- Social share choices -->
     
   <div id="social-share">
-    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
-    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
   </div>
 
 
@@ -178,8 +206,8 @@
 <!--
 
 
-https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB/
-https://dcq66.github.io/2020/11/17/Java/Java09-%25E5%25B7%25A5%25E5%2585%25B7%25E7%25B1%25BB/
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/
+https://dcq66.github.io/2020/11/17/Java/Java09-%25E5%25B7%25A5%25E5%2585%25B7%25E7%25B1%25BB01/
 -->
 
 

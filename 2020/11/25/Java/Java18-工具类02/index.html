@@ -1,0 +1,198 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java18-工具类02 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/25/Java/Java18-工具类02/">
+            Java18-工具类02
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Calendar</p>
+<pre><code>* Calendar类是一个与日历日期相关的类，Date类的很多方法都被Calendar类中的方法所代替
+    该类是一个抽象类，无法直接创建对象使用，但我们可以使用该类中的静态方法getInstance(),
+        该方法返回了Calendar类的子类对象，通过使用该方法获得一个子类对象进行使用
+* 方法：
+    - public int get(int field) 返回指定日历字段的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo01() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    int year &#x3D; c.get(Calendar.YEAR);</span><br><span class="line">    System.out.println(year);</span><br><span class="line">    int month &#x3D; c.get(Calendar.MONTH);</span><br><span class="line">    System.out.println(month);&#x2F;&#x2F; 西方的月份0-11，中国月份1-12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public void set(int field,int value) 将指定日历字段的值设置为指定的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo02() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.set(Calendar.YEAR, 6666);</span><br><span class="line">    c.set(Calendar.MONTH, 66);</span><br><span class="line">    c.set(Calendar.DATE, 6);</span><br><span class="line">    c.set(8888, 88, 8);&#x2F;&#x2F; 一个重载的方法，同时设置年月日</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public abstract void add(int field，int amount) 给指定的日历字段添加或减少指定的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo03() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.add(Calendar.YEAR, 10);&#x2F;&#x2F; 年增加了10年</span><br><span class="line">    c.add(Calendar.YEAR, -11);&#x2F;&#x2F; 年减少了11年</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public Date getTime() 返回一个表示此Calendar时间值的Date对象并返回
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo04() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    Date date &#x3D; c.getTime();</span><br><span class="line">    System.out.println(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 参数filed：日历类的字段，可使用Calendar类的静态成员变量获得
+        - public static final int YEAR = 1; //年
+        - public static final int MONTH = 2;//  月
+        - public static final int DATE = 5; //月中的某一天
+        - public static final int DATE_OF_MONTH = 5; //月中的某一天
+        - public static final int HOUR = 10; //时
+        - public static final int MINUTE = 12;// 分
+        - public static final int SECOND = 13;// 秒</code></pre>
+<p>System</p>
+<pre><code>* System类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作
+* 常用方法：
+    - public static long currentTimeMillis() 返回以毫秒为单位的当前时间
+    - public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
+        - 将数组中指定的数据拷贝到另一个数组中（会将另一个数组原有位置数据覆盖）
+        - 参数：
+            - src 原数组
+            - srcPos 原数组拷贝的起始位置
+            - dest 目标数组
+            - destPos 目标数组拷贝的起始位置
+            - length 要拷贝的数据长度</code></pre>
+<p>StringBuilder</p>
+<pre><code>* StringBuilder类是一个字符串缓冲区，可以提高字符串的操作效率，与String不同的是它可以改变长度
+* 构造方法：
+    - public StringBuilder();   构造一个空的StringBuilder容器
+    - public StringBuilder(String str);   构造一个StringBuilder容器并将指定的字符串添加进去
+* 成员方法：
+    - public StringBuilder append(...)    添加任意数据类型的字符串形式并返回当前对象自身
+        - 返回当前对象自身即不用接收返回值，该对象自身发生改变
+        - 链式编程：当返回值是一个对象时，可以继续根据对象调用方法
+    - public String toString();    将当前StringBuilder对象转换为String对象</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/
+https://dcq66.github.io/2020/11/25/Java/Java18-%25E5%25B7%25A5%25E5%2585%25B7%25E7%25B1%25BB02/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

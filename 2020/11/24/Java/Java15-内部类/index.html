@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java15-内部类 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/11/24/Java/Java15-内部类/">
+            Java15-内部类
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-24
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>内部类</p>
+<pre><code>* 一个类内部包含另一个类称之为内部类
+* 分类：
+    - 成员内部类
+    - 局部内部类（包含匿名内部类）
+* 成员内部类
+    - 格式：
+        修饰符 class 外部类名称&#123;
+            修饰符 class 内部类名称&#123;
+                ....
+            &#125;
+        &#125;
+    - 注意：内部类用外部类可以随意访问，外部类用内部类需要创建内部类对象
+    - 使用内部类：
+        - 间接方法：在外部类的方法当中，使用内部类；然后main只是调用外部类的方法
+        - 直接方法：外部类名称.内部类名称 对象名 = new 外部类名称().内部类名称();
+    - 当内部类成员变量名和外部类成员变量名重名时
+        - 错误格式：this.外部类成员变量名
+        - 正确格式：外部类名称.this.外部类成员变量名
+* 局部内部类
+    - 若一个类是定义在一个方法内部的，那么这就是一个局部内部类
+    - 局部：只有在当前所属的方法之中才能使用它
+    - 格式：
+        修饰符 class 外部类名称&#123;
+            修饰符 返回值类型 外部类方法名称(参数列表)&#123;
+                class 局部内部类名称&#123;
+
+                &#125;
+            &#125;
+        &#125;
+    - 若想访问所在方法的局部变量，那么这个局部变量必须是有效final
+        从Java8开始，只要局部变量不变，那么final关键字可以省略
+* 匿名内部类
+    - 格式：
+        接口名称 对象名-new 接口名称()&#123;
+            //覆盖重写所有抽象方法
+        &#125;
+    - 对new 接口名称()&#123;....&#125;进行解析
+        - new代表创建动作
+        - 接口名称就是匿名内部类需要实现哪个接口
+        - &#123;...&#125;这才是匿名内部类的内容
+    - 注意事项：
+        - 匿名内部类在创建对象的时候只能使用唯一的一次，若希望多次创建对象，
+            而且类的内容一样的话，就得使用单独定义的类了
+        - 匿名对象在调用方法时只能调用唯一的一次
+        - 匿名内部类省略了实现类/子类名称，但匿名对象是省略了对象名称
+* 类的修饰符权限
+    - public&gt;protected&gt;(default)&gt;private
+    - 定义一个类的时候，可以使用的权限修饰符规则：
+        - 外部类：public、(default)
+        - 成员内部类：public、protected、(default)、private
+        - 局部内部类：什么都不能写</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/
+https://dcq66.github.io/2020/11/24/Java/Java15-%25E5%2586%2585%25E9%2583%25A8%25E7%25B1%25BB/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
