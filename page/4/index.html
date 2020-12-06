@@ -57,6 +57,253 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css17/">Css17</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>像素</p>
+<pre><code>* 屏幕是由一个一个发光的小点构成，这一个一个的小点就是像素
+    分辨率：1920 × 1080 说的就是屏幕中小点的数量
+* 在前端开发中像素要分为两种情况讨论，CSS像素和物理像素
+    - CSS像素，编写网页时我们所用的像素就是CSS像素，浏览器在显示网页时，
+        需要将CSS像素转换为物理像素然后再呈现，一个CSS像素由几个物理像素显示由浏览器决定
+            默认情况下在PC端，一个CSS像素 = 一个物理像素</code></pre>
+<p>视口（viewport）</p>
+<pre><code>* 视口就是屏幕中用来显示网页的区域
+* 可以通过查看视口的大小来观察CSS像素和物理像素的比值
+* 默认情况下：
+    - 视口宽度 1920px （CSS像素）
+            1920px （物理像素）
+            此时，CSS像素和物理像素的比值为1 ：1
+* 放大两倍的情况下：
+    - 视口宽度 960px （CSS像素）
+            1920px （物理像素）
+            此时，CSS像素和物理像素的比值为1 ：2
+    - 我们可以通过改变视口的大小来改变CSS像素和物理像素的比值
+* 在不同的屏幕中，单位像素的大小是不一样的，单位像素越小屏幕越清晰
+    24寸 1920 × 1080
+    iPhone6 4.7寸 750 × 1334
+    https://material.io/resources/devices/ （查询各种手机像素比的网站）
+    - 默认情况下，移动端的网页都会将视口设置为980像素（CSS像素）
+        以确保pc端网页可以在移动端正常访问，但如果网页的宽度超过980
+            移动端的浏览器会自动对网页进行缩放以完整显示网页，但往往不会有一个好的用户体验
+                为了解决这个问题，大部分网站都会专门为了移动端设计网页</code></pre>
+<p>移动端的设计</p>
+<pre><code>* 使用媒体查询
+    - 语法：@media 媒体类型&#123;&#125;
+    - 媒体类型：
+        - all 所有设备
+        - print 打印设备
+        - screen 带屏幕的设备
+        - speech 屏幕阅读器
+    - 可以在媒体类型前添加一个only，表示只有
+        only的使用主要是为了兼容一些老版本浏览器
+* 响应式布局
+    - 网页可以根据不同的设备或窗口大小显示出不同的效果
+    - 使用响应式布局可以使一个网页适用于所有设备
+    - 响应式布局的关键就是媒体查询
+        通过媒体查询可以为不同的设备或设备不同的状态来分别设置样式
+* 媒体特性
+    - width 视口宽度
+    - height 视口高度
+    - min-width 视口的最小宽度（视口大于指定宽度时生效）
+    - max-width 视口的最大宽度（视口小于指定宽度时生效）
+* 断点：样式切换的分界点称之为断点
+* 视口大小
+    - 小于768（CSS像素）超小屏幕 max-width=768px
+    - 大于768（CSS像素）小屏幕   min-width=768px
+    - 大于992（CSS像素）中型屏幕   min-width=992px
+    - 大于1200（CSS像素）小屏幕   min-width=1200px
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@media not screen and (min-width:500px) and (max-width:700px)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">        background-color:red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!--</span><br><span class="line"> 该样式意思为带屏幕设备除了宽度在500px和700px之间时body为红色</span><br><span class="line">    not 除了</span><br><span class="line">    and 且</span><br><span class="line">    ,   或</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css16/">Css16</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>flex</p>
+<pre><code>* flex
+    - 将元素的display属性设置为flex，则该元素为弹性容器，该元素的子元素为弹性元素
+    - flex还可以作为属性来使用，它可以设置所有弹性元素的三个样式
+        - flex 增长 缩减 基础
+            - initial “flex：0 1 auto”（只缩减不增长）
+            - auto “flex：1 1 auto”（既增长也缩减）
+            - none “flex：0 0 auto”（弹性元素没有弹性）
+* 主轴：弹性元素的排列方式为主轴
+* 侧轴：与主轴垂直方向的为侧轴
+* 属性：
+    - flex-direction 指定容器中弹性元素的排列方式
+        可选值：
+            - row 默认值，弹性元素在容器中水平排列（自左向右）
+                - 主轴 自左向右
+            - row-reverse 弹性元素在容器中反向水平排列（自右向左）
+                - 主轴 自右向左
+            - column 弹性元素在容器中纵向排列（自上向下）
+                - 主轴 自上向下
+            - column 弹性元素在容器中反向纵向排列（自下向上）
+                - 主轴 自下向上
+    - flex-grow 指定弹性元素的伸展系数
+        - 当父元素有多余空间时，子元素如何伸展
+        - 父元素的剩余空间会按照比例分配
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex-grow:1;</span><br><span class="line">&lt;!-- 该弹性元素在父元素的剩余空间分配中占比例中的一份 --&gt;</span><br></pre></td></tr></table></figure>
+    - flex-shrink 指定弹性元素的收缩系数
+        - 当父元素的空间不足以收纳所有子元素时对子元素进行收缩
+        - 子元素越大则该子元素收缩的越大
+    - flex-wrap 设置弹性元素是否在弹性容器中自动换行
+        可选值：
+            - nowrap 默认值，元素不会自动换行
+            - wrap 元素会沿着侧轴方向自动换行
+            - wrap-reserve 元素会沿着侧轴反方向自动换行
+    - flex-flow wrap和direction的简写属性，可同时设置这两个属性
+    - flex-basis 指定的是元素在主轴上的基础长度
+        - 如果主轴是横向的，则该值指定的是元素的宽度
+        - 如果主轴是纵向的，则该值指定的是元素的高度
+        - 默认值是auto，表示参考元素自身的高度或宽度
+        - 如果传递了一个具体的数值，则以该值为准
+    - order 决定弹性元素的排列顺序
+    - justify-content 如何分配主轴上的空白空间（主轴上的元素如何排列）
+        可选值：
+            - flex-start 元素沿着主轴起边排列
+            - flex-end 元素沿着主轴终边排列
+            - center 元素沿着主轴居中排列
+            - space-around 空白均匀分到元素两侧
+            - space-between 空白均匀分到元素间
+            - space-evenly 空白均匀分到元素的单侧
+    - align-items 元素在侧轴上如何对齐
+        可选值：
+            - stretch 默认值，将元素的长度设置为相同的值
+            - flex-start 元素不会拉伸，沿着侧轴起边对齐
+            - flex-end 元素不会拉伸，沿着侧轴终边对齐
+            - center 居中对齐
+            - baseline 基线对齐
+    - align-content 侧轴空白空间的分布，可选值与justify-content一样
+    - align-self 用来覆盖当前当前弹性元素上的align-items</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/25/Css/Css15/">Css15</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>变形</p>
+<pre><code>* 变形就是指通过css来改变元素的形状或位置
+    - 变形不会影响到页面的布局
+    - transform用来设置元素的变形效果
+        - 平移：
+            - translateX() 沿着X轴方向平移
+            - translateY() 沿着Y轴方向平移
+            - translateZ() 沿着Z轴方向平移
+                - Z轴平移，调整元素在Z轴上的位置，由于其属于立体效果（近大远小），
+                    默认情况下网页是不支持透视的，如果想要看见效果，必须设置网页的视距
+                        即perspective属性，将其设置在html（根元素）的样式中
+            - 平移元素，百分比是相对于自身计算的
+        - 旋转：通过旋转可以使元素沿着x、y或z轴旋转指定的角度
+            - rotateX() 沿着X轴旋转
+            - rotateY() 沿着Y轴旋转
+            - rotateZ() 沿着Z轴旋转
+            - 旋转时还可以通过backface-visibility属性来设置是否显示元素的背面
+        - 3d变形效果
+            - 若想要看到所设置的立体动态效果，需通过transform-style属性来设置其3d效果
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br></pre></td></tr></table></figure>
+        - transform-origin（变形原点）
+            - 默认值为center
+            - 可自定设置原点
+        - 对元素进行缩放的函数（倍数缩放）
+            - scale() 双方向的缩放
+            - scaleX() 水平方向的缩放
+            - scaleY() 垂直方向的缩放</code></pre>
+<p>变量</p>
+<pre><code>* css也支持变量的设置
+    - 变量的设置规范
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--color:red;</span><br></pre></td></tr></table></figure>
+    - 引用变量时的语法规范
+     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color:var(--color);</span><br></pre></td></tr></table></figure>
+    - 设置变量可以帮助我们在做代码量较多的项目修改时更方便</code></pre>
+<p>less</p>
+<pre><code>* less是一门css的预处理语言
+    - less是一个css的增强版，通过该预处理语言我们可以编写更少的代码实现更强大的样式</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/10/21/JavaScript/JavaScript06/">JavaScript06</a>
       </h1>
     
@@ -689,361 +936,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/11/JavaScript/JavaScript03/">JavaScript03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-11
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JavaScript对象(Object)</p>
-<pre><code>* 对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性
-* 对象的分类：
-    - 内建对象：
-        - 由ES标准中定义的对象，在任何的ES的实现中都可以使用
-        - 比如：Math String Number Boolean
-    - 宿主对象：
-        - 由JS的运行环境提供的对象，目前来讲主要是指由浏览器提供的对象
-        - 比如：BOM DOM
-    - 自定义对象：
-        - 由开发人员自己创建的对象
-* 使用对象字面量创建对象
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    name:<span class="number">1</span>,</span><br><span class="line">    age:<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 属性值
-    - JS对象的属性值可以是任意的数据类型
-        甚至也可以是一个对象
-* in 运算符
-    - 通过该运算符可以检查一个对象中是否含有指定的属性
-        有则返回true，反之返回false
-    - 语法：
-        &quot;属性名&quot; in 对象  例子如
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
-* 如果要使用特殊的属性名，不能采用.的方式来操作
-        需要使用另一种方式
-    - 语法：对象[&quot;属性名&quot;]=属性值
-        读取时也要采取这种方式
-    - 使用[]这种形式去操作属性，更加的灵活
-        在[]中可以去直接传递一个变量，这样变量值是多少就会读取那个属性
-* 堆内存和栈内存
-    - JS中的变量都是保存到栈内存中的
-        基本数据类型的值直接在栈内存中存储
-            值与值之间是相互独立的，修改一个变量不会影响到另一个变量
-    - 对象是保存到堆内存的，每创建一个新的对象就会在对内存中开辟出一个新的空间
-        而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是同一个对象引用
-            当一个变量修改属性时，另一个也会受到影响
-    - 当比较两个基本数据类型的值时，就是比较值
-        而比较两个引用数据类型时，它比较的是对象的内存地址
-            如果两个对象是一模一样的，但是地址不同，它也会返回false</code></pre>
-<p>JavaScript函数（Function）</p>
-<pre><code>* 函数Function
-    - 函数也是一个对象
-    - 函数可以封装一些功能（代码），在需要时可以执行这些功能（代码）
-    - 使用typeof检查一个函数对象时，返回function
-* 创建函数的方式
-    - 使用构造函数来创建一个函数对象（实际开发中很少用）
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="built_in">Function</span>();</span><br></pre></td></tr></table></figure>
-    - 使用函数声明来创建一个函数，可在括号中加入形参
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - 使用函数表达式来创建一个函数
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="function"><span class="title">Function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 可以使用return来设置函数的返回值
-    - 语法：return 值
-        return后的值将会作为函数的执行结果返回
-            可以定义一个变量来接收
-    - 函数中启用return后的语句都不会继续执行
-    - 如果return语句后不跟任何值就相当于返回一个undefined
-        如果函数中不写return，则也会返回undefined
-* 形参和实参
-    - 可以在函数的()中来指定一个或多个形参（形式参数）
-        多个形参之间使用 ，隔开，声明形参就相当于在函数内部声明了对应的变量但不赋值
-    - 在调用函数时，可以在()中指定实参（实际参数可以是任意的数据类型）
-        实参会赋值给函数中对应的形参
-    - 调用函数时解析器不会检查实参的类型
-        所以要注意是否会接收到非法的参数，如果有可能则需要对参数进行类型的检查
-    - 调用函数时解析器也不会检查实参的数量
-        多余实参不会被赋值
-            如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/05/Css/Css11/">Css11</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS中的定位</p>
-<pre><code>* 定位（position）
-    - 定位是一种更加高级的布局手段
-    - 通过定位可以将元素摆放到页面的任意位置
-    - 使用position属性来设置定位
-        可选值：
-            - static 默认值，元素是静止的，没有开启定位
-            - relative 开启元素的相对定位
-            - absolute1 开启元素的绝对定位
-            - fixed 开启元素的固定定位
-            - sticky 开启元素的粘滞定位</code></pre>
-<p>相对定位</p>
-<pre><code>* 当元素的position属性设置为relative时则开启了元素的相对定位
-* 相对定位的特点：
-    - 不设置偏移量元素不会发生任何的变化
-    - 相对定位是参照元素在文档流种的位置进行定位
-    - 相对定位会提高元素的层级
-    - 相对定位不会使元素脱离文档流
-    - 相对定位不会改变元素的性质，块元素还是块元素，行内元素还是行内元素
-* 偏移量（offset）
-    - 当元素开启定位以后，可以通过偏移量来设置元素的位置
-        - top
-            - 定位元素和定位位置上边的距离
-        - bottom
-            - 定位元素和定位位置下边的距离
-            -定位元素垂直方向的位置由top和bottom两个属性来控制
-                通常情况下我们只会使用其中之一
-        - left
-            - 定位元素和定位位置左边的距离
-        - right
-            - 定位元素和定位位置右边的距离
-            定位元素水平方向的位置由left和right两个属性来控制
-                通常情况下我们只会使用其中之一</code></pre>
-<p>绝对定位</p>
-<pre><code>* 当元素的position属性设置为absolute时，则开启了元素的绝对定位
-* 绝对定位的特点：
-    - 不设置偏移量元素不会发生任何的变化
-    - 元素会从文档流中脱离
-    - 会改变元素的性质，块的宽高被内容撑开
-    - 会提高元素的层级
-    - 绝对定位元素是相对于其包含块进行定位的
-        - 包含块（containing block）
-            - 正常情况下，包含块就是离当前元素最近的祖先块元素
-            - 绝对定位的包含块则是离当前元素最近的开启了定位的祖先元素
-                如果所有的祖先元素都没有开启定位则根元素（html 初始包含块）就是它的包含块
-* 当我们开启了绝对定位后，水平布局等式就需要添加left和right两个值
-    此时规则和之前一样，只是多了两个值
-        - 当发生过度约束：
-            - 如果九个值中没有auto则自动调整right以使等是满足
-            - 如果有auto则自动调整auto的值以使等是满足
-        - 可设置auto的值有margin、width、left、right
-        - 因为left和right的值默认是auto，所以如果不指定这两个值
-            则等式不满足时会自动调整这两个值
-* 开启绝对定位时，垂直方向的布局也必须满足等式
-    top+margin-top/bottom+padding-top/bottom+border-top/bottom+bottom
-* 因此当开启绝对定位时，我们可以利用水平和垂直的布局等式令元素水平垂直居中</code></pre>
-<p>固定定位</p>
-<pre><code>* 当元素的position属性设置为fixed时，则开启了元素的固定定位
-* 固定定位也是一种绝对定位，绝大部分特点与其一致
-    唯一不同的是固定定位永远参照于浏览器的可视窗口进行定位
-    不会随着网页的滚动条滚动</code></pre>
-<p>粘滞定位</p>
-<pre><code>* 当元素的position属性设置为sticky时，则开启了元素的粘滞定位
-* 粘滞定位于相对定位特点基本一致
-    不同的是站指定位可以在元素到达某个位置时将其固定</code></pre>
-<p>层级</p>
-<pre><code>* 开启定位后的元素，可以通过z-index属性来设置元素的层级
-    - z-index的值越大元素的层级越大
-        元素的层级越大越优先显示
-    - 如果元素的层级一样则优先显示靠下的元素
-    - 祖先元素的层级再高也不会盖住后代元素</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/10/05/JavaScript/JavaScript02/">JavaScript02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-10-05
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>多进制的数字</p>
-<pre><code>* 在JS中表达不同进制的数字需要用不同的表达方式
-    - 如表达16进制的数字，则需要以0x开头
-    - 如表达8进制的数字，则需要以0开头
-    - 如表达2进制的数字，则需要以0b开头</code></pre>
-<p>运算符</p>
-<pre><code>* 运算符也叫操作符
-    - 通过运算符可以对一个或多个值进行运算并获取运算结果
-    - 如：typeof就是运算符，可以来获取一个值的类型
-            它会将该值的类型以字符串的形式返回
-* 算术运算符
-    当对非Number类型的值进行运算时，会将这些值转换为Number然后再运算
-        任何值和做运算都得NaN
-    +
-        + 可以对两个值进行加法运算并将结果返回
-        任何值和字符串相加都会做拼串操作，拼接成一个字符串
-        我们可以利用这一特性，将一个任意的数据类型转换为String
-        只需要为任意的数据类型+一个&quot;&quot;即可将其转换为String
-        这是一种隐式的转换，有浏览器自动完成，实际上也是调用String()函数
-    - 
-        - 可以对两个值进行减法运算并将结果返回
-    *  
-        * 可以对两个值进行乘法运算并将结果返回
-    /
-        / 可以对两个值进行除法运算并将结果返回
-    %
-        % 取模运算（取余数）
-    =
-        = 将符号右侧的值赋值给符号左侧的变量
-    +=
-        += a += 5 等价于 a = a + 5
-    -=
-        -= a -= 5 等价于 a = a - 5
-    *=
-        *= a *= 5 等价于 a = a * 5
-    /=
-        /= a /= 5 等价于 a = a / 5
-    %=
-        %= a %= 5 等价于 a = a % 5
-* 任何值做- * /运算时都会自动转换为Number
-    我们可以利用这一特点做隐式的类型转换
-    可以通过为一个值-0 *1 /1来将其转换为Number
-    原理和Number()函数一样
-* 一元运算符
-    - 正号
-        +（正号）不会对数字产生任何影响
-    - 负号
-        -（负号）可以对数字进行取反
-    - 对于非Number类型的值
-        它会将其转换为Number，然后再运算
-        可以对一个其他的数据类型使用+，来将其转换为number
-        它的原理和Number()函数一样
-    - 自增++
-        - 通过自增可以使变量在自身基础上增加1
-        - 对于一个变量自增以后，原变量的值会立刻自增1
-        - 自增分成两种：前++（++a）和后++（a++）
-            无论是前++还是后++都会使原变量的值自增1
-            不同的是前++和后++本身的值
-            前++（++a）的值等于新值（自增后的值）
-            后++（a++）的值等于原变量的值（自增前的值）
-    - 自减--
-        - 通过自减可以使变量在自身基础上减1
-        - 对于一个变量自减以后，原变量的值会立刻自减1
-        - 自减分成两种：前--（--a）和后--（a--）
-            无论是前--还是后--都会使原变量的值自减1
-            不同的是前--和后--本身的值
-            前--（--a）的值等于新值（自减后的值）
-            后--（a--）的值等于原变量的值（自减前的值）
-* 逻辑运算符
-    - ！（非）
-        - ！可以用来对一个值进行非运算
-        - 所谓非运算就是对一个布尔值进行取反操作
-            true变false，false变true
-        - 如果对一个非布尔值进行取反，则会将其转换为布尔值然后再取反
-            所以可以利用该特点将一个其他数据类型转换为布尔值
-    - &amp;&amp;（与）
-        - &amp;&amp;可以对符号两侧的值进行与运算并返回结果
-        - JS中的“与”属于短路与
-            如果第一个值为false，则不会看第二个值
-    - ||（或）
-        - ||可以对符号两侧的值进行或运算并返回结果
-        - JS中的“或”属于短路或
-            如果第一个值为true，则不会看第二个值
-    - &amp;&amp; || 非布尔值的情况
-        - 对于非布尔值进行与或运算时
-            会先将其转换为布尔值，然后再运算，并且返回原值
-        - 与运算：
-            - 如果第一个值为true，则必然返回第二个值
-            - 如果第一个值为false，则必然返回第一个值
-        - 或运算：
-            - 如果第一个值为true，则必然返回第一个值
-            - 如果第一个值为false，则必然返回第二个值
-* 关系运算符
-    - 如果关系成立则返回true，反之则返回false
-    &gt; 大于号
-    &gt;= 大于等于
-    &lt; 小于号
-    &lt;= 小于等于
-    == 相等
-    != 不相等
-    === 全等：如果两个值的类型不同，直接返回false
-    !== 不全等：如果两个值的类型不同，直接返回true
-        - 任何值和NaN做任何比较都是false
-        - 比较两个字符串时，比较的是字符串的字符编码（Unicode编码）
-            比较字符编码时是一位一位进行比较
-            如果两位一样则比较下一位
-        - undefined衍生自null
-            所以这两个值做相等判断时，会返回true
-        - NaN不和任何值相等，包括它本身
-* 条件运算符（三目运算符）
-    - 语法：
-        条件表达式?语句1:语句2;
-    - 如果条件的表达式的求值结果是一个非布尔值
-        则将其转换为布尔值然后再运算</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
 </div>
 
 

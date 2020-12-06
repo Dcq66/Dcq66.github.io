@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java23-双列集合 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/12/06/Java/Java23-双列集合/">
+            Java23-双列集合
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-06
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>双列集合</p>
+<pre><code>* Map集合
+    - 特点：
+        - Map集合是一个双列集合，一个元素包括两个值（一个key，一个value）
+        - Map集合中的元素，key和value的数据类型可以相同，也可以不同
+        - Map集合中的元素，key是不允许重复的，value可以重复
+        - Map集合中的元素，key和value是一一对应的
+    - 常用的成员方法：
+        - public V put(K key,V value) 把指定的键与指定的值添加到Map集合中
+            - 存储键值对的时候key不重复则返回值V是null
+            - 存储键值对的时候key重复则会使用新的value替换map中重复的value，返回被替换的value值
+        - public V remove(Object key) 把指定的键对应的键值对在Map集合中删除，返回被删除元素的值
+            - key存在返回被删除的键值对的值
+            - key不存在则返回null
+        - public V get(Object key) 返回指定的键在Map集合中所对应的值
+            - key存在则返回对应的value值
+            - key不存在则返回null
+        - boolean containsKey(Object key) 判断Map集合中是否包含指定的键
+            - 包含则返回true
+            - 不包含则返回false
+    - Map集合中的遍历方法：
+        - 通过键找值的方式：
+            - Set&lt;K&gt; keySet() 返回此映射中包含的键的set视图，即返回一个存储了Map集合中所有键的Set集合
+            - 实现步骤：
+                - 使用Map集合中的方法keySet()，把Map集合中所有的key取出来存储到一个Set集合中
+                - 遍历Set集合，获取Map集合中每一个key
+                - 使用Map集合中get()方法获取每一个key所对应的value值
+        - 使用Entry对象遍历：
+            - Map集合中的方法：
+                - Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet() 返回此映射中包含的映射关系的Set视图
+            - 实现步骤：
+                - 使用Map集合中的方法entrySet()，把Map集合中所有的Entry对象取出来存储到一个Set集合中
+                - 遍历Set集合，获取Map集合中每一个Entry对象
+                - 使用Entry对象中的方法getKey()和getValue()获取键与值
+* HashMap集合
+    - 特点：
+        - 底层是哈希表：查询速度特别快
+            - JDK1.8之前：数组+单向列表
+            - JDK1.8之后：数组+单向列表/红黑树（链表的长度超过8）：提高查询的速度
+        - HashMap集合是一个无序集合
+    - 存储指定类型的键值
+        - 由于Map集合保证key是唯一的，因此作为key的元素必须重写hashCode()和equals()方法以保证key唯一
+* LinkedHashMap集合
+    - 特点：
+        - 底层是哈希表+链表（保证迭代的顺序）
+        - LinkedHashMap集合是一个有序的集合
+* Hashtable集合
+    - 特点：
+        - 底层也是一个哈希表，是一个线程安全的集合，是单线程集合，速度慢
+        - 不可以存储null值，null键
+        - Hashtable集合和Vector集合一样，在JDK1.2版本之后被更先进的集合所取代
+            但Hashtable的子类Properties依然活跃，Properties集合是一个唯一和IO流相结合的集合
+* JDK之后的新特性：
+    - List接口、Set接口、Map接口里边增加了一个静态的方法of(),可以给集合一次性添加多个元素
+        - 格式（用List集合举例）:static &lt;E&gt; List&lt;E&gt; of(E,elements)
+    - 使用前提：当集合中存储的元素的个数已经确定了，不再改变时使用
+    - 注意：
+        - of方法只适用于List接口、Set接口、Map接口，不适用于接口的实现类
+        - 该方法的返回值是一个不可改变的集合，集合不能再使用add,put方法添加元素，否则会抛出异常
+        - Set接口、Map接口在调用该方法时，不能有重复的元素，否则会抛出异常</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/12/06/Java/Java23-%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/06/Java/Java23-%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/06/Java/Java23-%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/06/Java/Java23-%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/12/06/Java/Java23-%E5%8F%8C%E5%88%97%E9%9B%86%E5%90%88/
+https://dcq66.github.io/2020/12/06/Java/Java23-%25E5%258F%258C%25E5%2588%2597%25E9%259B%2586%25E5%2590%2588/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

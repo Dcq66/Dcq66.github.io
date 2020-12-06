@@ -57,6 +57,357 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/10/11/JavaScript/JavaScript03/">JavaScript03</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-11
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>JavaScript对象(Object)</p>
+<pre><code>* 对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性
+* 对象的分类：
+    - 内建对象：
+        - 由ES标准中定义的对象，在任何的ES的实现中都可以使用
+        - 比如：Math String Number Boolean
+    - 宿主对象：
+        - 由JS的运行环境提供的对象，目前来讲主要是指由浏览器提供的对象
+        - 比如：BOM DOM
+    - 自定义对象：
+        - 由开发人员自己创建的对象
+* 使用对象字面量创建对象
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    name:<span class="number">1</span>,</span><br><span class="line">    age:<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 属性值
+    - JS对象的属性值可以是任意的数据类型
+        甚至也可以是一个对象
+* in 运算符
+    - 通过该运算符可以检查一个对象中是否含有指定的属性
+        有则返回true，反之返回false
+    - 语法：
+        &quot;属性名&quot; in 对象  例子如
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
+* 如果要使用特殊的属性名，不能采用.的方式来操作
+        需要使用另一种方式
+    - 语法：对象[&quot;属性名&quot;]=属性值
+        读取时也要采取这种方式
+    - 使用[]这种形式去操作属性，更加的灵活
+        在[]中可以去直接传递一个变量，这样变量值是多少就会读取那个属性
+* 堆内存和栈内存
+    - JS中的变量都是保存到栈内存中的
+        基本数据类型的值直接在栈内存中存储
+            值与值之间是相互独立的，修改一个变量不会影响到另一个变量
+    - 对象是保存到堆内存的，每创建一个新的对象就会在对内存中开辟出一个新的空间
+        而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是同一个对象引用
+            当一个变量修改属性时，另一个也会受到影响
+    - 当比较两个基本数据类型的值时，就是比较值
+        而比较两个引用数据类型时，它比较的是对象的内存地址
+            如果两个对象是一模一样的，但是地址不同，它也会返回false</code></pre>
+<p>JavaScript函数（Function）</p>
+<pre><code>* 函数Function
+    - 函数也是一个对象
+    - 函数可以封装一些功能（代码），在需要时可以执行这些功能（代码）
+    - 使用typeof检查一个函数对象时，返回function
+* 创建函数的方式
+    - 使用构造函数来创建一个函数对象（实际开发中很少用）
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="built_in">Function</span>();</span><br></pre></td></tr></table></figure>
+    - 使用函数声明来创建一个函数，可在括号中加入形参
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 使用函数表达式来创建一个函数
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun=<span class="keyword">new</span> <span class="function"><span class="title">Function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+* 可以使用return来设置函数的返回值
+    - 语法：return 值
+        return后的值将会作为函数的执行结果返回
+            可以定义一个变量来接收
+    - 函数中启用return后的语句都不会继续执行
+    - 如果return语句后不跟任何值就相当于返回一个undefined
+        如果函数中不写return，则也会返回undefined
+* 形参和实参
+    - 可以在函数的()中来指定一个或多个形参（形式参数）
+        多个形参之间使用 ，隔开，声明形参就相当于在函数内部声明了对应的变量但不赋值
+    - 在调用函数时，可以在()中指定实参（实际参数可以是任意的数据类型）
+        实参会赋值给函数中对应的形参
+    - 调用函数时解析器不会检查实参的类型
+        所以要注意是否会接收到非法的参数，如果有可能则需要对参数进行类型的检查
+    - 调用函数时解析器也不会检查实参的数量
+        多余实参不会被赋值
+            如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/05/Css/Css11/">Css11</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-05
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>CSS中的定位</p>
+<pre><code>* 定位（position）
+    - 定位是一种更加高级的布局手段
+    - 通过定位可以将元素摆放到页面的任意位置
+    - 使用position属性来设置定位
+        可选值：
+            - static 默认值，元素是静止的，没有开启定位
+            - relative 开启元素的相对定位
+            - absolute1 开启元素的绝对定位
+            - fixed 开启元素的固定定位
+            - sticky 开启元素的粘滞定位</code></pre>
+<p>相对定位</p>
+<pre><code>* 当元素的position属性设置为relative时则开启了元素的相对定位
+* 相对定位的特点：
+    - 不设置偏移量元素不会发生任何的变化
+    - 相对定位是参照元素在文档流种的位置进行定位
+    - 相对定位会提高元素的层级
+    - 相对定位不会使元素脱离文档流
+    - 相对定位不会改变元素的性质，块元素还是块元素，行内元素还是行内元素
+* 偏移量（offset）
+    - 当元素开启定位以后，可以通过偏移量来设置元素的位置
+        - top
+            - 定位元素和定位位置上边的距离
+        - bottom
+            - 定位元素和定位位置下边的距离
+            -定位元素垂直方向的位置由top和bottom两个属性来控制
+                通常情况下我们只会使用其中之一
+        - left
+            - 定位元素和定位位置左边的距离
+        - right
+            - 定位元素和定位位置右边的距离
+            定位元素水平方向的位置由left和right两个属性来控制
+                通常情况下我们只会使用其中之一</code></pre>
+<p>绝对定位</p>
+<pre><code>* 当元素的position属性设置为absolute时，则开启了元素的绝对定位
+* 绝对定位的特点：
+    - 不设置偏移量元素不会发生任何的变化
+    - 元素会从文档流中脱离
+    - 会改变元素的性质，块的宽高被内容撑开
+    - 会提高元素的层级
+    - 绝对定位元素是相对于其包含块进行定位的
+        - 包含块（containing block）
+            - 正常情况下，包含块就是离当前元素最近的祖先块元素
+            - 绝对定位的包含块则是离当前元素最近的开启了定位的祖先元素
+                如果所有的祖先元素都没有开启定位则根元素（html 初始包含块）就是它的包含块
+* 当我们开启了绝对定位后，水平布局等式就需要添加left和right两个值
+    此时规则和之前一样，只是多了两个值
+        - 当发生过度约束：
+            - 如果九个值中没有auto则自动调整right以使等是满足
+            - 如果有auto则自动调整auto的值以使等是满足
+        - 可设置auto的值有margin、width、left、right
+        - 因为left和right的值默认是auto，所以如果不指定这两个值
+            则等式不满足时会自动调整这两个值
+* 开启绝对定位时，垂直方向的布局也必须满足等式
+    top+margin-top/bottom+padding-top/bottom+border-top/bottom+bottom
+* 因此当开启绝对定位时，我们可以利用水平和垂直的布局等式令元素水平垂直居中</code></pre>
+<p>固定定位</p>
+<pre><code>* 当元素的position属性设置为fixed时，则开启了元素的固定定位
+* 固定定位也是一种绝对定位，绝大部分特点与其一致
+    唯一不同的是固定定位永远参照于浏览器的可视窗口进行定位
+    不会随着网页的滚动条滚动</code></pre>
+<p>粘滞定位</p>
+<pre><code>* 当元素的position属性设置为sticky时，则开启了元素的粘滞定位
+* 粘滞定位于相对定位特点基本一致
+    不同的是站指定位可以在元素到达某个位置时将其固定</code></pre>
+<p>层级</p>
+<pre><code>* 开启定位后的元素，可以通过z-index属性来设置元素的层级
+    - z-index的值越大元素的层级越大
+        元素的层级越大越优先显示
+    - 如果元素的层级一样则优先显示靠下的元素
+    - 祖先元素的层级再高也不会盖住后代元素</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/10/05/JavaScript/JavaScript02/">JavaScript02</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-10-05
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>多进制的数字</p>
+<pre><code>* 在JS中表达不同进制的数字需要用不同的表达方式
+    - 如表达16进制的数字，则需要以0x开头
+    - 如表达8进制的数字，则需要以0开头
+    - 如表达2进制的数字，则需要以0b开头</code></pre>
+<p>运算符</p>
+<pre><code>* 运算符也叫操作符
+    - 通过运算符可以对一个或多个值进行运算并获取运算结果
+    - 如：typeof就是运算符，可以来获取一个值的类型
+            它会将该值的类型以字符串的形式返回
+* 算术运算符
+    当对非Number类型的值进行运算时，会将这些值转换为Number然后再运算
+        任何值和做运算都得NaN
+    +
+        + 可以对两个值进行加法运算并将结果返回
+        任何值和字符串相加都会做拼串操作，拼接成一个字符串
+        我们可以利用这一特性，将一个任意的数据类型转换为String
+        只需要为任意的数据类型+一个&quot;&quot;即可将其转换为String
+        这是一种隐式的转换，有浏览器自动完成，实际上也是调用String()函数
+    - 
+        - 可以对两个值进行减法运算并将结果返回
+    *  
+        * 可以对两个值进行乘法运算并将结果返回
+    /
+        / 可以对两个值进行除法运算并将结果返回
+    %
+        % 取模运算（取余数）
+    =
+        = 将符号右侧的值赋值给符号左侧的变量
+    +=
+        += a += 5 等价于 a = a + 5
+    -=
+        -= a -= 5 等价于 a = a - 5
+    *=
+        *= a *= 5 等价于 a = a * 5
+    /=
+        /= a /= 5 等价于 a = a / 5
+    %=
+        %= a %= 5 等价于 a = a % 5
+* 任何值做- * /运算时都会自动转换为Number
+    我们可以利用这一特点做隐式的类型转换
+    可以通过为一个值-0 *1 /1来将其转换为Number
+    原理和Number()函数一样
+* 一元运算符
+    - 正号
+        +（正号）不会对数字产生任何影响
+    - 负号
+        -（负号）可以对数字进行取反
+    - 对于非Number类型的值
+        它会将其转换为Number，然后再运算
+        可以对一个其他的数据类型使用+，来将其转换为number
+        它的原理和Number()函数一样
+    - 自增++
+        - 通过自增可以使变量在自身基础上增加1
+        - 对于一个变量自增以后，原变量的值会立刻自增1
+        - 自增分成两种：前++（++a）和后++（a++）
+            无论是前++还是后++都会使原变量的值自增1
+            不同的是前++和后++本身的值
+            前++（++a）的值等于新值（自增后的值）
+            后++（a++）的值等于原变量的值（自增前的值）
+    - 自减--
+        - 通过自减可以使变量在自身基础上减1
+        - 对于一个变量自减以后，原变量的值会立刻自减1
+        - 自减分成两种：前--（--a）和后--（a--）
+            无论是前--还是后--都会使原变量的值自减1
+            不同的是前--和后--本身的值
+            前--（--a）的值等于新值（自减后的值）
+            后--（a--）的值等于原变量的值（自减前的值）
+* 逻辑运算符
+    - ！（非）
+        - ！可以用来对一个值进行非运算
+        - 所谓非运算就是对一个布尔值进行取反操作
+            true变false，false变true
+        - 如果对一个非布尔值进行取反，则会将其转换为布尔值然后再取反
+            所以可以利用该特点将一个其他数据类型转换为布尔值
+    - &amp;&amp;（与）
+        - &amp;&amp;可以对符号两侧的值进行与运算并返回结果
+        - JS中的“与”属于短路与
+            如果第一个值为false，则不会看第二个值
+    - ||（或）
+        - ||可以对符号两侧的值进行或运算并返回结果
+        - JS中的“或”属于短路或
+            如果第一个值为true，则不会看第二个值
+    - &amp;&amp; || 非布尔值的情况
+        - 对于非布尔值进行与或运算时
+            会先将其转换为布尔值，然后再运算，并且返回原值
+        - 与运算：
+            - 如果第一个值为true，则必然返回第二个值
+            - 如果第一个值为false，则必然返回第一个值
+        - 或运算：
+            - 如果第一个值为true，则必然返回第一个值
+            - 如果第一个值为false，则必然返回第二个值
+* 关系运算符
+    - 如果关系成立则返回true，反之则返回false
+    &gt; 大于号
+    &gt;= 大于等于
+    &lt; 小于号
+    &lt;= 小于等于
+    == 相等
+    != 不相等
+    === 全等：如果两个值的类型不同，直接返回false
+    !== 不全等：如果两个值的类型不同，直接返回true
+        - 任何值和NaN做任何比较都是false
+        - 比较两个字符串时，比较的是字符串的字符编码（Unicode编码）
+            比较字符编码时是一位一位进行比较
+            如果两位一样则比较下一位
+        - undefined衍生自null
+            所以这两个值做相等判断时，会返回true
+        - NaN不和任何值相等，包括它本身
+* 条件运算符（三目运算符）
+    - 语法：
+        条件表达式?语句1:语句2;
+    - 如果条件的表达式的求值结果是一个非布尔值
+        则将其转换为布尔值然后再运算</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/10/04/JavaScript/JavaScript01/">JavaScript01</a>
       </h1>
     
@@ -624,281 +975,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/27/Css/Css04/">Css04</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-27
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS文档流（normal flow）</p>
-<pre><code>* 网页是一个多层的结构，一层叠着一层
-* 通过CSS可以分别为每一层来设置样式
-* 作为用户来讲只能看到最顶上一层
-* 这些层中，最底下的一层称为文档流，文档流是网页的基础
-    我们所创建的元素默认都是在文档流中进行排列
-* 对于我们来说，元素主要有两个状态
-    - 在文档流中
-    - 不在文档流中（脱离文档流）
-* 元素在文档流中有什么特点
-    - 块元素
-        - 块元素会在页面中独占一行（自上向下垂直排列）
-        - 默认宽度是父元素的全部（会把父元素撑满）
-        - 默认高度是被内容撑开（子元素）
-    - 行内元素
-        - 行内元素不会独占页面的一行，只占自身的大小
-        - 行内元素在页面中自左向右水平排列，如果一行之中不能容下    
-            则元素会换到第二行继续自左向右排列
-        - 行内元素的默认宽度和默认高度都是被内容撑开</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/25/Css/Css03/">Css03</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-25
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS样式的继承：</p>
-<pre><code>- 样式的继承，我们为一个元素设置的样式同时也会应用到它的后代元素上
-    继承是发生在祖先和后代之间的
-    继承的设计是为了方便我们的开发
-        利用继承我们可以将一些通用的样式统一设置到共同的祖先元素上
-            这样只需设置一次即可让所有的元素都具有该样式
-- 注意：并不是所有的样式都会被继承
-        比如：背景相关的，布局相关等的这些样式都不会被继承</code></pre>
-<p>长度单位：</p>
-<pre><code>* 像素：
-    - 屏幕（显示器）实际上是由一个一个的小点点构成的
-    - 不同屏幕的像素大小是不同的，像素越小的屏幕显示的效果越清晰
-        所以同样的200px在不同的设备下显示效果不一样
-* 百分比：
-    - 也可以将属性值设置为相对于其父元素属性的百分比
-    - 设置百分比可以使子元素跟随父元素的改变而改变
-* em
-    - em是相对于元素的字体大小来计算的
-    - 1em = 1font-size
-    - em会根据字体大小改变而改变
-* rem
-    - rem是相对于根元素的字体大小来计算的</code></pre>
-<p>颜色单位：</p>
-<pre><code>* 在CSS中可以直接使用颜色名来设置各种颜色
-    比如：red、yellow、blue.....
-    但是在css中直接使用颜色名是非常的不方便
-* RGB值：
-    - RGB通过三种颜色的不同浓度来调配出各种颜色
-    - R red, G green, B blue
-    - 每一种颜色的范围在0~255（0%~100%）之间
-    - 语法：rgb（红色，绿色，蓝色）
-* RGBA:
-    - 就是在rgb的基础上加了一个a表示不透明度
-    - 需要四个值，前三个和rgb一样，第四个表示不透明
-        1表示完全不透明
-        0表示完全透明
-        .5表示半透明
-* 十六进制的RGB值：
-    - 语法：#红色绿色蓝色
-    - 颜色浓度范围 00~ff
-    - 如果颜色两位两位重复可以进行简写
-        #aabbcc --&gt;  #abc
-* HSL值 HSLA值
-    - H 色相（0 - 360）
-    - S 饱和度，颜色的浓度（0%-100%）
-    - L 亮度，颜色的亮度（0%-100%）
-    - A 表示不透明度</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/09/23/Css/Css02/">Css02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-09-23
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>CSS选择器：</p>
-<pre><code>* 元素选择器：
-    - 作用：根据标签名来选中指定的元素
-    - 语法：标签名&#123;&#125;
-    - 实例：p&#123;&#125;  h1&#123;&#125;   div&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
-* id选择器：
-    - 作用：根据元素的id属性值选中一个元素
-    - 语法：#id属性值&#123;&#125;
-    - 实例：#box&#123;&#125;  #red&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#red&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 类选择器：
-    - 作用：根据元素的class属性值选中一组元素
-    - 语法：.class属性值&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.blue&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 通配选择器：
-    - 作用：选中页面中的所有元素
-    - 语法：*&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-*交集选择器：
-    - 作用：选择同时符合多个条件的元素
-    - 语法：选择器1选择器2选择器3选择器n&#123;&#125;
-    - 注意点：交集选择器中如果有元素选择器，必须使用元素选择器开头
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div.red&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">.a.b.c&#123;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br><span class="line">div#box&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 选择器分组（并集选择器）：
-    - 作用：同时选择多个选择器对应的元素
-    - 语法：选择器1，选择器2，选择器3，选择器n&#123;&#125;
-    - 实例：#a,b,c,d&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">h1,span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">* 子元素选择器：</span><br><span class="line">    - 作用：选中指定父元素的指定子元素</span><br><span class="line">    - 语法：父元素 &gt; 子元素&#123;&#125;</span><br><span class="line">```html</span><br><span class="line">div &gt; span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 后代元素选择器：
-    - 作用：选中指定元素内的指定后代元素
-    - 语法：祖先 后代&#123;&#125;
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div span&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 选择下一个兄弟元素
-    - 语法：前一个 + 后一个
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p+span&#123;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 选择下边所有的兄弟元素：
-    - 语法：兄 ~ 弟
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p~span&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 属性选择器：
-    - [属性名]：选择含有指定属性名的元素
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - [属性名=属性值]：选择含有指定属性名和属性值的元素
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - [属性名^=属性值]：选择属性值以指定值开头的元素
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title^=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - [属性名$=属性值]：选择属性值以指定值结尾的元素
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title$=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - [属性名*=属性值]：选择属性值中含有指定值的元素
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[title*=abc]&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-* 伪类选择器（伪类表示不存在的类，特殊的类）： 
-    - 伪类用来描述一个元素的特殊状态
-        比如：第一个子元素、被点击的元素、鼠标移入的元素....
-    - 伪类一般情况下都是使用:开头
-        :first-child 第一个子元素
-        :last-child 最后一个子元素
-        :nth-child() 选中第n个子元素
-            特殊值：
-                n 表示选中元素范围在0到正无穷
-                2n 或 even 表示选中偶数位的元素
-                2n+1 或 odd 表示选中奇数位的元素
-        - 以上这些伪类都是根据所有的子元素进行排序
-            :first-of-type
-            :last-of-type
-            :nth-of-type()
-            - 这几个伪类的功能和上述的类似，不同点是他们是在同类型元素中排序
-            :not() 否定伪类
-            - 将符合条件的元素从选择器中去除
-
-* 超链接的伪类：
-    :link 用来表示没访问过的链接（正常的链接）
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;</span><br><span class="line">    color:red;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    :visited 用来表示访问过的链接，由于隐私原因，visited这个伪类只能修改链接的颜色
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:visited&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    :hover 用来表示鼠标移入的状态
-    <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:hover&#123;</span><br><span class="line">    color:blue;</span><br><span class="line">    font-size:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    :active 用来表示鼠标点击
-    ```html
-    a:active&#123;
-        color:red;
-    &#125;
-* 伪元素选择器（伪元素表示页面中一些特殊位置的并不真实存在的元素）：
-    - 伪元素使用::开头
-        ::first-letter 表示第一个字母
-        ::first-line 表示第一行
-        ::selection 表示选中的内容
-        ::before 元素的开始
-        ::after 元素的结束
-        before 和 after 必须结合content属性来使用
-
-* 样式的冲突
-    - 当我们通过不同的选择器选中相同的元素，并为其设置不同的值时，此时就会发生样式的冲突
-        发生样式的冲突时，应用哪个样式有选择器的权重（优先级）决定
-* 选择器的权重
-    - 内联样式          1，0，0，0
-    - id选择器          0，1，0，0
-    - 类和伪类选择器     0，0，1，0
-    - 元素选择器         0，0，0，1
-    - 通配选择器         0，0，0，0
-    - 继承的样式         没有优先级
-* 比较优先级时，需要将所有的选择器的优先级进行相加计算，最后优先级最高，
-    则越优先显示（分组选择器是单独计算）
-    选择器的累加不会超过其最大的数量级，如类选择器最大不会超过id选择器
-    如果优先级相同，则优先使用靠下的样式
-* 可以在某一个样式后面添加 !important，则此时该样式会获取到最高的优先级，甚至超过内联样式
-    注意，在开发时需慎用   </code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
 </div>
 
 

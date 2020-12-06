@@ -111,6 +111,19 @@
         - 返回当前对象自身即不用接收返回值，该对象自身发生改变
         - 链式编程：当返回值是一个对象时，可以继续根据对象调用方法
     - public String toString();    将当前StringBuilder对象转换为String对象</code></pre>
+<p>Collections</p>
+<pre><code>* Collections是一个集合工具类，用来对集合进行操作
+* 常用的静态成员方法：
+    - public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c,T...elements); 往集合中添加一些元素
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">System.out.println(list);&#x2F;&#x2F;输出为[a,b,c]</span><br></pre></td></tr></table></figure>
+    - public static void shuffle(List&lt;?&gt; list) 随机打乱集合内元素的排列顺序
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">Collections.shuffle(list);</span><br></pre></td></tr></table></figure>
+    - public static &lt;T&gt; void sort(List&lt;T&gt; list); 将集合中的元素按照规则排序，默认是升序排序
+        - 注意：sort(List&lt;T&gt; list)使用前提：
+            被排序的集合里边存储的元素，必须实现Comparable，重写接口中的方法comparaTo定义排序的规则
+    - public static &lt;T&gt; void sort(List&lt;T&gt; list,Comparator&lt;? super T&gt;); 将集合中的元素按照规序，
+        默认是升序排序
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   Collections.sort(list,new Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">   @Override</span><br><span class="line">   public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">       &#x2F;&#x2F;参数会传递两个值，是按照传入集合中的元素顺序传递的，</span><br><span class="line">       &#x2F;&#x2F;两个参数相减若为正数则互换彼此在集合中的位置，反之则不互换</span><br><span class="line">       &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">       return o1-o2;&#x2F;&#x2F;升序</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></code></pre>
 
 
     <!-- Social share choices -->

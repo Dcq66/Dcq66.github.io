@@ -57,6 +57,185 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/">Java15-内部类</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-24
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>内部类</p>
+<pre><code>* 一个类内部包含另一个类称之为内部类
+* 分类：
+    - 成员内部类
+    - 局部内部类（包含匿名内部类）
+* 成员内部类
+    - 格式：
+        修饰符 class 外部类名称&#123;
+            修饰符 class 内部类名称&#123;
+                ....
+            &#125;
+        &#125;
+    - 注意：内部类用外部类可以随意访问，外部类用内部类需要创建内部类对象
+    - 使用内部类：
+        - 间接方法：在外部类的方法当中，使用内部类；然后main只是调用外部类的方法
+        - 直接方法：外部类名称.内部类名称 对象名 = new 外部类名称().内部类名称();
+    - 当内部类成员变量名和外部类成员变量名重名时
+        - 错误格式：this.外部类成员变量名
+        - 正确格式：外部类名称.this.外部类成员变量名
+* 局部内部类
+    - 若一个类是定义在一个方法内部的，那么这就是一个局部内部类
+    - 局部：只有在当前所属的方法之中才能使用它
+    - 格式：
+        修饰符 class 外部类名称&#123;
+            修饰符 返回值类型 外部类方法名称(参数列表)&#123;
+                class 局部内部类名称&#123;
+
+                &#125;
+            &#125;
+        &#125;
+    - 若想访问所在方法的局部变量，那么这个局部变量必须是有效final
+        从Java8开始，只要局部变量不变，那么final关键字可以省略
+* 匿名内部类
+    - 格式：
+        接口名称 对象名-new 接口名称()&#123;
+            //覆盖重写所有抽象方法
+        &#125;
+    - 对new 接口名称()&#123;....&#125;进行解析
+        - new代表创建动作
+        - 接口名称就是匿名内部类需要实现哪个接口
+        - &#123;...&#125;这才是匿名内部类的内容
+    - 注意事项：
+        - 匿名内部类在创建对象的时候只能使用唯一的一次，若希望多次创建对象，
+            而且类的内容一样的话，就得使用单独定义的类了
+        - 匿名对象在调用方法时只能调用唯一的一次
+        - 匿名内部类省略了实现类/子类名称，但匿名对象是省略了对象名称
+* 类的修饰符权限
+    - public&gt;protected&gt;(default)&gt;private
+    - 定义一个类的时候，可以使用的权限修饰符规则：
+        - 外部类：public、(default)
+        - 成员内部类：public、protected、(default)、private
+        - 局部内部类：什么都不能写</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/23/Java/Java14-%E5%A4%9A%E6%80%81%E6%80%A7/">Java14-多态性</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-23
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>多态性</p>
+<pre><code>* 一个对象拥有多个形态就是对象的多态性
+* 对象的向上转型，其实就是多态写法
+    - 格式：父类名称 对象名=new 子类名称();或接口名称 对象名=new 实现类名称();
+    - 含义：右侧new创建一个子类对象，将他当作父类来看待使用
+    - 注意事项：
+        - 对象向上转型之后就不能使用子类特有的内容了
+* 对象的向下转型，其实就是一个还原的动作
+    - 格式：子类名称 对象名=(子类名称)父类对象
+    - 含义：将父类对象还原为原来的子类对象
+    - 注意事项：
+        - 若不是还原为原来的子类对象则会报错
+* instanceof
+    - 格式：对象 instanceof 类名称
+    - 会得到一个Boolean返回值，判断前面的对象能不能当后面类型的实例</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/22/ES6/ES6-%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F/">ES6-常量与变量</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-22
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>常量</p>
+<pre><code>* 格式：const 常量名称=&quot;常量值&quot;;
+* 注意事项：
+    - 一定要赋初始值
+    - 一般常量都用大写字母命名（推荐）
+    - 常量的值不能修改
+    - 块级作用域：只在当前大括号以及大括号所包含的下级大括号中起作用
+    - 对于赋予常量的数组和对象中的元素修改时，不算做对常量的修改</code></pre>
+<p>变量</p>
+<pre><code>* 格式：let 变量名称=&quot;变量值&quot;;
+* 注意事项：
+    - 块级作用域：只在当前大括号以及大括号所包含的下级大括号中起作用
+    - 不存在变量提前</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/11/22/Java/Java13-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">Java13-抽象类与接口</a>
       </h1>
     
@@ -589,190 +768,10 @@
 </div>
 
 
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/15/Java/Java06-%E5%86%85%E5%AD%98/">Java06——内存</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-15
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>内存</p>
-<pre><code>* Java内存需要划分为5个部分：
-    - 栈（Stack）：存放的都是方法中的局部变量。方法的运行一定在栈当中运行
-        - 局部变量：方法的参数，或是方法内部的变量
-        - 作用域：一旦超出作用域立刻从栈内存中消失
-    - 堆（Heap）：凡是new出来的东西都在堆内存中
-        - 堆内存里面的东西都有一个地址值（16进制）
-        - 堆内存中的数据都有一个默认值：
-            - 整数类型则默认为0
-            - 浮点类型则默认为0.0
-            - 字符类型则默认为&#39;\u0000&#39;
-            - 如果是布尔类型则默认为false
-            - 如果是引用类型则默认为null
-    - 方法区（Method Area）：储存.class相关信息，包含方法的信息
-    - 本地方法栈（Native Method Stack）：与操作系统有关
-    - 寄存器（pc Register）：与CPU有关</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/15/Java/Java04-%E6%96%B9%E6%B3%95/">Java05——方法</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-15
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>方法</p>
-<pre><code>* 定义方法的完整格式：
-    修饰符 返回值类型 方法名称(参数类型 参数名称, ....)&#123;
-        方法体
-        return 返回值
-    &#125;
-    - 修饰符：初学阶段的固定写法为public static
-    - 返回值类型：方法最终产生的数据结果是什么类型
-    - 方法名称：方法的名字，一般都是小驼峰写法
-    - 参数类型：传入方法中的数据类型
-    - 参数名字（形参）：进入方法的数据对应的变量名称
-    -方法体：方法所执行的代码
-    - return：
-        - 停止当前方法
-        - 将后面的返回值还给调用处
-        - 注意：return后面的返回值类型必须和方法名称前面的返回值类型一致
-    - 返回值：方法执行后最终产生的数据结果
-* 有参数：小括号中有内容，当一个方法需要一些数据条件才能完成任务时，就是有参
-* 无参数：小括号中没有内容，当一个方法不需要任何数据条件就能完成任务时，就是无参
-* 使用方法的注意事项：
-    - 方法应该定义在类当中，不能在方法中定义方法，即方法不能嵌套
-    - 多个方法定义的前后顺序无所谓
-    - 方法定义之后不会立即执行，只有当调用该方法时才会执行
-    - 如果方法有返回值，那么必须写上“return 返回值;”
-    - 对于一个没有设置返回值（即void）的方法，可以不写return，若写上return就不能加上返回值，
-        即只能return自身
-    - 一个方法当中可以有多个return语句，但是必须保证同时只有一个会被执行，两个return不能连写
-* 方法的重载（Overload）：多个方法的名称一样，但是参数列表不一样
-    - 好处：只需要使用一个方法即可实现多个类似的功能
-    - 方法重载只与以下因素有关：
-        - 参数个数
-        - 参数类型
-        - 参数的多类型顺序不同
-    - 方法重载与以下因素无关：
-        - 参数名称
-        - 返回值类型....
-* 构造方法
-    - 专门用来创建对象的方法，当我们通过关键字new来创建对象时，其实就是在调用构造方法
-    - 格式：public 类名称（参数类型 参数名称）&#123;方法体&#125;
-    - 注意事项：
-        - 构造方法的名称必须和所在类的名称完全一致
-        - 构造方法不用写返回值类型，连void都不用写
-        - 构造方法不能return一个具体的返回值
-        - 如果没有编写构造方法，那么编译器会默认赠送一个构造方法，没有参数、方法体，什么事都不做
-        - 一旦编写了至少一个构造方法，那么编译器将不在赠送
-        - 构造方法也可以重载</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/14/ajax/ajax01/">Ajax01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-14
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>JS 原生 ajax</p>
-<pre><code>* HTTP(hypertext transport protocol)协议(超文本传输协议)，
-    协议详细规定了浏览器和万维网服务器之间互相通信的规则
-* 请求报文和响应报文格式与参数
-    - 行
-    - 头
-    - 体
-* 创建ajax
-    1.创建对象
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var xhr&#x3D;new XMLHttpRequest();</span><br></pre></td></tr></table></figure>
-    2.初始化，设置请求方法和url
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&quot;GET&quot;,&quot;style.json&quot;);</span><br><span class="line">&lt;!-- xhr.open(&quot;POST&quot;,&quot;style.json&quot;); --&gt;</span><br></pre></td></tr></table></figure>
-    3.发送
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
-    4.事件绑定，处理服务端返回的结果
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">    &lt;!-- 判断状态(因为服务器返回了所有的结果) --&gt;</span><br><span class="line">    if(xhr.readyState&#x3D;&#x3D;&#x3D;4)&#123;</span><br><span class="line">        &lt;!-- 判断响应状态码 --&gt;</span><br><span class="line">        if(xhr.status&gt;&#x3D;200&amp;&amp;xhr.status&lt;&#x3D;300||xhr.status&#x3D;&#x3D;&#x3D;304&gt;)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-<p>jquery ajax</p>
-<pre><code>* 创建ajax，直接调用jquery中的.ajax()方法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;&quot;;</span><br><span class="line">    type:&quot;&quot;;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
 
 
 <div id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
 </div>
 
 
