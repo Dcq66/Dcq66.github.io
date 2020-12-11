@@ -57,6 +57,490 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/12/11/Java/Java29-Properties/">Java29-Properties</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-11
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Properties</p>
+<pre><code>* Properties集合，是Hashtable的子类
+    - 该类表示了一个持久的属性集，Properties可保存在流中或从流中加载，且是唯一一个和IO流相结合的集合
+        - 可使用Properties集合中的store方法，把集合中的临时数据持久化写入到硬盘中存储
+        - 可使用Properties集合中的load方法，把硬盘中保存的文件（键值对）读取到集合中使用
+    - 该集合中每一个键值key和value都默认是字符串
+    - 常用方法：
+        - Object setProperty(String key,String value) 相当于Hashtable的put方法
+        - String getProperty(String key) 通过key找到其对应的值，相当于Map的get(key)方法
+        - Set&lt;String&gt; stringPropertyName() 返回该集合的中键值集合，相当于Map中的keySet方法
+    - 使用Properties集合中的store方法，把集合中的临时数据持久化写入到硬盘中存储
+        - void store(OutputStream out,String comments)
+        - void store(Writer writer,String comments)
+        - 参数：
+            - OutputStream out：字节输出流，不能写入中文
+            - Writer writer：字符输出流，可以写入中文
+            - String comments：注释，一般用来说明保存的文件是做什么用的，不能写入中文，一般使用空字符串
+        - 使用步骤：
+            - 1.创建Properties集合对象，添加数据
+            - 2.创建字节输出流/字符输出流对象，构造方法中绑定要输出的目的文件
+            - 3.使用store方法，把集合中的临时数据持久化的写入到硬盘中储存
+            - 4.释放资源
+    - 使用Properties集合中的load方法，把硬盘中保存的文件（键值对）读取到集合中使用
+        - void load(InputStream inStream)
+        - void load(Reader reader)
+        - 参数：
+            - InputStream inStream：字节输入流，不能读取含有中文的键值对
+            - Reader reader：字符输出流，可以读取含有中文的键值对
+        - 注意：
+            - 存储键值对的文件中，键与值默认的连接符号可以使用=，空格（其他符号）
+            - 存储键值对的文件中，可以使用#进行注释，被注释的键值不会再被读取
+            - 存储键值对的文件中，键值对都默认是字符串，不用再加引号</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/12/10/Java/Java28-IO/">Java28-IO流</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-10
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>IO 流</p>
+<pre><code>* IO流的顶级父类们：
+    - 字节流：字节输入流与字节输出流
+    - 字符流：字符输入流与字符输出流</code></pre>
+<p>字节流</p>
+<pre><code>* OutputStream：字节输出流，该抽象类是表示输出字节流的所有类的超类
+* OutputStream中定义了一些子类共性的方法：
+    - public void close() 关闭此输出流并释放与此流相关联的任何系统资源
+    - public void flush() 刷新此输出流并强制任何缓冲的输出字节被写出
+    - public void write(int b) 将指定的字节写入此输出流
+    - public void write(byte[] b) 将b.length字节从指定的字节数组写入此输出流
+    - public void write(byte[] b，int off,int len)
+        - 从指定的字节数组写入len字节,从偏移量off开始输出到此输出流
+    - FileOutputStream：文件字节输出流，是OutputStream的子类
+        - 作用：把内存中的数据写入硬盘中的文件中
+        - 构造方法：
+            - FileOutputStream(String name) 创建一个向具有指定名称的文件中写入数据的输出文件流
+            - FileOutputStream(File file) 创建一个向具有指定File对象表示的文件中写入数据的输出文件流
+        - 使用步骤：
+            - 1.创建一个FileOutputStream对象，构造方法中传递写入数据的目的地
+            - 2.调用FileOutputStream对象中的write方法，把数据写入文件中
+            - 3.释放资源
+    - 续写和换行：
+        - 续写：使用两个参数的构造方法
+            - FileOutputStream(String filename,boolean append)
+            - FileOutputStream(File file,boolean append)
+            - 参数append为续写开关
+                - true：不会创建新文件覆盖原文件可以续写
+                - false：创建新的文件会覆盖原文件
+        - 换行：换行符号
+            - Windows：\r\n
+            - Linux:/n
+            - mac:/r
+* InputStream：字节输入流，该抽象类是表示输入字节流的所有类的超类
+* InputStream中定义了一些子类共性的方法：
+    - int read() 从输出流中读取数据的下一个字节
+    - int read(byte[] b) 从输出流中读取一定数量的字节，并将其存储在缓冲区数组b中
+    - void close() 关闭此输入流并释放与该流关联的所有系统资源
+    - FileInputStream：文件字节输出流，是InputStream的子类
+        - 作用：把硬盘文件中的数据读取到内存中使用
+        - 构造方法：
+            - FileInputStream(String name) 创建一个向具有指定名称的文件中读取数据的输入文件流
+            - FileInputStream(File file) 创建一个向具有指定File对象表示的文件中读取数据的输入文件流
+        - 读取数据的原理：Java程序--&gt;JVM--&gt;OS（操作系统）--&gt;OS读取数据的方法--&gt;读取文件
+        - 使用步骤：
+            - 1.创建一个FileInputStream对象，构造方法中绑定要读取的数据源
+            - 2.调用FileInputStream对象中的read方法，读取文件
+            - 3.释放资源</code></pre>
+<p>字符流</p>
+<pre><code>* Reader：字符输入流，是字符输入流的最顶层的父类，是一个抽象类
+    - 共性方法：
+        - int read() 读取单个字符并返回
+        - int read(char[] b) 一次读取多个字符，并将其存储在缓冲区数组b中
+        - void close() 关闭此输入流并释放与该流关联的所有系统资源
+    - FileReader：文件字符输入流，是Reader的子类
+        - 作用：把硬盘文件中的数据以字符的方法读取到内存中
+        - 构造方法：
+            - FileReader(String filename)
+            - FileReader(File file)
+* Write：字符输出流，是字符输出流的最顶层的父类，是一个抽象类
+    - 共性方法：
+        - public void close() 关闭此输出流并释放与此流相关联的任何系统资源，但先要刷新它
+        - public void flush() 刷新此输出流并强制任何缓冲的输出字节被写出
+        - public void write(int c) 将指定的字符写入此输出流
+        - public void write(char[] c) 将指定的字符数组写入此输出流
+        - public void write(char[] c，int off,int len)
+            - 写入字符数组的某一部分，从数组的off索引开始，写len的字符个数
+        - public void write(String str) 写入字符串
+        - public void write(String str)
+            - 写入字符串的某一部分，从字符串的off索引开始，写len的字符个数
+    - close与flush的区别：
+        - flush：刷新缓冲区，流对象可以继续使用
+        - close：先刷新缓冲区，然后释放系统资源，流对象不可以继续使用
+    - FileWrite：文件字符输出流，是Write的子类
+        - 作用：把内存中字符数据写入到文件中
+        - 构造方法：
+            - FileWrite(String filename)
+            - FileWrite(File file)
+    - 续写和换行：
+        - 续写：使用两个参数的构造方法
+            - FileWrite(String filename,boolean append)
+            - FileWrite(File file,boolean append)
+            - 参数append为续写开关
+                - true：不会创建新文件覆盖原文件可以续写
+                - false：创建新的文件会覆盖原文件
+        - 换行：换行符号
+            - Windows：\r\n
+            - Linux:/n
+            - mac:/r
+* JDK7的新特性：
+    - 在try的后面可以加一个()，在括号中可以定义流对象，那么这个流的作用域就在try中有效，
+        try中的代码执行完毕后会自动将流对象释放，不用再写finally
+    - 格式：
+        try(定义流对象;定义流对象...)&#123;
+            可能会出现异常的代码
+        &#125;catch(异常类变量 变量名)&#123;
+            异常的处理逻辑
+        &#125;
+* JDK9的新特性：
+    - try的前面可以定义流对象，在try后边的()中可以直接引入流对象的名称，
+        try中的代码执行完毕后会自动将流对象释放，不用再写finally
+    格式：
+        A a=new A();
+        B b=new B();
+        try(a,b)&#123;
+            可能会出现异常的代码
+        &#125;catch(异常类变量 变量名)&#123;
+            异常的处理逻辑
+        &#125;</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/12/09/Java/Java27-File%E7%B1%BB/">Java27-File类</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-09
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>File</p>
+<pre><code>* Java把电脑中的文件和文件夹（目录）封装为一个File类，我们可以使用File类对文件和文件夹
+    进行操作，该类是一个与系统无关的类，任何的操作系统都可以使用这个类中的方法
+* File类中常用的静态方法：
+    - static String pathSeparator 返回与系统有关的路径分隔符
+        - windows系统为分号（;）
+        - linux系统为冒号（:）
+    - static char pathSeparator 返回与系统有关的路径分隔符
+    - static String separator 返回与系统有关的默认名称分隔符
+        - windows系统为反斜杠（\）
+        - linux系统为正斜杠（/）
+    - static char separator 返回与系统有关的默认名称分隔符
+* File类的构造方法：
+    - File(File parent,String child) 根据parent抽象路径和child路径名字符串创建一个新的File实例
+    - File(String parent,String child) 根据parent路径名字符串和child路径名字符串创建一个新的File实例
+    - File(String pathname) 根据指定的路径名字符串创建一个新的File实例
+* File类获取功能的方法：
+    - public String getabsolutePath() 返回此File的绝对路径名字符串
+    - public String getPath() 将此File转换为路径名字符串
+    - public String getName() 返回此File表示的文件或目录（文件夹）名称
+    - public long Length() 返回此File表示的文件的长度
+        - 注意：
+            - 获取的是构造方法指定的文件的大小，以字节为单位，若构造方法中给出的路径不存在则返回0
+            - 文件夹是没有大小概念的，不能获取文件夹的大小
+* File类判断功能的方法：
+    - public boolean exists() 判断此File表示的文件或目录（文件夹）是否存在
+    - public boolean isDirectory() 判断此File表示的是否为目录（文件夹）
+    - public boolean isFile() 判断此File表示的是否为文件
+* File类常用的方法：
+    - public boolean createNewFile() 当且仅当具有该名称的文件不存在时，创建一个新的空文件
+    - public boolean delete() 删除由此File表示的文件或目录（文件夹）
+        - 该方法直接在硬盘删除文件/文件夹，不走回收站，因此删除要谨慎
+    - public boolean mkdir() 创建由此File表示的目录（文件夹）
+    - public boolean mkdirs() 创建由此File表示的多级目录（文件夹）
+* File类遍历文件夹功能：
+    - public String[] list() 返回一个String数组，表示该File目录中所有的子文件或目录
+        - 遍历出来的是相对路径
+    - public File[] listFiles() 返回一个String数组，表示该File目录中所有的子文件或目录
+        - 遍历出来的是绝对路径
+* 过滤器
+    - 在File类中有两个和listFiles重载的方法，方法的参数就是过滤器
+    - public File[] listFiles(FileFilter filter)
+        - FileFilter接口用于抽象路径名（File对象）的过滤器
+        - 作用：用来过滤文件（File对象）
+        - boolean accept(File pathname) 测试指定抽象路径名是否包含在某个路径名列表中
+            - pathname使用listFiles方法遍历得到的每一个文件对象
+    - public File[] listFiles(FilenameFilter filter)
+        - FileFilter接口用于抽象路径名（File对象）的过滤器
+        - 作用：用来过滤文件（File对象）
+        - boolean accept(File dir,String name) 测试指定抽象路径名是否包含在某个路径名列表中
+            - pathname使用listFiles方法遍历得到的每一个文件对象
+    - 注意：两个过滤器接口是没有实现类的，需要我们自己写实现类，重写过滤的方法accept，
+            在方法中自己设置过滤的规则</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/12/09/Java/Java26-Lambda/">Java26-Lambda</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-09
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Lambda</p>
+<pre><code>* Lambda 函数式编程思想：只要能获取到结果，谁去做，怎么做的都不重要，重视的是结果，不重视过程
+* 使用前提：
+    - 使用Lambda必须有接口，且要求接口内有且仅有一个抽象方法
+    - 使用Lambda必须有上下文推断
+* Lambda表达式的省略：
+    - 1.（参数列表）：括号中参数列表的数据类型可以省略不写
+    - 2.（参数列表）：括号中的参数若只有一个，那么类型和（）都可以省略
+    - 3.&#123;一些代码&#125;：若&#123;&#125;中的代码中有一行，无论是否有返回值都可以省略&#123;&#125;、return、分号
+        - 注意：&#123;&#125;、return、分号必须一起省略
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">methods(10, 20, new demo02() &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public int method(int a, int b) &#123;</span><br><span class="line">		return a+b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	System.out.println(&quot;--------------------&quot;);</span><br><span class="line">	methods(10,20,(int a,int b)-&gt;&#123;</span><br><span class="line">		return a+b;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/12/07/Java/Java25-%E7%BA%BF%E7%A8%8B/">Java25-线程</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-07
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>线程</p>
+<pre><code>* 进程：指一个内存中运行的应用程序，每个进程都有一个独立的内存空间，一个应用程序可以同时运行多个进程；
+        进程也是程序的一次执行过程，是系统运行程序的基本单位；系统运行一个程序即是一个进程从创建、运行
+            到消亡的过程
+* 线程：线程是进程的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程，
+        一个进程也可以包括多个线程，这个应用程序可以称之为多线程程序
+* 并发与并行
+    - 并发：指两个或多个事件在同一个时间段内发生
+    - 并行：指两个或多个事件在同一时刻发生（同时发生）
+* 线程调度
+    - 分时调度：所有线程轮流使用CPU的使用权，平均分配每个线程占用CPU的时间
+    - 抢占式调度：优先让优先级高的线程使用CPU，如果线程的优先级相同则会随机选择一个（线程随机性）
+        Java使用的便是抢占式调度
+* 单线程
+    - 单线程程序：Java程序中只有一个线程，执行从main方法开始，从上到下依次执行
+    - 主线程：执行主（main）方法的线程，JVM执行main方法，main方法会进入到栈内存中，JVM会
+                操作系统开辟一条main方法通向CPU的执行路径，CPU就可以通过这条路径来执行main
+                    方法，这条路径就叫主（main）线程
+* 多线程
+    - 创建多线程程序的第一种方法：创建Thread的子类
+        - Thread类是描述线程的类
+        - 实现步骤：
+            - 1.创建一个Thread的子类
+            - 2.在Thread的子类中重写run方法，设置线程任务（开启线程之后要做什么）
+            - 3.创建Thread的子类对象
+            - 4.调用Thread类中的start()方法，开启新的线程，执行run方法
+                - void start() 使线程开始执行；Java虚拟机调用该线程的run方法
+                    结果是两个线程并发的运行
+        - 注意：多次启动一个线程是非法的，特别是当线程已经结束执行后，不能再重新启动
+    - 创建多线程程序的第二种方法：实现Runnable接口
+        - 通过Runnable接口创建一些打算通过某一线程执行其实例的实现类，该类必须定义一个名为run的无参方法
+        - Thread类的构造方法：
+            - Thread(Runnable target) 分配新的Thread对象
+            -  Thread(Runnable target,String name) 分配新的Thread对象并为其命名
+        - 实现步骤：
+            - 1.创建一个Runnable接口的实现类
+            - 2.在实现类中重写Runnable接口的run方法，设置线程任务
+            - 3.创建一个Runnable接口的实现类对象
+            - 4.创建Thread类对象，构造方法中传递传递Runnable接口的实现类对象
+            - 5.调用Thread类中的start()方法，开启新的线程执行run方法
+        - 实现Runnable接口创建多线程的好处：
+            - 1.避免了单继承的局限性：一个类只能继承一个类，类继承了Thread类就不能继承其他的类了
+                但实现了Runnable接口还可以继承其他的类，实现其他的接口
+            - 2.增强程序的扩展性，降低了程序的耦合性（解耦），因为实现Runnable接口的方式，
+                把设置线程任务和开启新的线程进行了分离（解耦）
+    - 匿名内部类实现线程的创建
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new Thread() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">                for (int i &#x3D; 0; i &lt; 20; i++) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        Runnable r&#x3D;new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">                for (int i &#x3D; 0; i &lt; 20; i++) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        new Thread(r).start();</span><br><span class="line"></span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">                for (int i &#x3D; 0; i &lt; 20; i++) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;--&gt;&quot;+i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 获取线程的名称：
+        - 使用Thread类中的getName()方法
+            - String getName() 返回该线程的名称
+        - 可以先通过currentThread()获取到当前正在执行的线程，使用线程中的getName()方法获取线程的名称
+            - static Thread currentThread() 返回当前正在执行的线程对象
+    - 设置线程的名字：
+        - 使用Thread类中的setName()方法
+            - String setName(String name) 设置该线程的名称
+        - 创建一个带参数的构造方法，参数传递线程的名称；调用父类的带参数构造方法，把线程名称传递给父类
+            - Thread(String name) 分配新的Thread对象
+    - 暂停线程：
+        - public static void sleep(long millis)
+            - 使当前正在执行的线程以指定的毫秒数暂停（暂时停止执行），毫秒数结束之后线程继续执行
+    - 同时使用多个共享数据的线程时可能会出现线程安全问题
+        - 解决线程安全的第一种方法：使用同步代码块
+            - 格式：synchronized(锁对象)&#123;可能出现线程安全问题的代码（访问了共享数据的代码）&#125;
+            - 注意：
+                - 代码块中的锁对象可使用任意的对象，但必须保证多个线程使用的锁对象是同一个
+                - 锁对象作用：当第一个线程进入同步代码块时，将锁对象取走，然后第二个线程来到同步
+                            代码块处，锁对象已被取走，因此无法进入同步代码块，只有当第一个线程
+                            执行完同步代码块中的内容之后将锁对象归还，第二个线程才能获得锁对象
+                            进入同步代码块，即同时只会让一个线程在同步代码块中执行
+        - 解决线程安全的第二种方法：使用同步方法
+            - 使用步骤：
+                - 1.把访问了共享数据的代码抽取出来，放到一个方法中
+                - 2.在方法上添加synchronized修饰符
+            - 此方法的锁对象就是调用该方法的对象，即this
+            - 格式：
+                    修饰符 synchronized 返回值类型 方法名(参数列表)
+                    &#123;
+                        可能出现线程安全问题的代码（访问了共享数据的代码）
+                    &#125;
+            - 静态同步方法：在同步方法基础上添加static修饰符
+                - 在静态同步方法中锁对象不再是this，因为this是创建对象之后产生的，而静态方法优先于对象
+                    在静态同步方法中锁对象是本类的class属性--&gt;class文件对象（反射）
+        - 解决线程安全的第三种方法：使用Lock锁
+            - Lock接口实现提供了比使用synchronized方法和语句可获得的更广泛的锁定操作
+            - Lock接口中的方法：
+                - void lock() 获取锁
+                - void unlock() 释放锁
+            - Lock接口的实现类ReentrantLock
+            - 使用步骤：
+                - 1.在成员位置创建一个ReentrantLock对象
+                - 2.在可能出现线程安全问题的代码(访问了共享数据的代码前调用)前Lock接口中的lock()方法
+                - 2.在可能出现线程安全问题的代码(访问了共享数据的代码前调用)后Lock接口中的unlock()方法
+    - 使线程进入Waiting（无限等待）的方式：
+        - 使用wait() 线程进入无限等待状态，除非被唤醒，醒来后进入到Runnable/Blocked状态
+    - 使线程进入TimeWaiting（计时等待）有两种方式：
+        - 1.使用sleep(long m) 线程进入TimeWaiting,在毫秒数结束后，线程睡醒进入到Runnable/Blocked状态
+        - 2.使用wait(long m) 在毫秒数结束后还没被notify唤醒就会自动醒来进入到Runnable/Blocked状态
+    - 唤醒线程的方法：
+        - void notify() 唤醒在此对象监视器上等待的单个线程
+        - void notifyAll() 唤醒在此对象监视器上等待的所有线程
+* 线程池
+    - 线程池其实就是一个容纳多个线程的容器，其中的线程可以反复使用
+    - Executors类：线程池的工厂类，用来生成线程池
+    - Executors类中的静态方法：
+        - static ExecutorService newFixedThreadPool(int nThreads) 创建一个可重用固定线程数的线程池
+            - 参数：创建线程池中包含的线程数量
+    - ExecutorService接口：线程池接口
+        - submit(Runnable task) 用来从线程池中获取线程，调用start方法，执行线程方法
+        - void shuydown() 关闭/销毁线程池的方法
+    - 使用步骤：
+        - 1.使用线程池的工厂类Executors类中的静态方法newFixedThreadPool生产一个指定线程数量的线程池
+        - 2.创建一个类实现Runnable接口，重写run方法，设置线程任务
+        - 3.调用ExecutorService接口中的submit方法，传递线程任务（实现类），开启线程，执行run方法
+        - 4.调用ExecutorService接口中的shuydown方法</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/12/06/Java/Java24-%E5%BC%82%E5%B8%B8%E7%B1%BB/">Java24-异常类</a>
       </h1>
     
@@ -72,7 +556,7 @@
     <p>异常类</p>
 <pre><code>* Throwable类时Java语言中所有错误或异常的超类（父类）
     - Exception：编译期异常，进行编译（写代码）Java程序时出现的问题
-        - RuntimeException：运行期异常，Java程序运行过程中出现的问题
+    - RuntimeException：运行期异常，Java程序运行过程中出现的问题
         - 异常就相当于程序得了一个小毛病，把异常处理掉程序就可以继续运行
     - Error：错误，相当于程序得了一个无法治愈的毛病，必须修改源代码
 * 异常产生的过程
@@ -111,7 +595,8 @@
     - 格式：
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    可能出现异常的代码</span><br><span class="line">&#125;catch(异常类名 变量名（定义一个异常的变量，用来接收try抛出的异常对象）)&#123;</span><br><span class="line">    异常的处理逻辑，接受异常后怎么处理异常对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     - 注意：
-        - try中可能会抛出多个异常对象，那么就必须使用多个catch来处理这些异常对象
+        - try中可能会抛出多个异常对象，那么就必须使用多个catch来处理这些异常对象，当catch里边定义的
+            异常变量具有父子类关系，那么子类的异常变量必须写在上边，否则就会报错
         - 若try中产生了异常，则会执行catch中的异常处理逻辑，然后继续执行try...catch之后的代码
             若try中没产生了异常，则不会执行catch中的异常处理逻辑，然后继续执行try...catch之后的代码
 * Throwable类中定义了三个与异常处理有关的方法
@@ -123,7 +608,22 @@
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    可能出现异常的代码</span><br><span class="line">&#125;catch(异常类名 变量名（定义一个异常的变量，用来接收try抛出的异常对象）)&#123;</span><br><span class="line">    异常的处理逻辑，接受异常后怎么处理异常对象</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">    无论是否出现异常都执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     - 注意：
         - finally不能单独使用，必须和try一起使用
-        - finally一般用于资源释放（资源回收），无论程序是否出现异常，最后都要资源释放（IO）</code></pre>
+        - finally一般用于资源释放（资源回收），无论程序是否出现异常，最后都要资源释放（IO）
+* 父子类的异常
+    - 如果父类抛出了多个异常，子类重写父类方法时，抛出和父类相同的异常或者是父类异常的子类或者不抛出异常
+    - 父类方法没有抛出异常，子类重写父类方法时也不可抛出异常，此时子类产生异常，只能捕获处理，不能声明
+    - 父类异常是什么样，子类异常就是什么样
+* 自定义异常类
+    - Java提供的异常类不够我们使用时，就需要自己去定义一些异常类
+    - 格式：
+        public class XXXException extends Exception/RuntimeException&#123;
+            添加一个空参数的构造方法（创建一个无参构造方法，然后在方法里边调用父类构造方法即super()）
+            添加一个带异常信息的构造方法（创建一个带参构造方法，在方法里边调用父类构造方法即super()）
+        &#125;
+    - 注意：
+        - 自定义异常类一般都是以Exception结尾，说明该类是一个异常类
+        - 自定义异常类继承Exception说明是一个编译期异常，如果方法内部抛出了编译期异常就必须处理
+            若继承RuntimeException则是一个运行期异常，无需处理，交给虚拟机处理（中断处理）</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     
@@ -430,291 +930,6 @@
 <p>LinkedHashSet</p>
 <pre><code>* LinkedHashSet的特点：有序，底层是一个哈希表（数组+链表/红黑树）+链表，
     多了一条链表（记录元素的存储顺序），保证元素有序</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/">Java19-包装类</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-29
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>包装类</p>
-<pre><code>* 想要基本类型数据像对象一样操作，就可以使用基本类型对应的包装类如下：
-    - 基本类型          对应的包装类
-        byte              Byte
-        short             Short
-        int               Integer
-        long              Long
-        float             Float
-        double            Double
-        char              Character
-        boolean           Boolean
-* 装箱与拆箱
-    - 装箱：把基本类型数据包装到包装类中（基本类型的数据--&gt;包装类）
-        - 构造方法：
-            - Integer(int value)    构造一个Integer对象表示指定的int值
-            - Integer(String s)    构造一个Integer对象表示指定String参数代表的int值
-                - 注意：传递的字符串必须是基本类型数据的字符串形式
-        - 静态方法：
-            - static Integer valueOf(int i)    返回一个表示指定int值的Integer对象
-            - static Integer valueOf(String s)    返回保存指定的String值的Integer对象
-    - 拆箱：在包装类中取出基本类型的数据（包装类--&gt;基本类型的数据）
-        - 成员方法：
-            - int intValue()    以int类型返回该Integer的值
-* 自动装箱与自动拆箱：基本类型的数据和包装类之间可以自动的相互转换（JDK1.5之后开始的特性）
-* 基本类型与字符串之间的转换
-    - 基本类型--&gt;字符串
-        - 基本类型数据的值+&quot;&quot;（最简单的、最常用的方式）
-        - 使用包装类中的静态方法：
-            - static String toString(int i)    返回一个表示指定整数的String对象
-        - 使用String类中的静态方法：
-            - static String valueOf(int i)      返回int参数的字符串表现形式
-    - 字符串--&gt;基本类型
-        - 使用包装类的静态方法parseXX(&quot;字符串&quot;)
-            - Integer类：   static int parseInt(String s)
-            - Double类：    static double parseDouble(String s)
-            .....</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/25/ES6/ES6-%E7%AE%80%E5%8C%96%E5%AF%B9%E8%B1%A1%E5%86%99%E6%B3%95%E4%B8%8E%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">ES6-简化对象写法与箭头函数</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-25
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>简化对象写法</p>
-<pre><code>* ES6允许直接在大括号中直接写入变量和函数作为对象的属性和方法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let name&#x3D;&quot;小戴&quot;;</span><br><span class="line">let fn&#x3D;function()&#123;</span><br><span class="line">    console.log(&quot;呵呵&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">const people&#x3D;&#123;</span><br><span class="line">    name,</span><br><span class="line">    fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
-<p>箭头函数</p>
-<pre><code>* ES6允许使用箭头（=&gt;）定义函数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let fn&#x3D;function(a,b)&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 可写为 --&gt;</span><br><span class="line">let fn&#x3D;(a,b)&#x3D;&gt;&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - 箭头函数中this是静态的，this始终指向函数声明时所在作用域下的this的值
-    - 不能作为构造函数实例化对象
-    - 不能使用arguments变量
-    - 箭头函数的简写：
-        - 当形参有且只有一个时可以省略小括号
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let add&#x3D;n&#x3D;&gt;&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - 箭头函数适合与this无关的回调，定时器，数组的方法回调
-    - 箭头函数不适合与this有关的回调，事件回调，对象的回调</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/">Java18-工具类02</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-25
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Calendar</p>
-<pre><code>* Calendar类是一个与日历日期相关的类，Date类的很多方法都被Calendar类中的方法所代替
-    该类是一个抽象类，无法直接创建对象使用，但我们可以使用该类中的静态方法getInstance(),
-        该方法返回了Calendar类的子类对象，通过使用该方法获得一个子类对象进行使用
-* 方法：
-    - public int get(int field) 返回指定日历字段的值
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo01() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    int year &#x3D; c.get(Calendar.YEAR);</span><br><span class="line">    System.out.println(year);</span><br><span class="line">    int month &#x3D; c.get(Calendar.MONTH);</span><br><span class="line">    System.out.println(month);&#x2F;&#x2F; 西方的月份0-11，中国月份1-12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - public void set(int field,int value) 将指定日历字段的值设置为指定的值
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo02() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.set(Calendar.YEAR, 6666);</span><br><span class="line">    c.set(Calendar.MONTH, 66);</span><br><span class="line">    c.set(Calendar.DATE, 6);</span><br><span class="line">    c.set(8888, 88, 8);&#x2F;&#x2F; 一个重载的方法，同时设置年月日</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - public abstract void add(int field，int amount) 给指定的日历字段添加或减少指定的值
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo03() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.add(Calendar.YEAR, 10);&#x2F;&#x2F; 年增加了10年</span><br><span class="line">    c.add(Calendar.YEAR, -11);&#x2F;&#x2F; 年减少了11年</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - public Date getTime() 返回一个表示此Calendar时间值的Date对象并返回
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo04() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    Date date &#x3D; c.getTime();</span><br><span class="line">    System.out.println(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    - 参数filed：日历类的字段，可使用Calendar类的静态成员变量获得
-        - public static final int YEAR = 1; //年
-        - public static final int MONTH = 2;//  月
-        - public static final int DATE = 5; //月中的某一天
-        - public static final int DATE_OF_MONTH = 5; //月中的某一天
-        - public static final int HOUR = 10; //时
-        - public static final int MINUTE = 12;// 分
-        - public static final int SECOND = 13;// 秒</code></pre>
-<p>System</p>
-<pre><code>* System类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作
-* 常用方法：
-    - public static long currentTimeMillis() 返回以毫秒为单位的当前时间
-    - public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
-        - 将数组中指定的数据拷贝到另一个数组中（会将另一个数组原有位置数据覆盖）
-        - 参数：
-            - src 原数组
-            - srcPos 原数组拷贝的起始位置
-            - dest 目标数组
-            - destPos 目标数组拷贝的起始位置
-            - length 要拷贝的数据长度</code></pre>
-<p>StringBuilder</p>
-<pre><code>* StringBuilder类是一个字符串缓冲区，可以提高字符串的操作效率，与String不同的是它可以改变长度
-* 构造方法：
-    - public StringBuilder();   构造一个空的StringBuilder容器
-    - public StringBuilder(String str);   构造一个StringBuilder容器并将指定的字符串添加进去
-* 成员方法：
-    - public StringBuilder append(...)    添加任意数据类型的字符串形式并返回当前对象自身
-        - 返回当前对象自身即不用接收返回值，该对象自身发生改变
-        - 链式编程：当返回值是一个对象时，可以继续根据对象调用方法
-    - public String toString();    将当前StringBuilder对象转换为String对象</code></pre>
-<p>Collections</p>
-<pre><code>* Collections是一个集合工具类，用来对集合进行操作
-* 常用的静态成员方法：
-    - public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c,T...elements); 往集合中添加一些元素
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">System.out.println(list);&#x2F;&#x2F;输出为[a,b,c]</span><br></pre></td></tr></table></figure>
-    - public static void shuffle(List&lt;?&gt; list) 随机打乱集合内元素的排列顺序
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">Collections.shuffle(list);</span><br></pre></td></tr></table></figure>
-    - public static &lt;T&gt; void sort(List&lt;T&gt; list); 将集合中的元素按照规则排序，默认是升序排序
-        - 注意：sort(List&lt;T&gt; list)使用前提：
-            被排序的集合里边存储的元素，必须实现Comparable，重写接口中的方法comparaTo定义排序的规则
-    - public static &lt;T&gt; void sort(List&lt;T&gt; list,Comparator&lt;? super T&gt;); 将集合中的元素按照规序，
-        默认是升序排序
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   Collections.sort(list,new Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">   @Override</span><br><span class="line">   public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">       &#x2F;&#x2F;参数会传递两个值，是按照传入集合中的元素顺序传递的，</span><br><span class="line">       &#x2F;&#x2F;两个参数相减若为正数则互换彼此在集合中的位置，反之则不互换</span><br><span class="line">       &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">       return o1-o2;&#x2F;&#x2F;升序</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/25/Java/Java17-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6/">Java17-权限修饰符</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-25
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>权限修饰符</p>
-<pre><code>* Java中的四种权限修饰符可访问情况
-    - 权限修饰符           public &gt; protected &gt; (default) &gt; private
-    - 在同一个类中         可以访问   可以访问    可以访问    可以访问
-    - 在同一个包中         可以访问   可以访问    可以访问    不可以访问
-    - 在不同包中的父子类中  可以访问   可以访问    不可以访问  不可以访问
-    - 在不同包中的陌生类中  可以访问   不可以访问  不可以访问  不可以访问
-    - 注意：(default)不是关键字default，而是什么都不写</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/24/Java/Java16-Object%E7%B1%BB/">Java-Object类的toString与equals方法</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-24
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>toString 方法</p>
-<pre><code>* 原来作用：打印对象的地址值
-* 重写后的作用：打印对象中的属性值</code></pre>
-<p>equals 方法</p>
-<pre><code>* 原来作用：比较两个对象的地址值
-* 重写后的作用：比较对象中的属性值</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     

@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java27-File类 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/12/09/Java/Java27-File类/">
+            Java27-File类
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-09
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>File</p>
+<pre><code>* Java把电脑中的文件和文件夹（目录）封装为一个File类，我们可以使用File类对文件和文件夹
+    进行操作，该类是一个与系统无关的类，任何的操作系统都可以使用这个类中的方法
+* File类中常用的静态方法：
+    - static String pathSeparator 返回与系统有关的路径分隔符
+        - windows系统为分号（;）
+        - linux系统为冒号（:）
+    - static char pathSeparator 返回与系统有关的路径分隔符
+    - static String separator 返回与系统有关的默认名称分隔符
+        - windows系统为反斜杠（\）
+        - linux系统为正斜杠（/）
+    - static char separator 返回与系统有关的默认名称分隔符
+* File类的构造方法：
+    - File(File parent,String child) 根据parent抽象路径和child路径名字符串创建一个新的File实例
+    - File(String parent,String child) 根据parent路径名字符串和child路径名字符串创建一个新的File实例
+    - File(String pathname) 根据指定的路径名字符串创建一个新的File实例
+* File类获取功能的方法：
+    - public String getabsolutePath() 返回此File的绝对路径名字符串
+    - public String getPath() 将此File转换为路径名字符串
+    - public String getName() 返回此File表示的文件或目录（文件夹）名称
+    - public long Length() 返回此File表示的文件的长度
+        - 注意：
+            - 获取的是构造方法指定的文件的大小，以字节为单位，若构造方法中给出的路径不存在则返回0
+            - 文件夹是没有大小概念的，不能获取文件夹的大小
+* File类判断功能的方法：
+    - public boolean exists() 判断此File表示的文件或目录（文件夹）是否存在
+    - public boolean isDirectory() 判断此File表示的是否为目录（文件夹）
+    - public boolean isFile() 判断此File表示的是否为文件
+* File类常用的方法：
+    - public boolean createNewFile() 当且仅当具有该名称的文件不存在时，创建一个新的空文件
+    - public boolean delete() 删除由此File表示的文件或目录（文件夹）
+        - 该方法直接在硬盘删除文件/文件夹，不走回收站，因此删除要谨慎
+    - public boolean mkdir() 创建由此File表示的目录（文件夹）
+    - public boolean mkdirs() 创建由此File表示的多级目录（文件夹）
+* File类遍历文件夹功能：
+    - public String[] list() 返回一个String数组，表示该File目录中所有的子文件或目录
+        - 遍历出来的是相对路径
+    - public File[] listFiles() 返回一个String数组，表示该File目录中所有的子文件或目录
+        - 遍历出来的是绝对路径
+* 过滤器
+    - 在File类中有两个和listFiles重载的方法，方法的参数就是过滤器
+    - public File[] listFiles(FileFilter filter)
+        - FileFilter接口用于抽象路径名（File对象）的过滤器
+        - 作用：用来过滤文件（File对象）
+        - boolean accept(File pathname) 测试指定抽象路径名是否包含在某个路径名列表中
+            - pathname使用listFiles方法遍历得到的每一个文件对象
+    - public File[] listFiles(FilenameFilter filter)
+        - FileFilter接口用于抽象路径名（File对象）的过滤器
+        - 作用：用来过滤文件（File对象）
+        - boolean accept(File dir,String name) 测试指定抽象路径名是否包含在某个路径名列表中
+            - pathname使用listFiles方法遍历得到的每一个文件对象
+    - 注意：两个过滤器接口是没有实现类的，需要我们自己写实现类，重写过滤的方法accept，
+            在方法中自己设置过滤的规则</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/12/09/Java/Java27-File%E7%B1%BB/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/09/Java/Java27-File%E7%B1%BB/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/09/Java/Java27-File%E7%B1%BB/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/09/Java/Java27-File%E7%B1%BB/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/12/09/Java/Java27-File%E7%B1%BB/
+https://dcq66.github.io/2020/12/09/Java/Java27-File%25E7%25B1%25BB/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

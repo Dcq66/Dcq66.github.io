@@ -57,6 +57,291 @@
     <!-- Title -->
     
       <h1 class="blog-post-title">
+        <a href="/2020/11/29/Java/Java19-%E5%8C%85%E8%A3%85%E7%B1%BB/">Java19-包装类</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-29
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>包装类</p>
+<pre><code>* 想要基本类型数据像对象一样操作，就可以使用基本类型对应的包装类如下：
+    - 基本类型          对应的包装类
+        byte              Byte
+        short             Short
+        int               Integer
+        long              Long
+        float             Float
+        double            Double
+        char              Character
+        boolean           Boolean
+* 装箱与拆箱
+    - 装箱：把基本类型数据包装到包装类中（基本类型的数据--&gt;包装类）
+        - 构造方法：
+            - Integer(int value)    构造一个Integer对象表示指定的int值
+            - Integer(String s)    构造一个Integer对象表示指定String参数代表的int值
+                - 注意：传递的字符串必须是基本类型数据的字符串形式
+        - 静态方法：
+            - static Integer valueOf(int i)    返回一个表示指定int值的Integer对象
+            - static Integer valueOf(String s)    返回保存指定的String值的Integer对象
+    - 拆箱：在包装类中取出基本类型的数据（包装类--&gt;基本类型的数据）
+        - 成员方法：
+            - int intValue()    以int类型返回该Integer的值
+* 自动装箱与自动拆箱：基本类型的数据和包装类之间可以自动的相互转换（JDK1.5之后开始的特性）
+* 基本类型与字符串之间的转换
+    - 基本类型--&gt;字符串
+        - 基本类型数据的值+&quot;&quot;（最简单的、最常用的方式）
+        - 使用包装类中的静态方法：
+            - static String toString(int i)    返回一个表示指定整数的String对象
+        - 使用String类中的静态方法：
+            - static String valueOf(int i)      返回int参数的字符串表现形式
+    - 字符串--&gt;基本类型
+        - 使用包装类的静态方法parseXX(&quot;字符串&quot;)
+            - Integer类：   static int parseInt(String s)
+            - Double类：    static double parseDouble(String s)
+            .....</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/25/ES6/ES6-%E7%AE%80%E5%8C%96%E5%AF%B9%E8%B1%A1%E5%86%99%E6%B3%95%E4%B8%8E%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">ES6-简化对象写法与箭头函数</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>简化对象写法</p>
+<pre><code>* ES6允许直接在大括号中直接写入变量和函数作为对象的属性和方法
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let name&#x3D;&quot;小戴&quot;;</span><br><span class="line">let fn&#x3D;function()&#123;</span><br><span class="line">    console.log(&quot;呵呵&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">const people&#x3D;&#123;</span><br><span class="line">    name,</span><br><span class="line">    fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+<p>箭头函数</p>
+<pre><code>* ES6允许使用箭头（=&gt;）定义函数
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let fn&#x3D;function(a,b)&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 可写为 --&gt;</span><br><span class="line">let fn&#x3D;(a,b)&#x3D;&gt;&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 箭头函数中this是静态的，this始终指向函数声明时所在作用域下的this的值
+    - 不能作为构造函数实例化对象
+    - 不能使用arguments变量
+    - 箭头函数的简写：
+        - 当形参有且只有一个时可以省略小括号
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let add&#x3D;n&#x3D;&gt;&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 箭头函数适合与this无关的回调，定时器，数组的方法回调
+    - 箭头函数不适合与this有关的回调，事件回调，对象的回调</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/25/Java/Java18-%E5%B7%A5%E5%85%B7%E7%B1%BB02/">Java18-工具类02</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>Calendar</p>
+<pre><code>* Calendar类是一个与日历日期相关的类，Date类的很多方法都被Calendar类中的方法所代替
+    该类是一个抽象类，无法直接创建对象使用，但我们可以使用该类中的静态方法getInstance(),
+        该方法返回了Calendar类的子类对象，通过使用该方法获得一个子类对象进行使用
+* 方法：
+    - public int get(int field) 返回指定日历字段的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo01() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    int year &#x3D; c.get(Calendar.YEAR);</span><br><span class="line">    System.out.println(year);</span><br><span class="line">    int month &#x3D; c.get(Calendar.MONTH);</span><br><span class="line">    System.out.println(month);&#x2F;&#x2F; 西方的月份0-11，中国月份1-12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public void set(int field,int value) 将指定日历字段的值设置为指定的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static void demo02() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.set(Calendar.YEAR, 6666);</span><br><span class="line">    c.set(Calendar.MONTH, 66);</span><br><span class="line">    c.set(Calendar.DATE, 6);</span><br><span class="line">    c.set(8888, 88, 8);&#x2F;&#x2F; 一个重载的方法，同时设置年月日</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public abstract void add(int field，int amount) 给指定的日历字段添加或减少指定的值
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo03() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    c.add(Calendar.YEAR, 10);&#x2F;&#x2F; 年增加了10年</span><br><span class="line">    c.add(Calendar.YEAR, -11);&#x2F;&#x2F; 年减少了11年</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - public Date getTime() 返回一个表示此Calendar时间值的Date对象并返回
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private static void demo04() &#123;</span><br><span class="line">    Calendar c &#x3D; Calendar.getInstance();</span><br><span class="line">    Date date &#x3D; c.getTime();</span><br><span class="line">    System.out.println(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    - 参数filed：日历类的字段，可使用Calendar类的静态成员变量获得
+        - public static final int YEAR = 1; //年
+        - public static final int MONTH = 2;//  月
+        - public static final int DATE = 5; //月中的某一天
+        - public static final int DATE_OF_MONTH = 5; //月中的某一天
+        - public static final int HOUR = 10; //时
+        - public static final int MINUTE = 12;// 分
+        - public static final int SECOND = 13;// 秒</code></pre>
+<p>System</p>
+<pre><code>* System类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作
+* 常用方法：
+    - public static long currentTimeMillis() 返回以毫秒为单位的当前时间
+    - public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
+        - 将数组中指定的数据拷贝到另一个数组中（会将另一个数组原有位置数据覆盖）
+        - 参数：
+            - src 原数组
+            - srcPos 原数组拷贝的起始位置
+            - dest 目标数组
+            - destPos 目标数组拷贝的起始位置
+            - length 要拷贝的数据长度</code></pre>
+<p>StringBuilder</p>
+<pre><code>* StringBuilder类是一个字符串缓冲区，可以提高字符串的操作效率，与String不同的是它可以改变长度
+* 构造方法：
+    - public StringBuilder();   构造一个空的StringBuilder容器
+    - public StringBuilder(String str);   构造一个StringBuilder容器并将指定的字符串添加进去
+* 成员方法：
+    - public StringBuilder append(...)    添加任意数据类型的字符串形式并返回当前对象自身
+        - 返回当前对象自身即不用接收返回值，该对象自身发生改变
+        - 链式编程：当返回值是一个对象时，可以继续根据对象调用方法
+    - public String toString();    将当前StringBuilder对象转换为String对象</code></pre>
+<p>Collections</p>
+<pre><code>* Collections是一个集合工具类，用来对集合进行操作
+* 常用的静态成员方法：
+    - public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c,T...elements); 往集合中添加一些元素
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">System.out.println(list);&#x2F;&#x2F;输出为[a,b,c]</span><br></pre></td></tr></table></figure>
+    - public static void shuffle(List&lt;?&gt; list) 随机打乱集合内元素的排列顺序
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">Collections.addAll(list,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;);</span><br><span class="line">Collections.shuffle(list);</span><br></pre></td></tr></table></figure>
+    - public static &lt;T&gt; void sort(List&lt;T&gt; list); 将集合中的元素按照规则排序，默认是升序排序
+        - 注意：sort(List&lt;T&gt; list)使用前提：
+            被排序的集合里边存储的元素，必须实现Comparable，重写接口中的方法comparaTo定义排序的规则
+    - public static &lt;T&gt; void sort(List&lt;T&gt; list,Comparator&lt;? super T&gt;); 将集合中的元素按照规序，
+        默认是升序排序
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   Collections.sort(list,new Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">   @Override</span><br><span class="line">   public int compare(Integer o1, Integer o2) &#123;</span><br><span class="line">       &#x2F;&#x2F;参数会传递两个值，是按照传入集合中的元素顺序传递的，</span><br><span class="line">       &#x2F;&#x2F;两个参数相减若为正数则互换彼此在集合中的位置，反之则不互换</span><br><span class="line">       &#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">       return o1-o2;&#x2F;&#x2F;升序</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/25/Java/Java17-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6/">Java17-权限修饰符</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-25
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>权限修饰符</p>
+<pre><code>* Java中的四种权限修饰符可访问情况
+    - 权限修饰符           public &gt; protected &gt; (default) &gt; private
+    - 在同一个类中         可以访问   可以访问    可以访问    可以访问
+    - 在同一个包中         可以访问   可以访问    可以访问    不可以访问
+    - 在不同包中的父子类中  可以访问   可以访问    不可以访问  不可以访问
+    - 在不同包中的陌生类中  可以访问   不可以访问  不可以访问  不可以访问
+    - 注意：(default)不是关键字default，而是什么都不写</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
+        <a href="/2020/11/24/Java/Java16-Object%E7%B1%BB/">Java-Object类的toString与equals方法</a>
+      </h1>
+    
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-11-24
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>toString 方法</p>
+<pre><code>* 原来作用：打印对象的地址值
+* 重写后的作用：打印对象中的属性值</code></pre>
+<p>equals 方法</p>
+<pre><code>* 原来作用：比较两个对象的地址值
+* 重写后的作用：比较对象中的属性值</code></pre>
+
+    <!-- Only display the Read More link if we are displaying an excerpt -->
+    
+
+    <hr />
+
+    
+
+    
+
+
+
+</div>
+</div>
+
+
+    <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    
+      <h1 class="blog-post-title">
         <a href="/2020/11/24/Java/Java15-%E5%86%85%E9%83%A8%E7%B1%BB/">Java15-内部类</a>
       </h1>
     
@@ -371,387 +656,6 @@
             通过构造方法赋值，且必须保证类当中所有重载的构造方法最终都会对该成员变量赋值
     - 修饰一个局部变量
         - - 使用final修饰后该局部变量不能发生改变</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/18/Java/Java11-%E7%BB%A7%E6%89%BF/">Java11-继承</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-18
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>继承</p>
-<pre><code>* 继承的特点：
-    - 子类可以拥有父类的“内容”
-    - 子类还可以拥有自己的“专属内容
-* 定义父类（基类、超类）的格式（一个普通类的定义）：public class 父类名称&#123;&#125;;
-* 定义子类：public class 子类名称 extends 父类名称&#123;&#125;;
-* 在父子类的继承关系中，若成员变量/成员方法重名，则创建子类对象时，访问有两种方式：
-    - 直接通过子类对象访问成员变量/成员方法：通过谁调用就优先用谁，没有则向上找
-    - 间接通过成员方法访问成员变量：该方法属于谁就优先用谁，没有则向上找
-    - 注意：无论是成员变量还是成员方法，如果没有都是向上找父类，绝不会向下找子类
-* 使用变量：
-    - 局部变量：直接写成员变量名
-    - 本类的成员变量：this.成员变量名
-    - 父类的成员变量：super.成员变量名
-* 重写（Override）
-    - 概念：在继承关系中方法的名称一样，参数列表也一样
-    - 特点：创建的是子类对象则优先使用子类方法
-    - 注意事项：
-        - 必须保证父子类之间方法的名称、参数列表一样
-        - @Override关键字写在方法的前面，可以检测重写是否有效
-        - 子类方法的返回值必须小于等于父类方法的返回值范围
-        - 子类方法的权限必须大于等于父类方法的权限修饰符
-            - public&gt;protected&gt;（default）&gt;private
-            - （default）不是关键字，而是什么都不写，留空
-* 父子类构造方法的访问特点：
-    - 子类构造方法中有一个隐含默认的&quot;super()&quot;调用，所以一定先调用父类构造方法，后执行子类的构造方法
-    - 子类构造可以通过super关键字来调用父类重载构造
-    - super的父类构造调用必须是子类构造方法的第一个语句，不能一个子类构造调用多次super构造</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/18/Java/Java10-static/">Java10-Static</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-18
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>static</p>
-<pre><code>* static 静态关键词
-* 一旦使用static修饰成员变量/成员方法，那么就成为了静态变量/静态方法，则不属于对象，而是属于类的
-    - 如果没有static关键词，那么必须先创建对象，然后通过对象来使用
-    - 如果有了static关键词，那么不需要创建对象，可以直接通过类名来使用
-    - 无论是成员变量还是成员方法，如果有了static都推荐通过类名称来使用
-        - 静态变量：类名称.静态变量
-        - 静态方法：类名称.静态方法()
-* 注意事项：
-    - 静态不能直接访问非静态，因为内存中先有的静态内容，后有的非静态内容
-    - 静态方法中不能用this，因为this代表当前对象，通过谁调用的方法，谁就是当前对象
-    - 根据类名称访问静态成员变量/成员方法的时候，全程和对象没有关系，只和类有关系
-* 静态代码块：static&#123;&#125;;
-    - 当第一次用到本类时，静态代码块执行唯一的一次，静态内容总是优先于非静态，
-        所以静态代码块比构造方法先执行
-    - 用来一次性的对静态成员变量进行赋值</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/17/Java/Java09-%E5%B7%A5%E5%85%B7%E7%B1%BB01/">Java09-工具类01</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>Scanner</p>
-<pre><code>* Scanner类可以实现键盘输入数据到程序中
-    - 获取键盘输入的一个int数字:
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc&#x3D;new Scanner(System.in);</span><br><span class="line">int num&#x3D;sc.nextInt();</span><br></pre></td></tr></table></figure>
-    - 获取键盘输入的一个String字符串:
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc&#x3D;new Scanner(System.in);</span><br><span class="line">String str&#x3D;sc.next();</span><br></pre></td></tr></table></figure></code></pre>
-<p>Random</p>
-<pre><code>* Random类用来生成随机数字
-    - 方法：
-        - nextInt() 获取一个随机的int数字，范围是int所有范围，有正负
-        - nextInt(int 参数) 获取一个随机的int数字，范围是0-参数，左闭右开区间</code></pre>
-<p>ArrayList</p>
-<pre><code>* 数组的长度不可以发生改变，但ArrayList集合的长度可以随意改变
-* 格式：ArrayList&lt;泛型&gt; 集合名称=new ArrayList&lt;&gt;();
-* 对于ArrayList集合来说，有一个尖括号&lt;E&gt;代表泛型
-    从JDK1.7+开始，右侧的尖括号内部可以不写内容，但是&lt;&gt;本身还是得写
-        - 泛型：装在集合中的所有元素，全都是统一的类型
-        - 注意：泛型只能是引用类型，不能是基本类型
-* 注意事项：对于ArrayList集合来说，直接打印得到的不是地址值，而是内容
-            若内容是空，得到的是空的中括号[]
-* 方法：
-    - public boolean add(E e) 向集合中添加元素，参数的类型和泛型一致，返回值为Boolean
-        - 注意：对于ArrayList集合添加时一定成功的，但对于其他集合就不一定了
-    - public E get(int index) 从集合中获取元素，参数是索引编号，返回值是对应位置的元素
-    - public E remove(int index) 从集合中删除元素，参数是索引编号，返回值是被删除的元素
-    - public int size() 获取集合的长度，返回值是集合的长度
-* 如果希望向ArrayList集合当中储存基本数据类型数据，必须使用基本类型对应的“包装类”
-    基本类型        包装类（引用类型，包装类都位于java.lang包下）
-    byte            Byte
-    short           Short
-    int             Integer
-    long            Long
-    float           Float
-    double          Double
-    char            Character
-    boolean         Boolean
-    - 从JDK1.5开始，支持自动装箱、自动拆箱
-        - 自动装箱：基本类型--&gt;包装类型
-        - 自动拆箱：包装类型--&gt;基本类型</code></pre>
-<p>String</p>
-<pre><code>* java.lang.String类代表字符串
-* 字符串的特点：
-    - 字符串的内容永不可变
-    - 正因为字符串的内容永不可变，所以字符串是共享的
-    - 字符串效果上相当于char[]字符数组，但底层原理是byte[]字节数组
-* 创建字符串的方法：
-    - 构造方法：
-        - public String() 创建一个空白字符串，不含有任何内容
-        - public String(char[] array) 根据字符数组的内容来创建对应的字符串
-        - public String(byte[] array) 根据字节数组的内容来创建对应的字符串
-    - 直接创建：
-        - String 字符串名称=&quot;字符串内容&quot;
-        - 对于引用类型来说，==进行的是地址值的比较
-        - 双引号直接创建的字符串在字符串常量池中，new的不在池中
-* 方法
-    - public boolean equals(Object obj) 参数可以是任意对象，
-        只有参数是一个字符串并且内容相同才会返回true，否则返回false
-            - 注意事项：
-                - 该方法具有对称性，a.equals(b)和b.equals(a)效果一样
-                - 若比较双方一个常量一个变量，推荐把常量字符串写在前面
-    - public boolean equalsIgnoreCase() 忽略大小写进行比较
-    - public int length() 获得字符串长度
-    - public String concat(String str) 将当前字符串和参数字符串拼接成一个新的字符串并返回
-    - public char charAt(int index) 获得指定索引位置的单个字符
-    - public int indexOf(String str) 查找参数字符串在本字符串首次出现的索引位置，若没有则返回-1
-    - public String substring(int index) 截取从参数索引位置一直到字符串末尾的字符串并返回
-    - public String substring(int begin,int end) 截取从begin开始，到end结束中间的字符串并返回
-        - [begin,end)，左闭右开
-    - public char[] toCharArray() 将当前字符串拆分为字符数组作为返回值
-    - public byte[] getBytes() 将当前字符串拆分为字节数组作为返回值
-    - public String replace(CharSequence oldString,CharSequence newString)
-        - 将所有出现的老字符串替换为新的字符串并返回替换之后的新字符串
-     -public String[] split(String regex) 按照参数的规则将字符串切分为若干部分
-        - 注意事项：
-            - split方法的参数是一个“正则表达式“
-            - 若按照英文句点切分，必须写&quot;\\.&quot;</code></pre>
-<p>Arrays</p>
-<pre><code>* Arrays是一个与数组相关的工具类
-* 方法：
-    - public static String toString(数组) 将参数数组变成字符串
-    - public static void sort(数组) 按照默认升序对数组的元素进行排序
-        - 若是数值，sort默认按照升序从小到大
-        - 若是字符串，sort默认按照字母从小到大
-        - 若是自定义的类型，那么这个自定义的类型需要有Comparable或者Comparator接口的支持</code></pre>
-<p>Math</p>
-<pre><code>* Math类是一个与数学相关的工具类
-* 方法：
-    - public static double abs(double num) 获取绝对值
-    - public static double ceil(double num) 向上取整
-    - public static double floor(double num) 向下取整
-    - public static long round(double num) 四舍五入
-    - Math.PI代表圆周率常量</code></pre>
-<p>Date</p>
-<pre><code>* Date类是一个与日期相关的工具类
-* 方法：
-    - Date类的带参构造方法：Date(long date)
-        - 传入毫秒值，将毫秒转换为Date日期
-    - Date类的无参构造方法：Date(long date)
-        - 获取当前系统的日期和时间</code></pre>
-<p>DateFormat</p>
-<pre><code>* DateFormat类是日期/时间格式化子类的抽象类
-* 作用：格式化（日期--&gt;文本） 解析（文本--&gt;日期）
-* DateFormat类是一个抽象类，所以得通过它的子类SimpleDateFormat来使用它的方法
-* 方法
-    - String format(Date date) 按照指定的模式把Date日期格式化为符合模式的字符串
-    - Date parse(String source) 把符合模式的字符串解析为Date日期
-        - 注意事项：
-            - 该方法声明了一个异常，使用时要么需要throw抛出异常，要么try...catch自己处理这个异常</code></pre>
-<p>SimpleDateFormat 类</p>
-<pre><code>* 构造方法：SimpleDateFormat(String pattern) 用给定的模式和默认语言环境构造SimpleDateFormat
-    - 参数：传递指定的模式
-    - 模式（区分大小写）：
-        - y     年
-        - M     月
-        - d     日
-        - H     时
-        - m     分
-        - s     秒
-        - 将模式按照自己的格式组合起来即可，如：&quot;yyyy-MM-dd HH:mm:ss&quot;或&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;
-        - 注意：模式中字母不可以随意改动，连接字母的符号可以改变</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/17/Java/Java08-%E5%B0%81%E8%A3%85/">Java08-封装</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-17
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>封装</p>
-<pre><code>* 封装就是将一些细节信息隐藏起来，对于外界不可见
-* 封装性在Java中的体现：
-    - 方法就是一种封装
-    - 关键字private也是一种封装
-        - 一旦使用关键字private对成员变量进行修饰，那么本类当中仍然可以随意访问
-            但超出本类范围之外就不能再直接访问了
-        - 因此我们可以采取间接访问private成员变量的方法，就是定义一对Getter/Setter方法</code></pre>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-
-    <hr />
-
-    
-
-    
-
-
-
-</div>
-</div>
-
-
-    <div class="main">
-<div class="blog-post">
-    <!-- Title -->
-    
-      <h1 class="blog-post-title">
-        <a href="/2020/11/16/Java/Java07-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">Java07—类和对象</a>
-      </h1>
-    
-    <!-- Date and Author -->
-    <p class="blog-post-meta">
-        2020-11-16
-        
-    </p>
-
-    
-
-    <!-- Content -->
-    <p>类和对象</p>
-<pre><code>* 类：是一组相关属性和行为的集合，可以看成是一类事物的模板，使用事物的属性特征和行为特征来描述该类事物
-    - 属性：该事物的状态信息
-    - 行为：该事物能够做什么
-* 对象：是一类事物的具体体现，对象是类的一个实例，必然具备该类事物的属性和行为
-* 类与对象的关系：
-    - 类是对一类事物的描述，是抽象的
-    - 对象是一类事物的实例，是具体的
-    - 类是对象的模板，对象是类的实体
-* 定义一个类由两个部分组成：属性和行为
-    - 成员变量（属性）
-    - 成员方法（行为）
-    - 注意事项：
-        - 成员变量是直接定义在类当中的，在方法外边
-        - 成员方法不用写static关键字
-* 通常情况下，一个类并不能直接使用，需要根据类创建一个对象才能使用
-    - 导包
-        - 引入需要使用的类
-        - 格式：import 包名称.类名称
-        - 需要引入的类和当前类属于同一个包时，就不需要导包
-    - 创建格式：类名称 对象名=new 类名称()
-    - 使用：
-        - 使用成员变量：对象名.成员变量名
-        - 使用成员方法：对象名.成员方法名(),有参则在括号中加入参数
-        - 注意：若成员变量没有进行赋值，那么将会有一个默认值，规则和数组一样
-* 局部变量和成员变量
-    - 定义的位置不一样：
-        - 局部变量：在方法的内部
-        - 成员变量：在方法的外部，直接写在类中
-    - 作用范围不一样：
-        - 局部变量：只能在方法中使用
-        - 成员变量：整个类全部都可以通用
-    - 默认值不一样：
-        - 局部变量：没有默认值，如果想要使用必须手动进行赋值
-        - 成员变量：有默认值，规则和数组一样
-    - 内存的位置不一样：
-        - 局部变量：栈内存
-        - 成员变量：堆内存
-    - 生命周期不一样
-        - 局部变量：随着方法进栈而诞生，随着方法出栈消失
-        - 成员变量：随着对象创建而诞生，随着对象被垃圾回收而消失
-* 匿名对象：只有右边的对象，没有左边的名字和赋值运算符，即new 类名称();
-    - 注意事项：匿名对象创建之后只能使用一次
-    - 使用建议：如果确定有一个对象只需要使用唯一的一次，就可以使用匿名对象</code></pre>
 
     <!-- Only display the Read More link if we are displaying an excerpt -->
     

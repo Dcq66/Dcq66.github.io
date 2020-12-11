@@ -1,0 +1,264 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java28-IO流 | 小戴的学习日记</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="小戴的学习日记" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Dcq66.github.io"></form>
+   </div>
+ -->
+    <h1 class="blog-title">小戴的学习日记</h1>
+    <p class="lead blog-description">Dcq66.github.io</p>
+</div>
+
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2020/12/10/Java/Java28-IO/">
+            Java28-IO流
+        </a>
+    </h1>
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2020-12-10
+        
+    </p>
+
+    
+
+    <!-- Content -->
+    <p>IO 流</p>
+<pre><code>* IO流的顶级父类们：
+    - 字节流：字节输入流与字节输出流
+    - 字符流：字符输入流与字符输出流</code></pre>
+<p>字节流</p>
+<pre><code>* OutputStream：字节输出流，该抽象类是表示输出字节流的所有类的超类
+* OutputStream中定义了一些子类共性的方法：
+    - public void close() 关闭此输出流并释放与此流相关联的任何系统资源
+    - public void flush() 刷新此输出流并强制任何缓冲的输出字节被写出
+    - public void write(int b) 将指定的字节写入此输出流
+    - public void write(byte[] b) 将b.length字节从指定的字节数组写入此输出流
+    - public void write(byte[] b，int off,int len)
+        - 从指定的字节数组写入len字节,从偏移量off开始输出到此输出流
+    - FileOutputStream：文件字节输出流，是OutputStream的子类
+        - 作用：把内存中的数据写入硬盘中的文件中
+        - 构造方法：
+            - FileOutputStream(String name) 创建一个向具有指定名称的文件中写入数据的输出文件流
+            - FileOutputStream(File file) 创建一个向具有指定File对象表示的文件中写入数据的输出文件流
+        - 使用步骤：
+            - 1.创建一个FileOutputStream对象，构造方法中传递写入数据的目的地
+            - 2.调用FileOutputStream对象中的write方法，把数据写入文件中
+            - 3.释放资源
+    - 续写和换行：
+        - 续写：使用两个参数的构造方法
+            - FileOutputStream(String filename,boolean append)
+            - FileOutputStream(File file,boolean append)
+            - 参数append为续写开关
+                - true：不会创建新文件覆盖原文件可以续写
+                - false：创建新的文件会覆盖原文件
+        - 换行：换行符号
+            - Windows：\r\n
+            - Linux:/n
+            - mac:/r
+* InputStream：字节输入流，该抽象类是表示输入字节流的所有类的超类
+* InputStream中定义了一些子类共性的方法：
+    - int read() 从输出流中读取数据的下一个字节
+    - int read(byte[] b) 从输出流中读取一定数量的字节，并将其存储在缓冲区数组b中
+    - void close() 关闭此输入流并释放与该流关联的所有系统资源
+    - FileInputStream：文件字节输出流，是InputStream的子类
+        - 作用：把硬盘文件中的数据读取到内存中使用
+        - 构造方法：
+            - FileInputStream(String name) 创建一个向具有指定名称的文件中读取数据的输入文件流
+            - FileInputStream(File file) 创建一个向具有指定File对象表示的文件中读取数据的输入文件流
+        - 读取数据的原理：Java程序--&gt;JVM--&gt;OS（操作系统）--&gt;OS读取数据的方法--&gt;读取文件
+        - 使用步骤：
+            - 1.创建一个FileInputStream对象，构造方法中绑定要读取的数据源
+            - 2.调用FileInputStream对象中的read方法，读取文件
+            - 3.释放资源</code></pre>
+<p>字符流</p>
+<pre><code>* Reader：字符输入流，是字符输入流的最顶层的父类，是一个抽象类
+    - 共性方法：
+        - int read() 读取单个字符并返回
+        - int read(char[] b) 一次读取多个字符，并将其存储在缓冲区数组b中
+        - void close() 关闭此输入流并释放与该流关联的所有系统资源
+    - FileReader：文件字符输入流，是Reader的子类
+        - 作用：把硬盘文件中的数据以字符的方法读取到内存中
+        - 构造方法：
+            - FileReader(String filename)
+            - FileReader(File file)
+* Write：字符输出流，是字符输出流的最顶层的父类，是一个抽象类
+    - 共性方法：
+        - public void close() 关闭此输出流并释放与此流相关联的任何系统资源，但先要刷新它
+        - public void flush() 刷新此输出流并强制任何缓冲的输出字节被写出
+        - public void write(int c) 将指定的字符写入此输出流
+        - public void write(char[] c) 将指定的字符数组写入此输出流
+        - public void write(char[] c，int off,int len)
+            - 写入字符数组的某一部分，从数组的off索引开始，写len的字符个数
+        - public void write(String str) 写入字符串
+        - public void write(String str)
+            - 写入字符串的某一部分，从字符串的off索引开始，写len的字符个数
+    - close与flush的区别：
+        - flush：刷新缓冲区，流对象可以继续使用
+        - close：先刷新缓冲区，然后释放系统资源，流对象不可以继续使用
+    - FileWrite：文件字符输出流，是Write的子类
+        - 作用：把内存中字符数据写入到文件中
+        - 构造方法：
+            - FileWrite(String filename)
+            - FileWrite(File file)
+    - 续写和换行：
+        - 续写：使用两个参数的构造方法
+            - FileWrite(String filename,boolean append)
+            - FileWrite(File file,boolean append)
+            - 参数append为续写开关
+                - true：不会创建新文件覆盖原文件可以续写
+                - false：创建新的文件会覆盖原文件
+        - 换行：换行符号
+            - Windows：\r\n
+            - Linux:/n
+            - mac:/r
+* JDK7的新特性：
+    - 在try的后面可以加一个()，在括号中可以定义流对象，那么这个流的作用域就在try中有效，
+        try中的代码执行完毕后会自动将流对象释放，不用再写finally
+    - 格式：
+        try(定义流对象;定义流对象...)&#123;
+            可能会出现异常的代码
+        &#125;catch(异常类变量 变量名)&#123;
+            异常的处理逻辑
+        &#125;
+* JDK9的新特性：
+    - try的前面可以定义流对象，在try后边的()中可以直接引入流对象的名称，
+        try中的代码执行完毕后会自动将流对象释放，不用再写finally
+    格式：
+        A a=new A();
+        B b=new B();
+        try(a,b)&#123;
+            可能会出现异常的代码
+        &#125;catch(异常类变量 变量名)&#123;
+            异常的处理逻辑
+        &#125;</code></pre>
+
+
+    <!-- Social share choices -->
+    
+  <div id="social-share">
+    <a data-url="https://dcq66.github.io/2020/12/10/Java/Java28-IO/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/10/Java/Java28-IO/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/10/Java/Java28-IO/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="https://dcq66.github.io/2020/12/10/Java/Java28-IO/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
+  </div>
+
+
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=https://dcq66.github.io/2020/12/10/Java/Java28-IO/
+https://dcq66.github.io/2020/12/10/Java/Java28-IO/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
+    
+
+    
+
+
+    <!-- Comment using disqus -->
+    
+
+</div>
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    主题 <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    总访问量: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2020 戴超群<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -71,7 +71,7 @@
     <p>异常类</p>
 <pre><code>* Throwable类时Java语言中所有错误或异常的超类（父类）
     - Exception：编译期异常，进行编译（写代码）Java程序时出现的问题
-        - RuntimeException：运行期异常，Java程序运行过程中出现的问题
+    - RuntimeException：运行期异常，Java程序运行过程中出现的问题
         - 异常就相当于程序得了一个小毛病，把异常处理掉程序就可以继续运行
     - Error：错误，相当于程序得了一个无法治愈的毛病，必须修改源代码
 * 异常产生的过程
@@ -110,7 +110,8 @@
     - 格式：
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    可能出现异常的代码</span><br><span class="line">&#125;catch(异常类名 变量名（定义一个异常的变量，用来接收try抛出的异常对象）)&#123;</span><br><span class="line">    异常的处理逻辑，接受异常后怎么处理异常对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     - 注意：
-        - try中可能会抛出多个异常对象，那么就必须使用多个catch来处理这些异常对象
+        - try中可能会抛出多个异常对象，那么就必须使用多个catch来处理这些异常对象，当catch里边定义的
+            异常变量具有父子类关系，那么子类的异常变量必须写在上边，否则就会报错
         - 若try中产生了异常，则会执行catch中的异常处理逻辑，然后继续执行try...catch之后的代码
             若try中没产生了异常，则不会执行catch中的异常处理逻辑，然后继续执行try...catch之后的代码
 * Throwable类中定义了三个与异常处理有关的方法
@@ -122,7 +123,22 @@
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    可能出现异常的代码</span><br><span class="line">&#125;catch(异常类名 变量名（定义一个异常的变量，用来接收try抛出的异常对象）)&#123;</span><br><span class="line">    异常的处理逻辑，接受异常后怎么处理异常对象</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">    无论是否出现异常都执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     - 注意：
         - finally不能单独使用，必须和try一起使用
-        - finally一般用于资源释放（资源回收），无论程序是否出现异常，最后都要资源释放（IO）</code></pre>
+        - finally一般用于资源释放（资源回收），无论程序是否出现异常，最后都要资源释放（IO）
+* 父子类的异常
+    - 如果父类抛出了多个异常，子类重写父类方法时，抛出和父类相同的异常或者是父类异常的子类或者不抛出异常
+    - 父类方法没有抛出异常，子类重写父类方法时也不可抛出异常，此时子类产生异常，只能捕获处理，不能声明
+    - 父类异常是什么样，子类异常就是什么样
+* 自定义异常类
+    - Java提供的异常类不够我们使用时，就需要自己去定义一些异常类
+    - 格式：
+        public class XXXException extends Exception/RuntimeException&#123;
+            添加一个空参数的构造方法（创建一个无参构造方法，然后在方法里边调用父类构造方法即super()）
+            添加一个带异常信息的构造方法（创建一个带参构造方法，在方法里边调用父类构造方法即super()）
+        &#125;
+    - 注意：
+        - 自定义异常类一般都是以Exception结尾，说明该类是一个异常类
+        - 自定义异常类继承Exception说明是一个编译期异常，如果方法内部抛出了编译期异常就必须处理
+            若继承RuntimeException则是一个运行期异常，无需处理，交给虚拟机处理（中断处理）</code></pre>
 
 
     <!-- Social share choices -->
